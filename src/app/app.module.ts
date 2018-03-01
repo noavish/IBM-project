@@ -9,6 +9,9 @@ import { LoginComponent } from './login/login.component';
 import { SigninComponent } from './signin/signin.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
+import { MainComponent } from './main/main.component';
+import { AppRoutingModule } from './app-routing.module';
+import { RouterModule, Routes } from '@angular/router';
 
 
 @NgModule({
@@ -16,14 +19,17 @@ import { AnalyticsComponent } from './analytics/analytics.component';
     AppComponent,
     LoginComponent,
     SigninComponent,
-    NavbarComponent
-    UserPageComponent
+    NavbarComponent,
+    UserPageComponent,
+    MainComponent,
+    AnalyticsComponent
   ],
   imports: [
     BrowserModule,
     MaterializeModule,
-    AnalyticsComponent,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule,
+    RouterModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

@@ -9,7 +9,7 @@ const mysql = require('mysql');
 const bcrypt = require('bcrypt');
 const secret = require('./secret');
 const AuthCheck = require('./AuthCheck');
-const config = require('./config')
+const config = require('./config');
 
 const app = express();
 
@@ -19,9 +19,7 @@ app.use(passport.initialize());
 
 const connection =  mysql.createConnection(config);
 
-connection.connect()
-connection.end()
-
+connection.connect();
 
 passport.use(new LocalStrategy(
    // { passReqToCallback : true},
@@ -52,12 +50,12 @@ app.get('/userDetails', AuthCheck, (req,res)=>{
 
 
 //Static path to dist
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, '../dist')));
 
 
-//Catch all other routes - Place below all other routes
+// Catch all other routes - Place below all other routes
 app.get('*', (req,res)=>{
-  res.sendFile(path.join(__dirname,'index.html'));
+  res.sendFile(path.join(__dirname,'../src/index.html'));
 });
 
 // Catch all other routes and return the index file
