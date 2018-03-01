@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng build && node ./server/server.js",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
@@ -44,5 +44,16 @@
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
     "typescript": "~2.5.3"
-  }
+  },
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.2.",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noavish/IBM-project.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/noavish/IBM-project/issues"
+  },
+  "homepage": "https://github.com/noavish/IBM-project#readme"
 }
