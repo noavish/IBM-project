@@ -9,12 +9,18 @@ const mysql = require('mysql');
 const bcrypt = require('bcrypt');
 const secret = require('./secret');
 const AuthCheck = require('./AuthCheck');
+const config = require('./config')
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
+
+const connection =  mysql.createConnection(config);
+
+connection.connect()
+connection.end()
 
 
 passport.use(new LocalStrategy(
