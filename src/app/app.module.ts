@@ -1,16 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { MaterializeModule } from 'angular2-materialize';
 
 
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { SigninComponent } from './signin/signin.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    SigninComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,MaterializeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
