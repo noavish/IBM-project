@@ -1,23 +1,62 @@
+<div class="container-fluid">
   <div class="row">
-    <form class="col s12">
+    <div class="col-md-12">
       <div class="row">
-        <div class="input-field col s6">
-          <input id="name" type="text" class="validate">
-          <label for="name">Email</label>
+        <div class="col-md-6 mx-auto">
+          <div class="card rounded-0">
+            <div class="card-header blue-grey darken-2">
+              <h3 class="mb-0">Sign-in</h3>
+              <div class="brand-logo">
+                <img class="responsive-img" src="../assets/image/FancoLogo.png">
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <form class="col s12">
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="firstname" type="text" class="validate">
+                      <label for="firstname">First Name</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                      <div class="input-field col s6">
+                        <input id="lastname" type="text" class="validate">
+                        <label for="lastname">Last Name</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                          <input id="email" type="text" class="validate">
+                          <label for="email">Email</label>
+                        </div>
+                      </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                          <input id="username" type="text" class="validate">
+                          <label for="username">Username</label>
+                        </div>
+                      </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="password" type="password" class="validate">
+                      <label for="password">Password</label>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn float-right blue-grey darken-2" id="btnSignin">Log in</button>
+                  <span>Not a user yet?
+                    <a class="signup" href="#" (click)="logIn()">sign up</a>
+                  </span>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      
-      <div class="row">
-        <div class="input-field col s6">
-          <input id="email" type="email" class="validate">
-          <label for="email">Username</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <input id="password" type="password" class="validate">
-          <label for="password">Password</label>
-        </div>
-      </div>
-      <button type="submit" class="btn float-right #1e88e5 blue darken-1" id="btnSignin">Sign in</button>    </form>
+    </div>
+  </div>
+  <div>
+    <span>
+      <img class="responsive-img text-logo" id="text-logo" src="../assets/image/fancotextlogo.png">
+    </span>
   </div>
