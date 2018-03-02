@@ -1,14 +1,77 @@
-<nav class="nav-extended  blue darken-2">
-  <div class="nav-wrapper">
-    <a href="#" class="brand-logo"><img  id="logo"src="http://image.ibb.co/cAZ9Xc/fanlogo.png"></a>
+<header>
+  <div class="navbar-fixed">
+    <nav class="navbar-color blue-grey darken-2">
+      <div class="nav-wrapper">
+        <ul class="left">
+          <li>
+            <h1 class="logo-wrapper">
+              <a herf="index.html" class="brand-logo">
+                <img  class="responsive-img"src="../assets/image/FancoLogo.png">
+                <span>
+                  <img class="responsive-img" id="text-logo" src="../assets/image/fancotextlogo.png">
+                </span>
+              </a>
+            </h1>
+          </li>
+        </ul>
+        <ul class="right right-nav-icons">
+          <li>
+            <i class="large material-icons">account_circle</i>
+          </li>
+          <li>
+            <i class="large material-icons">notifications</i>
+          </li>
+          <li>
+            <i class="large material-icons">power_settings_new</i>
+          </li>
+        </ul>
+      </div>
+    </nav>
   </div>
-  <div class="nav-content">
-    <ul class="tabs tabs-transparent">
-      <li class="tab"><a href="#test1">Dashboard</a></li>
-      <li class="tab"><a class="active" routerLink="/analytics">Analytics</a></li>
-      <li class="tab"><a class="active" routerLink="/user">User</a></li>
-      <li class="tab"><a class="active" routerLink="/login">login</a></li>
-      <li class="tab"><a class="active" routerLink="/signIn">sign in</a></li>
-    </ul>
+</header>
+<div id="main">
+  <div class="wrapper">
+    <aside id="left-side-nav" class="nav-expanded nav-lock nav-collapsible">
+      <ul id="slide-out" class="side-nav fixed leftside-navigation ps-container ps-active-y" style="transform: translateX(0px);">
+        <li class="no-padding">
+          <ul class="collapsible" data-collapsible="accordion">
+            <li class="bold active">
+              <a class="collapsible-header waves-effect waves-cyan active">
+                <i class="material-icons">dashboard</i>
+                <span class="nav-text">Dashboard</span>
+              </a>
+              <div class="collapsible-body" style="display: block;">
+                <ul>
+                  <li>
+                    <a class="active" routerLink="/analytics">
+                      <i class="material-icons">keyboard_arrow_right</i>
+                      <span>Analytics</span>
+                    </a>
+                  </li>
+                </ul>
+                <li>
+                    <a class="active" routerLink="/user">
+                    <i class="material-icons">keyboard_arrow_right</i>
+                    <span>User</span>
+                  </a>
+                </li>
+                <li>
+                    <a class="active" routerLink="/login">
+                    <i class="material-icons">keyboard_arrow_right</i>
+                    <span>Login</span>
+                  </a>
+                </li>
+                <li>
+                    <a class="active" routerLink="/signIn">
+                    <i class="material-icons">keyboard_arrow_right</i>
+                    <span>Signin</span>
+                  </a>
+                </li>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </aside>
   </div>
-</nav>
+</div>
