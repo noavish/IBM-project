@@ -10,6 +10,8 @@ const bcrypt = require('bcrypt');
 const secret = require('./secret');
 const AuthCheck = require('./AuthCheck');
 const config = require('./config');
+//get sales router
+// var router = express.Router();
 
 const app = express();
 
@@ -47,7 +49,34 @@ app.get('/userDetails', AuthCheck, (req,res)=>{
   res.send(req.user)
 });
 
+//getAllSales
+app.get('/sales', function (req, res, next) {
+  connection.query('select * from sales', function(err, rows, fields) {
+    if (!err)
+      res.send(rows);
+    else
+      res.send('Error while performing Query.');
+  });
+});
 
+app.get('/products', function (req, res, next) {
+  connection.query('select * from products', function(err, rows, fields) {
+    if (!err)
+      res.send(rows);
+    else
+      res.send('Error while performing Query.');
+  });
+});
+
+app.get('/sku/:product_name', function (req, res, next) {
+  console.log(req.params.product_name)
+  connection.query('select * from  sku left join products on products.product_id = sku.products_sku where Product_name = ?', req.params.product_name , function(err, rows, fields) {
+    if (!err)
+      res.send(rows);
+    else
+      res.send('Error while performing Query. ');
+  });
+});
 
 //Static path to dist
 app.use(express.static(path.join(__dirname, '../dist')));

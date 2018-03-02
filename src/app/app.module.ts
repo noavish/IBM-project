@@ -12,6 +12,10 @@ import { AnalyticsComponent } from './analytics/analytics.component';
 import { MainComponent } from './main/main.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
+import { SalesService } from './sales.service';
+import { FormsModule } from '@angular/forms';
+import { UnitAmountGraphComponent } from './unit-amount-graph/unit-amount-graph.component';
+
 
 
 @NgModule({
@@ -22,16 +26,18 @@ import { RouterModule, Routes } from '@angular/router';
     NavbarComponent,
     UserPageComponent,
     MainComponent,
-    AnalyticsComponent
+    AnalyticsComponent,
+    UnitAmountGraphComponent
   ],
   imports: [
     BrowserModule,
     MaterializeModule,
     HttpClientModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, SalesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
