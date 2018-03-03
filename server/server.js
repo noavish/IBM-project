@@ -10,6 +10,7 @@ const bcrypt = require('bcrypt');
 const secret = require('./secret');
 const AuthCheck = require('./AuthCheck');
 const config = require('./config');
+// const axios = require('axios');
 //get sales router
 // var router = express.Router();
 
@@ -69,7 +70,6 @@ app.get('/products', function (req, res, next) {
 });
 
 app.get('/sku/:product_name', function (req, res, next) {
-  console.log(req.params.product_name)
   connection.query('select * from  sku left join products on products.product_id = sku.products_sku where Product_name = ?', req.params.product_name , function(err, rows, fields) {
     if (!err)
       res.send(rows);
@@ -77,6 +77,19 @@ app.get('/sku/:product_name', function (req, res, next) {
       res.send('Error while performing Query. ');
   });
 });
+
+// app.get('/search_places/:location', function (req, res, next) {
+//   axios.get(`https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${req.params.location}&key=AIzaSyDOVMcO9XGEh9iGT_16wp_s4swj575tj_Y`)
+//     .then(function (response) {
+//       var places = response.data.predictions.map(function(place) { return {name: place.description, id: place.place_id}});
+//       console.log(places);
+//       res.json({places: places});
+//     })
+//     .catch(function (error) {
+//       console.log(error);
+//     });
+// });
+
 
 //Static path to dist
 app.use(express.static(path.join(__dirname, '../dist')));

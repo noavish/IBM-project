@@ -13,8 +13,9 @@ import { MainComponent } from './main/main.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 import { SalesService } from './sales.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UnitAmountGraphComponent } from './unit-amount-graph/unit-amount-graph.component';
+import { AgmCoreModule } from '@agm/core';
 
 
 
@@ -30,7 +31,13 @@ import { UnitAmountGraphComponent } from './unit-amount-graph/unit-amount-graph.
     UnitAmountGraphComponent
   ],
   imports: [
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAQdvgsGn1ZefzGQ8zS7W5Y4myZSlI4Vfk',
+      // apiKey: 'AIzaSyDOVMcO9XGEh9iGT_16wp_s4swj575tj_Y',
+      libraries: ['places']
+    }),
     BrowserModule,
+    ReactiveFormsModule,
     MaterializeModule,
     HttpClientModule,
     AppRoutingModule,

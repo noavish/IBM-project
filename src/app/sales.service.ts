@@ -19,7 +19,12 @@ export class SalesService {
   }
 
   getSKUFromDB(product_name: string): Observable<SKU[]> {
-    console.log(product_name);
     return this.http.get<SKU[]>(`/sku/${product_name}`);
+  }
+
+  getFromAPI(location: string): Observable<any> {
+    return this.http.get<any>(`/search_places/${location}`);
+    // return this.http.get<any>(`https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${location}&key=AIzaSyDOVMcO9XGEh9iGT_16wp_s4swj575tj_Y`,
+    //   {headers: {'Access-Control-Allow-Origin': '*'}});
   }
 }

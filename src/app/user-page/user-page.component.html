@@ -42,16 +42,18 @@
     <div class="modal-content">
       <h4>Log Sale</h4>
       <form class="col s12">
-        <div class="row">
-          <select materialize="material_select" [materializeSelectOptions]="selectOptions">
-            <option [value]="" disabled>Country</option>
-          </select>
-          <select materialize="material_select" [materializeSelectOptions]="selectOptions">
-            <option [value]="" disabled>State</option>
-          </select>
-          <select materialize="material_select" [materializeSelectOptions]="selectOptions">
-            <option [value]="" disabled>City</option>
-          </select>
+        <div class="container">
+          <div class="form-group">
+            <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl">
+          </div>
+          <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+            <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+          </agm-map>
+        </div>
+        <!--<div class="row">-->
+          <!--<input placeholder="location" id="location" type="location" class="validate" name="location" [(ngModel)]="location" (input)="findLocation()">-->
+          <!--&lt;!&ndash;<label for="first_name">Date</label>&ndash;&gt;-->
+          <!--</div>-->
           <select materialize="material_select" [materializeSelectOptions]="products" (change)="getSKU()" name="chosenProduct" [(ngModel)]="chosenProduct">
             <option [value]="" disabled>Product</option>
             <option value={{product.Product_name}} *ngFor="let product of products; let i = index">{{product.Product_name}}</option>
@@ -60,7 +62,6 @@
             <option [value]="" disabled>Item</option>
             <option value={{SKU.sku_name}} *ngFor="let SKU of SKUs; let i = index">{{SKU.sku_name}}</option>
           </select>
-        </div>
       </form>
     </div>
     <div class="modal-footer">
