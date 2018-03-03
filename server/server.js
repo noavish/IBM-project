@@ -48,7 +48,6 @@ app.get('/userDetails', AuthCheck, (req,res)=>{
 });
 
 
-
 //Static path to dist
 app.use(express.static(path.join(__dirname, '../dist')));
 
