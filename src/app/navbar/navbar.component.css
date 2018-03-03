@@ -1,3 +1,67 @@
-#logo{
-   
+*{
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #72777a;
+    letter-spacing: .2px;
 }
+.sidebar {
+    background-color: #fff;
+    bottom: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    transition: all .2s ease;
+    z-index: 1000;
+}
+.right {
+    float: right !important;
+}
+.left {
+    float: left !important;
+}
+nav ul {
+    margin: 0;
+}
+li i {
+    padding-right: 30px;
+    font-size: 1.6rem;
+    color: white;
+}
+nav ul.left {
+    float: left;
+}
+.brand-logo img{
+    top:0;
+    position: fixed;
+    height: 60px;
+    padding-left: 20px;
+}
+
+#text-logo{
+    position: fixed;
+    left: 50px;
+    top: 10px;
+}
+
+#left-sidebar-nav {
+    position: fixed;
+    width: 100px;
+    left: 180px;
+    z-index: 999;
+    height: auto;
+}
+
+ul.side-nav.leftside-navigation {
+    top: 64px;
+    overflow: hidden;
+    height: 100%;
+}
+ul.side-nav.leftside-navigation li:not(.no-padding) {
+    line-height: 44px;
+    
+}
+.side-nav {
+    width: 240px;
+}
+
+
