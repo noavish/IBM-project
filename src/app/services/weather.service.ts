@@ -4,18 +4,16 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class WeatherService {
-  private cityName :string = 'Paris';
-  private daysForecast:number = 7;
-  private appid = "&appid=eae18de7d92e5fa1893eeb187956805f"
+  private cityName: string = 'Paris';
+  private daysForecast: number = 7;
+  private appid = "&appid=eae18de7d92e5fa1893eeb187956805f";
   constructor(private _http: HttpClient) { }
-  
 
-  dailyCall() : Observable<any> {
-    return this._http.get<any>(`https://api.openweathermap.org/data/2.5/forecast?q=`+this.cityName+this.appid)
+  dailyCall(): Observable<any> {
+    return this._http.get<any>(`https://api.openweathermap.org/data/2.5/forecast?q=${this.cityName}${this.appid}`);
   }
 
   weeklyCall(): Observable<any> {
-    return this._http.get<any>(`https://api.openweathermap.org/data/2.5/forecast?q=`+this.cityName+`&cnt=`+this.daysForecast+this.appid)
+    return this._http.get<any>(`https://api.openweathermap.org/data/2.5/forecast?q=${this.cityName}&cnt=${this.daysForecast}${this.appid}`);
   }
-
 }

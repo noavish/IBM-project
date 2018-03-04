@@ -1,8 +1,8 @@
 import { Component, EventEmitter, OnInit, ElementRef, NgZone, ViewChild } from '@angular/core';
 import { MaterializeAction } from 'angular2-materialize';
-import { SalesService } from '../sales.service';
-import { Product } from '../productModel';
-import { SKU } from '../skuModel';
+import { SalesService } from '../services/sales.service';
+import { Product } from '../models/productModel';
+import { SKU } from '../models/skuModel';
 import { FormControl } from '@angular/forms';
 import { } from 'googlemaps';
 import { MapsAPILoader } from '@agm/core';
