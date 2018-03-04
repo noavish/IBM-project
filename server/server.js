@@ -49,12 +49,6 @@ app.get('/userDetails', AuthCheck, (req,res)=>{
   res.send(req.user)
 });
 
-
-<<<<<<< HEAD
-=======
-
-
->>>>>>> bb44347a82e59a325681ad67d81617786273eae5
 //Static path to dist
 app.use(express.static(path.join(__dirname, '../dist')));
 
