@@ -1,3 +1,4 @@
+import { WeatherService } from './weather.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MaterializeModule } from 'angular2-materialize';
@@ -12,6 +13,7 @@ import { AnalyticsComponent } from './analytics/analytics.component';
 import { MainComponent } from './main/main.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
+import { WeatherComponent } from './weather/weather.component';
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import { RouterModule, Routes } from '@angular/router';
     NavbarComponent,
     UserPageComponent,
     MainComponent,
-    AnalyticsComponent
+    AnalyticsComponent,
+    WeatherComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,7 @@ import { RouterModule, Routes } from '@angular/router';
     AppRoutingModule,
     RouterModule
   ],
-  providers: [AuthService],
+  providers: [AuthService,WeatherService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
