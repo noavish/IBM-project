@@ -97,7 +97,7 @@ app.use(express.static(path.join(__dirname, '../dist')));
 
 // Catch all other routes - Place below all other routes
 app.get('*', (req,res)=>{
-  res.sendFile(path.join(__dirname,'../src/index.html'));
+  res.sendFile(path.join(__dirname,'../dist/index.html'));
 });
 
 // Catch all other routes and return the index file
