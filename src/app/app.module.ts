@@ -14,6 +14,10 @@ import { MainComponent } from './main/main.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 import { WeatherComponent } from './weather/weather.component';
+import { SalesService } from './sales.service';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { UnitAmountGraphComponent } from './unit-amount-graph/unit-amount-graph.component';
+import { AgmCoreModule } from '@agm/core';
 
 
 @NgModule({
@@ -26,15 +30,23 @@ import { WeatherComponent } from './weather/weather.component';
     MainComponent,
     AnalyticsComponent,
     WeatherComponent
+    UnitAmountGraphComponent
   ],
   imports: [
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAQdvgsGn1ZefzGQ8zS7W5Y4myZSlI4Vfk',
+      // apiKey: 'AIzaSyDOVMcO9XGEh9iGT_16wp_s4swj575tj_Y',
+      libraries: ['places']
+    }),
     BrowserModule,
+    ReactiveFormsModule,
     MaterializeModule,
     HttpClientModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
-  providers: [AuthService,WeatherService],
+  providers: [AuthService,WeatherService, SalesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
