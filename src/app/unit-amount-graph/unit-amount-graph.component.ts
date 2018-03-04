@@ -30,6 +30,7 @@ export class UnitAmountGraphComponent implements OnInit {
     this.chart = this.AmCharts.makeChart('chartdiv', {
       'type': 'serial',
       'theme': 'patterns',
+      'mouseWheelZoomEnabled': true,
       'marginRight': 40,
       'marginLeft': 40,
       'autoMarginOffset': 20,
@@ -80,6 +81,7 @@ export class UnitAmountGraphComponent implements OnInit {
       },
       'chartCursor': {
         'pan': true,
+        'valueZoomable': true,
         'valueLineEnabled': true,
         'valueLineBalloonEnabled': true,
         'cursorAlpha': 1,
@@ -105,6 +107,13 @@ export class UnitAmountGraphComponent implements OnInit {
 
 
     });
+
+    this.AmCharts.addListener(this.chart, 'rendered', ()=>{
+      console.log(this.chart)
+    });
+  }
+  zoomChart() {
+    this.chart.__proto__.zoomToIndexes(this.chart.dataProvider.length - 40, this.chart.dataProvider.length - 1);
   }
 }
 
