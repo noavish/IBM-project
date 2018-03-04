@@ -1,3 +1,4 @@
+import { WeatherService } from './weather.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MaterializeModule } from 'angular2-materialize';
@@ -12,11 +13,11 @@ import { AnalyticsComponent } from './analytics/analytics.component';
 import { MainComponent } from './main/main.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
+import { WeatherComponent } from './weather/weather.component';
 import { SalesService } from './sales.service';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UnitAmountGraphComponent } from './unit-amount-graph/unit-amount-graph.component';
 import { AgmCoreModule } from '@agm/core';
-
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { AgmCoreModule } from '@agm/core';
     UserPageComponent,
     MainComponent,
     AnalyticsComponent,
+    WeatherComponent
     UnitAmountGraphComponent
   ],
   imports: [
@@ -44,7 +46,7 @@ import { AgmCoreModule } from '@agm/core';
     RouterModule,
     FormsModule
   ],
-  providers: [AuthService, SalesService],
+  providers: [AuthService,WeatherService, SalesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
