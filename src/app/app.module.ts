@@ -29,7 +29,7 @@ import { AgmCoreModule } from '@agm/core';
     UserPageComponent,
     MainComponent,
     AnalyticsComponent,
-    WeatherComponent
+    WeatherComponent,
     UnitAmountGraphComponent
   ],
   imports: [
@@ -46,7 +46,7 @@ import { AgmCoreModule } from '@agm/core';
     RouterModule,
     FormsModule
   ],
-  providers: [AuthService,WeatherService, SalesService],
+  providers: [AuthService, WeatherService, SalesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
