@@ -7,12 +7,14 @@ import { LoginComponent } from './login/login.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { SigninComponent } from './signin/signin.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
+import { WeatherComponent } from './weather/weather.component';
 
 
 const routes: Routes = [
   { path: '', component: MainComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'signIn', component: SigninComponent },
+  { path: 'signin', component: SigninComponent },
+  { path: 'weather', component: WeatherComponent },
   // { path: 'dashboard', component: DashboardComponent },
   { path: 'analytics', component: AnalyticsComponent },
   { path: 'user', component: UserPageComponent },
