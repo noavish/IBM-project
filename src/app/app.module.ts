@@ -1,7 +1,8 @@
+import { WeatherService } from './services/weather.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MaterializeModule } from 'angular2-materialize';
-import { AuthService } from './auth.service';
+import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { UserPageComponent } from './user-page/user-page.component';
@@ -12,6 +13,11 @@ import { AnalyticsComponent } from './analytics/analytics.component';
 import { MainComponent } from './main/main.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
+import { WeatherComponent } from './weather/weather.component';
+import { SalesService } from './services/sales.service';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { UnitAmountGraphComponent } from './unit-amount-graph/unit-amount-graph.component';
+import { AgmCoreModule } from '@agm/core';
 
 
 @NgModule({
@@ -22,16 +28,25 @@ import { RouterModule, Routes } from '@angular/router';
     NavbarComponent,
     UserPageComponent,
     MainComponent,
-    AnalyticsComponent
+    AnalyticsComponent,
+    WeatherComponent,
+    UnitAmountGraphComponent
   ],
   imports: [
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAQdvgsGn1ZefzGQ8zS7W5Y4myZSlI4Vfk',
+      // apiKey: 'AIzaSyDOVMcO9XGEh9iGT_16wp_s4swj575tj_Y',
+      libraries: ['places']
+    }),
     BrowserModule,
+    ReactiveFormsModule,
     MaterializeModule,
     HttpClientModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, WeatherService, SalesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

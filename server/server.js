@@ -9,17 +9,19 @@ const mysql = require('mysql');
 const bcrypt = require('bcrypt');
 const secret = require('./secret');
 const AuthCheck = require('./AuthCheck');
-const config = require('./config');
+const api = require('./api/api');
+
+// const axios = require('axios');
+//get sales router
+// var router = express.Router();
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
+app.use('/api', api);
 
-const connection =  mysql.createConnection(config);
-
-connection.connect();
 
 passport.use(new LocalStrategy(
    // { passReqToCallback : true},
@@ -48,13 +50,18 @@ app.get('/userDetails', AuthCheck, (req,res)=>{
 });
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> bb44347a82e59a325681ad67d81617786273eae5
 //Static path to dist
 app.use(express.static(path.join(__dirname, '../dist')));
 
 
 // Catch all other routes - Place below all other routes
 app.get('*', (req,res)=>{
-  res.sendFile(path.join(__dirname,'../src/index.html'));
+  res.sendFile(path.join(__dirname,'../dist/index.html'));
 });
 
 // Catch all other routes and return the index file
