@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../models/userModel';
-import {AuthService} from '../auth.service';
-
+import {AuthService} from '../services/auth.service';
 
 @Component({
   selector: 'app-signin',
