@@ -16,7 +16,7 @@ router.get('/', function (req, res, next) {
 
 //getAllSales
 router.get('/sales', function (req, res, next) {
-  connection.query('select country, country_code, item_revenue, sum(sales_count) as value FROM sales LEFT JOIN pricing ON pricing.item_id = sales.item_id_fk group by country_code', function(err, rows, fields) {
+  connection.query('select country, country_code, item_revenue, sum(sales_count) as value FROM sales LEFT JOIN pricing ON pricing.item_id = sales.item_id_fk group by country_code', function (err, rows, fields) {
     if (!err)
       res.send(rows);
     else
@@ -24,9 +24,9 @@ router.get('/sales', function (req, res, next) {
   });
 });
 
-router.get('/amount', (req,res)=>{
-  connection.query('select date, sum(sales_count) as value from sales group by date',(err,rows)=>{
-    if(!err) {
+router.get('/amount', (req, res) => {
+  connection.query('select date, sum(sales_count) as value from sales group by date', (err, rows) => {
+    if (!err) {
       res.send(rows)
     } else {
       res.send(err)
@@ -35,7 +35,7 @@ router.get('/amount', (req,res)=>{
 });
 
 router.get('/products', function (req, res, next) {
-  connection.query('select * from products', function(err, rows, fields) {
+  connection.query('select * from products', function (err, rows, fields) {
     if (!err)
       res.send(rows);
     else
@@ -44,7 +44,7 @@ router.get('/products', function (req, res, next) {
 });
 
 router.get('/sku/:product_id', function (req, res, next) {
-  connection.query('SELECT * FROM pricing LEFT JOIN sku ON sku.sku_id = pricing.sku_id_fk LEFT JOIN products ON products.product_id = sku.product_id_fk where product_id = ?', req.params.product_id , function(err, rows, fields) {
+  connection.query('SELECT * FROM pricing LEFT JOIN sku ON sku.sku_id = pricing.sku_id_fk LEFT JOIN products ON products.product_id = sku.product_id_fk where product_id = ?', req.params.product_id, function (err, rows, fields) {
     if (!err)
       res.send(rows);
     else
@@ -53,11 +53,21 @@ router.get('/sku/:product_id', function (req, res, next) {
 });
 
 router.post('/logSale', function (req, res, next) {
-  connection.query('insert into sales set ?',req.body, function(err, rows, fields) {
+  connection.query('insert into sales set ?', req.body, function (err, rows, fields) {
     if (!err)
       res.send(rows);
     else
       res.send('Error while performing Query.');
+  });
+});
+
+//************** */
+router.get('/weathersale', function (req, res, next) {
+  connection.query('SELECT DATE_FORMAT(date, "%m") AS Month, SUM(sales_count),AVG(weather) FROM sales WHERE date GROUP BY DATE_FORMAT(date, "%m")', function (err, rows, fields) {
+    if (!err)
+      res.send(rows);
+    else
+      res.send('Error while performing Query. ');
   });
 });
 

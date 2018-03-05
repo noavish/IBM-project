@@ -10,9 +10,12 @@ import { WeatherComponent } from './weather/weather.component';
 import {UnitAmountGraphComponent} from './unit-amount-graph/unit-amount-graph.component';
 import {DashBoardComponent} from './dash-board/dash-board.component';
 import {TasksComponent} from './tasks/tasks.component';
+import { WeatherSaleGraphComponent } from './weather-sale-graph/weather-sale-graph.component'
+
 
 const routes: Routes = [
-  { path: '', component: MainComponent },
+  //need change root route 
+  { path: '', component: WeatherSaleGraphComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'weather', component: WeatherComponent },

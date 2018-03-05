@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MaterializeModule } from 'angular2-materialize';
 import { AuthService } from './services/auth.service';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { LoginComponent } from './login/login.component';
@@ -15,7 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 import { WeatherComponent } from './weather/weather.component';
 import { SalesService } from './services/sales.service';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UnitAmountGraphComponent } from './unit-amount-graph/unit-amount-graph.component';
 import { AgmCoreModule } from '@agm/core';
 import { MapWithPieComponent } from './map-with-pie/map-with-pie.component';
@@ -23,7 +23,9 @@ import { AmChartsModule } from '@amcharts/amcharts3-angular';
 import { AmChartsService } from '@amcharts/amcharts3-angular';
 import { JwtModule } from '@auth0/angular-jwt';
 import { DashBoardComponent } from './dash-board/dash-board.component';
-import { TasksComponent } from './tasks/tasks.component'
+import { TasksComponent } from './tasks/tasks.component';
+import { WeatherSaleService } from './services/weather-sale.service'
+import { WeatherSaleGraphComponent } from './weather-sale-graph/weather-sale-graph.component'
 
 
 @NgModule({
@@ -39,7 +41,8 @@ import { TasksComponent } from './tasks/tasks.component'
     UnitAmountGraphComponent,
     MapWithPieComponent,
     DashBoardComponent,
-    TasksComponent
+    TasksComponent,
+    WeatherSaleGraphComponent
   ],
   imports: [
     AgmCoreModule.forRoot({
@@ -63,7 +66,7 @@ import { TasksComponent } from './tasks/tasks.component'
       }
     })
   ],
-  providers: [AuthService, WeatherService, SalesService, AmChartsService],
+  providers: [AuthService, WeatherService, SalesService, AmChartsService, WeatherSaleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
