@@ -80,13 +80,14 @@
     <!--chart dashboard start-->
     <div id="chart-dashboard">
       <div class="row">
-        <div class="col s12 m8 l8">
+        <div class="col s12 m8 l4">
           <div class="card">
             <div class="card-move-up waves-effect waves-block waves-light">
               <div class="move-up grey darken-3 darken-1">
                 <div>
                   <span class="chart-title white-text">Chart</span>
                   <div class="chart-revenue grey darken-3 darken-2 white-text">
+                     
                         </div>
                 </div>
                 <div class="trending-line-chart-wrapper">
@@ -122,112 +123,19 @@
               <span class="card-title grey-text text-darken-4">Revenue by Month
                 <i class="material-icons right">close</i>
               </span>
-              <table class="responsive-table">
-                <thead>
-                  <tr>
-                    <th data-field="id">ID</th>
-                    <th data-field="month">Month</th>
-                    <th data-field="item-sold">Item Sold</th>
-                    <th data-field="item-price">Item Price</th>
-                    <th data-field="total-profit">Total Profit</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>January</td>
-                    <td>122</td>
-                    <td>100</td>
-                    <td>$122,00.00</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>February</td>
-                    <td>122</td>
-                    <td>100</td>
-                    <td>$122,00.00</td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>March</td>
-                    <td>122</td>
-                    <td>100</td>
-                    <td>$122,00.00</td>
-                  </tr>
-                  <tr>
-                    <td>4</td>
-                    <td>April</td>
-                    <td>122</td>
-                    <td>100</td>
-                    <td>$122,00.00</td>
-                  </tr>
-                  <tr>
-                    <td>5</td>
-                    <td>May</td>
-                    <td>122</td>
-                    <td>100</td>
-                    <td>$122,00.00</td>
-                  </tr>
-                  <tr>
-                    <td>6</td>
-                    <td>June</td>
-                    <td>122</td>
-                    <td>100</td>
-                    <td>$122,00.00</td>
-                  </tr>
-                  <tr>
-                    <td>7</td>
-                    <td>July</td>
-                    <td>122</td>
-                    <td>100</td>
-                    <td>$122,00.00</td>
-                  </tr>
-                  <tr>
-                    <td>8</td>
-                    <td>August</td>
-                    <td>122</td>
-                    <td>100</td>
-                    <td>$122,00.00</td>
-                  </tr>
-                  <tr>
-                    <td>9</td>
-                    <td>Septmber</td>
-                    <td>122</td>
-                    <td>100</td>
-                    <td>$122,00.00</td>
-                  </tr>
-                  <tr>
-                    <td>10</td>
-                    <td>Octomber</td>
-                    <td>122</td>
-                    <td>100</td>
-                    <td>$122,00.00</td>
-                  </tr>
-                  <tr>
-                    <td>11</td>
-                    <td>November</td>
-                    <td>122</td>
-                    <td>100</td>
-                    <td>$122,00.00</td>
-                  </tr>
-                  <tr>
-                    <td>12</td>
-                    <td>December</td>
-                    <td>122</td>
-                    <td>100</td>
-                    <td>$122,00.00</td>
-                  </tr>
-                </tbody>
-              </table>
             </div>
           </div>
         </div>
-        <div class="col s12 m4 l4">
+        <div class="col s12 m4 l8">
           <div class="card">
             <div class="card-move-up grey darken-3 waves-effect waves-block waves-light">
               <div class="move-up">
                 <p class="margin white-text">Statistics</p>
                 <canvas id="trending-radar-chart" height="228" width="602" style="width: 602px; height: 228px;"></canvas>
+                <div>
+                  <app-us-map></app-us-map>
+                </div>
+                
               </div>
             </div>
             <div class="card-content  grey darken-3">

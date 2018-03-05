@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MaterializeModule } from 'angular2-materialize';
 import { AuthService } from './services/auth.service';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { LoginComponent } from './login/login.component';
@@ -22,10 +22,10 @@ import { MapWithPieComponent } from './map-with-pie/map-with-pie.component';
 import { AmChartsModule } from '@amcharts/amcharts3-angular';
 import { AmChartsService } from '@amcharts/amcharts3-angular';
 import { JwtModule } from '@auth0/angular-jwt';
-import {AuthGuard} from './AuthGuard';
+import { UsMapComponent } from './us-map/us-map.component';
+import { AuthGuard } from './AuthGuard';
 import { DashBoardComponent } from './dash-board/dash-board.component';
 import { TasksComponent } from './tasks/tasks.component'
-
 
 @NgModule({
   declarations: [
@@ -39,6 +39,7 @@ import { TasksComponent } from './tasks/tasks.component'
     WeatherComponent,
     UnitAmountGraphComponent,
     MapWithPieComponent,
+    UsMapComponent
     DashBoardComponent,
     TasksComponent
   ],
