@@ -22,6 +22,7 @@ import { MapWithPieComponent } from './map-with-pie/map-with-pie.component';
 import { AmChartsModule } from '@amcharts/amcharts3-angular';
 import { AmChartsService } from '@amcharts/amcharts3-angular';
 import { JwtModule } from '@auth0/angular-jwt';
+import {AuthGuard} from './AuthGuard';
 import { DashBoardComponent } from './dash-board/dash-board.component';
 import { TasksComponent } from './tasks/tasks.component'
 
@@ -63,7 +64,7 @@ import { TasksComponent } from './tasks/tasks.component'
       }
     })
   ],
-  providers: [AuthService, WeatherService, SalesService, AmChartsService],
+  providers: [AuthService, WeatherService, SalesService, AmChartsService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
