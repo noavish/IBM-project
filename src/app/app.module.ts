@@ -39,7 +39,7 @@ import { TasksComponent } from './tasks/tasks.component'
     WeatherComponent,
     UnitAmountGraphComponent,
     MapWithPieComponent,
-    UsMapComponent
+    UsMapComponent,
     DashBoardComponent,
     TasksComponent
   ],
