@@ -15,13 +15,5 @@ export class SigninComponent implements OnInit {
   ngOnInit() {
   }
 
-  signup() {
-    this.authService.addUser(this.user)
-    .subscribe(data => {
-      console.log(data);
-      this.user = data;
-  });
-  console.log(this.user);
-}
 
 }
