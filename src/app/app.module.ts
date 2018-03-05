@@ -20,7 +20,9 @@ import { UnitAmountGraphComponent } from './unit-amount-graph/unit-amount-graph.
 import { AgmCoreModule } from '@agm/core';
 import { AmChartsModule } from '@amcharts/amcharts3-angular';
 import {AmChartsService} from '@amcharts/amcharts3-angular';
-import {AuthInterceptor} from './AuthInterceptor';
+import { JwtModule } from '@auth0/angular-jwt';
+
+
 
 
 @NgModule({
@@ -48,13 +50,16 @@ import {AuthInterceptor} from './AuthInterceptor';
     AppRoutingModule,
     RouterModule,
     FormsModule,
-    AmChartsModule
+    AmChartsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('token');
+        },
+      }
+    })
   ],
-  providers: [AuthService, WeatherService, SalesService, AmChartsService, {
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true
-  }],
+  providers: [AuthService, WeatherService, SalesService, AmChartsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
