@@ -22,7 +22,7 @@ import { MapWithPieComponent } from './map-with-pie/map-with-pie.component';
 import { AmChartsModule } from '@amcharts/amcharts3-angular';
 import { AmChartsService } from '@amcharts/amcharts3-angular';
 import { JwtModule } from '@auth0/angular-jwt';
-
+import {DashBoardComponent} from './dash-board/dash-board.component'
 
 
 @NgModule({
@@ -36,7 +36,8 @@ import { JwtModule } from '@auth0/angular-jwt';
     AnalyticsComponent,
     WeatherComponent,
     UnitAmountGraphComponent,
-    MapWithPieComponent
+    MapWithPieComponent,
+    DashBoardComponent
   ],
   imports: [
     AgmCoreModule.forRoot({
