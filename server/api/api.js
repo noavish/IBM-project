@@ -24,6 +24,16 @@ router.get('/sales', function (req, res, next) {
   });
 });
 
+
+router.get('/countriessales', function (req, res, next) {
+  connection.query("SELECT state, sum(sales_count) as state_sum  FROM fanco.sales   WHERE country='United States' GROUP BY state", function(err, rows, fields) {
+    if (!err){
+      res.send(rows);
+      console.log(rows);}
+    else
+      res.send('Error while performing Query.');
+  });
+});
 router.get('/amount', (req,res)=>{
   connection.query('select date, sum(sales_count) as value from sales group by date',(err,rows)=>{
     if(!err) {

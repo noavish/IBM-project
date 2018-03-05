@@ -26,7 +26,8 @@ import { DashBoardComponent } from './dash-board/dash-board.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { AddTaskComponent } from './add-task/add-task.component'
 import { TaskService } from './services/task.service';
-
+import { UsMapComponent } from './us-map/us-map.component';
+import { AuthGuard } from './AuthGuard';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { TaskService } from './services/task.service';
     WeatherComponent,
     UnitAmountGraphComponent,
     MapWithPieComponent,
+    UsMapComponent
     DashBoardComponent,
     TasksComponent,
     AddTaskComponent
@@ -66,7 +68,7 @@ import { TaskService } from './services/task.service';
       }
     })
   ],
-  providers: [AuthService, WeatherService, SalesService, AmChartsService, TaskService],
+  providers: [AuthService, WeatherService, SalesService, AmChartsService, TaskService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
