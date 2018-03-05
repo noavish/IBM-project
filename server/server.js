@@ -10,10 +10,13 @@ const bcrypt = require('bcrypt');
 const secret = require('./secret');
 const AuthCheck = require('./AuthCheck');
 const api = require('./api/api');
+const crypto = require('crypto');
+const config = require('./config');
+const connection = mysql.createConnection(config);
+require('./passport')(passport); // pass passport for configuration
 
-// const axios = require('axios');
-//get sales router
-// var router = express.Router();
+connection.connect();
+
 
 const app = express();
 
@@ -23,40 +26,17 @@ app.use(passport.initialize());
 app.use('/api', api);
 
 
-passport.use(new LocalStrategy(
-   // { passReqToCallback : true},
-
-
-  function(username, password, done) {
-    if ((username === "test") && (password === "test")) {
-      return done(null, { username: username, id: 1 });
-    } else {
-      return done(null, false, "Failed to login.");
-    }
-    // DUMMY DATA REPLACE WITH ACTUAL QUERY  //
-  }
-));
-
-app.post('/login', passport.authenticate('local', {session:false}), (req,res)=>{
+app.post('/login', passport.authenticate('local-login', {session:false}), (req,res)=>{
   console.log(req.body);
-  const payload = {user:req.user,role:'test'};
+  const payload = {user:req.user,role:req.user.level};
   const token = jwt.sign(payload,secret,{expiresIn:'7d'});
   console.log(token);
-  res.send({token})
+  res.send({token});
 });
 
-app.post('/signin', (req,res)=>{
-  console.log(req.body);
-  // var sql = `INSERT INTO users (username, email,channel_id_fk) VALUES (${req.body.user.username},${req.body.user.email},${1})`;
-  var sql = "INSERT INTO users (username, channel_id_fk) VALUES (username, 1)";
-  connection.query(sql, function (err, rows, fields) {
-    if (err) throw err;
-    console.log("1 record inserted");
-    res.send(rows);
-  });
-  // res.send("222222")
-  // res.send(resualt);
-});
+app.post('/register',passport.authenticate('local-signup',{
+  successRedirect : '/'
+}))
 
 app.get('/userDetails', AuthCheck, (req,res)=>{
   res.send(req.user)

@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const mysql = require('mysql');
 const config = require('../config');
+const bcrypt = require('bcrypt');
+
 
 const connection = mysql.createConnection(config);
 
@@ -22,6 +24,16 @@ router.get('/sales', function (req, res, next) {
   });
 });
 
+router.get('/amount', (req,res)=>{
+  connection.query('select date, sum(sales_count) as value from sales group by date',(err,rows)=>{
+    if(!err) {
+      res.send(rows)
+    } else {
+      res.send(err)
+    }
+  })
+});
+
 router.get('/products', function (req, res, next) {
   connection.query('select * from products', function(err, rows, fields) {
     if (!err)
@@ -39,6 +51,7 @@ router.get('/sku/:product_name', function (req, res, next) {
       res.send('Error while performing Query. ');
   });
 });
+
 
 // router.get('/search_places/:location', function (req, res, next) {
 //   axios.get(`https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${req.params.location}&key=AIzaSyDOVMcO9XGEh9iGT_16wp_s4swj575tj_Y`)

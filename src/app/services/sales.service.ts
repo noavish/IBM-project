@@ -14,6 +14,10 @@ export class SalesService {
     return this.http.get<any>('/sales');
   }
 
+  getSalesByDate(): Observable<any> {
+    return this.http.get<any>('/api/amount');
+  }
+
   getProductsFromDB(): Observable<Product[]> {
     return this.http.get<Product[]>('/products');
   }
