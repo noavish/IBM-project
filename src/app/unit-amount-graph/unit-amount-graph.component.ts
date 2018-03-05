@@ -48,10 +48,11 @@ export class UnitAmountGraphComponent implements OnInit {
       }],
       'graphs': [{
         'id': 'g1',
+        'type': 'smoothedLine',
         'balloon': {
           'drop': true,
           'adjustBorderColor': false,
-          'color': '#ffffff'
+          'color': '#ffffff',
         },
         'bullet': 'square',
         'bulletBorderAlpha': 1,
@@ -77,7 +78,7 @@ export class UnitAmountGraphComponent implements OnInit {
         'selectedGraphFillAlpha': 0,
         'selectedGraphLineAlpha': 1,
         'autoGridCount': true,
-        'color': '#AAAAAA'
+        'color': '#AAAAAA',
       },
       'chartCursor': {
         'pan': true,
@@ -108,14 +109,11 @@ export class UnitAmountGraphComponent implements OnInit {
 
     });
 
-    this.AmCharts.addListener(this.chart, 'rendered', ()=>{
-      console.log(this.chart)
+    this.AmCharts.addListener(this.chart, 'rendered', () => {
+      console.log(this.chart);
     });
   }
   zoomChart() {
     this.chart.__proto__.zoomToIndexes(this.chart.dataProvider.length - 40, this.chart.dataProvider.length - 1);
   }
 }
-
-
-
