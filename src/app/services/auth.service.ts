@@ -28,6 +28,7 @@ export class AuthService {
       this.user = data.user;
     },
       (err) => console.log(err),
+      () => console.log(this.user)
       );
   }
 

@@ -117,6 +117,3 @@ export class UnitAmountGraphComponent implements OnInit {
     this.chart.__proto__.zoomToIndexes(this.chart.dataProvider.length - 40, this.chart.dataProvider.length - 1);
   }
 }
-
-
-

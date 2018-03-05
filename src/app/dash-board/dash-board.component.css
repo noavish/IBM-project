@@ -1,0 +1,21 @@
+.card-profile-image{
+    width: 120%;
+}
+.profile-card{
+position: relative;
+overflow: hidden;
+margin: 0.5rem 0 1rem 0;
+background-color: #fff;
+border-radius: 2px;
+}
+
+.contanier{
+    width:80%;
+    float:right;
+}
+
+.map {
+  padding-left: 300px;
+}
+
+

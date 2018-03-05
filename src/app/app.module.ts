@@ -23,7 +23,8 @@ import { AmChartsModule } from '@amcharts/amcharts3-angular';
 import { AmChartsService } from '@amcharts/amcharts3-angular';
 import { JwtModule } from '@auth0/angular-jwt';
 import {AuthGuard} from './AuthGuard';
-
+import { DashBoardComponent } from './dash-board/dash-board.component';
+import { TasksComponent } from './tasks/tasks.component'
 
 
 @NgModule({
@@ -37,7 +38,9 @@ import {AuthGuard} from './AuthGuard';
     AnalyticsComponent,
     WeatherComponent,
     UnitAmountGraphComponent,
-    MapWithPieComponent
+    MapWithPieComponent,
+    DashBoardComponent,
+    TasksComponent
   ],
   imports: [
     AgmCoreModule.forRoot({
@@ -61,7 +64,7 @@ import {AuthGuard} from './AuthGuard';
       }
     })
   ],
-  providers: [AuthService, WeatherService, SalesService, AmChartsService,AuthGuard],
+  providers: [AuthService, WeatherService, SalesService, AmChartsService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

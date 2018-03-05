@@ -17,7 +17,6 @@ require('./passport')(passport); // pass passport for configuration
 
 connection.connect();
 
-
 const app = express();
 
 app.use(bodyParser.json());
