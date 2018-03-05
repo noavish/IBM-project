@@ -11,25 +11,25 @@ import { Sale } from '../models/saleModel';
 })
 export class MapWithPieComponent implements OnInit {
   private map: AmChart;
-  sales: any[];
+  salesSum: any[];
   latlong: any = {};
   mapData: any[];
   constructor(private AmCharts: AmChartsService, private salesService: SalesService) {}
 
   ngOnInit() {
-    this.salesService.getSales().subscribe(
+    this.salesService.getSalesSums().subscribe(
       data => {
-        this.sales = data;
-        console.log(this.sales);
-        // console.log(this.sales[0]);
+        this.mapData = data.map((item, index) => {
+          item.country_code = data[index].country_code;
+          item.country = data[index].country;
+          item.value = data[index].value;
+          item.color = '#d8854f';
+          return item;
+        });
       },
       error => console.log(error),
-      // () => this.createGraph()
+      () => this.createGraph()
     );
-
-    this.mapData = [
-      {'country_code': 'AF', 'country': 'Afghanistan', 'value': 32358260, 'color': '#eea638'},
-      {'country_code': 'AL', 'country': 'Albania', 'value': 3215988, 'color': '#d8854f'}];
 
     this.latlong['AD'] = {'latitude': 42.5, 'longitude': 1.5};
     this.latlong['AE'] = {'latitude': 24, 'longitude': 54};
@@ -271,7 +271,9 @@ export class MapWithPieComponent implements OnInit {
     this.latlong['ZA'] = {'latitude': -29, 'longitude': 24};
     this.latlong['ZM'] = {'latitude': -15, 'longitude': 30};
     this.latlong['ZW'] = {'latitude': -20, 'longitude': 30};
+  }
 
+  createGraph() {
     // get min and max values
     const minBulletSize = 3;
     const maxBulletSize = 70;
@@ -302,7 +304,7 @@ export class MapWithPieComponent implements OnInit {
         square = minSquare;
       }
       const size = Math.sqrt(square / (Math.PI * 2));
-      const id = dataItem.code;
+      const id = dataItem.country_code;
 
       images.push({
         'type': 'circle',
@@ -313,7 +315,7 @@ export class MapWithPieComponent implements OnInit {
         'color': dataItem.color,
         'longitude': this.latlong[id].longitude,
         'latitude': this.latlong[id].latitude,
-        'title': dataItem.name,
+        'title': dataItem.country,
         'value': value
       });
     }
@@ -342,202 +344,4 @@ export class MapWithPieComponent implements OnInit {
       }
     });
   }
-
-
-
-  // createGraph() {
-  //   this.map = this.AmCharts.makeChart('chartdiv', {
-  //     'type': 'map',
-  //     'theme': 'light',
-  //     'projection': 'winkel3',
-  //
-  //     /**
-  //      * Data Provider
-  //      * The images contains pie chart information
-  //      * The handler for `positionChanged` event will take care
-  //      * of creating external elements, position them and create
-  //      * Pie chart instances in them
-  //      */
-  //     'dataProvider': {
-  //       'map': 'continentsLow',
-  //       'images': [{
-  //         'title': 'North America',
-  //         'latitude':  39.563353,
-  //         'longitude':  -99.316406,
-  //         'width': 150,
-  //         'height': 150,
-  //         'pie': {
-  //           'type': 'pie',
-  //           'pullOutRadius': 0,
-  //           'labelRadius': 0,
-  //           'dataProvider': [{
-  //             'category': this.sales[0].sku_name,
-  //             'value': this.sales[0].value
-  //           }, {
-  //             'category': this.sales[1].sku_name,
-  //             'value': this.sales[1].value
-  //           }, {
-  //             'category': this.sales[2].sku_name,
-  //             'value': this.sales[2].value
-  //           }],
-  //           'labelText': '[[value]]%',
-  //           'valueField': 'value',
-  //           'titleField': 'category'
-  //         }
-  //       }, {
-  //         'title': 'Europe',
-  //         'latitude':  50.896104,
-  //         'longitude':  19.160156,
-  //         'width': 200,
-  //         'height': 200,
-  //         'pie': {
-  //           'type': 'pie',
-  //           'pullOutRadius': 0,
-  //           'labelRadius': 0,
-  //           'radius': '10%',
-  //           'dataProvider': [{
-  //             'category': 'Category #1',
-  //             'value': 200
-  //           }, {
-  //             'category': 'Category #2',
-  //             'value': 600
-  //           }, {
-  //             'category': 'Category #3',
-  //             'value': 350
-  //           }],
-  //           'labelText': '',
-  //           'valueField': 'value',
-  //           'titleField': 'category'
-  //         }
-  //       }, {
-  //         'title': 'Asia',
-  //         'latitude':  47.212106,
-  //         'longitude':  103.183594,
-  //         'width': 200,
-  //         'height': 200,
-  //         'pie': {
-  //           'type': 'pie',
-  //           'pullOutRadius': 0,
-  //           'labelRadius': 0,
-  //           'radius': '10%',
-  //           'dataProvider': [{
-  //             'category': 'Category #1',
-  //             'value': 352
-  //           }, {
-  //             'category': 'Category #2',
-  //             'value': 266
-  //           }, {
-  //             'category': 'Category #3',
-  //             'value': 512
-  //           }, {
-  //             'category': 'Category #4',
-  //             'value': 199
-  //           }],
-  //           'labelText': '',
-  //           'valueField': 'value',
-  //           'titleField': 'category'
-  //         }
-  //       }, {
-  //         'title': 'Africa',
-  //         'latitude':  11.081385,
-  //         'longitude':  21.621094,
-  //         'width': 200,
-  //         'height': 200,
-  //         'pie': {
-  //           'type': 'pie',
-  //           'pullOutRadius': 0,
-  //           'labelRadius': 0,
-  //           'radius': '10%',
-  //           'dataProvider': [{
-  //             'category': 'Category #1',
-  //             'value': 200
-  //           }, {
-  //             'category': 'Category #2',
-  //             'value': 300
-  //           }, {
-  //             'category': 'Category #3',
-  //             'value': 599
-  //           }, {
-  //             'category': 'Category #4',
-  //             'value': 512
-  //           }],
-  //           'labelText': '',
-  //           'valueField': 'value',
-  //           'titleField': 'category'
-  //         }
-  //       }]
-  //     },
-  //     /**
-  //      * Add event to execute when the map is zoomed/moved
-  //      * It also is executed when the map first loads
-  //      */
-  //
-  //   });
-  //   this.AmCharts.addListener(this.map, 'init', (e) => {
-  //     this.updateCustomMarkers(e);
-  //   });
-  // }
-  //
-  // updateCustomMarkers(event) {
-  //       // get map object
-  //       const map = event.chart;
-  //
-  //       // go through all of the images
-  //       for (let x = 0; x < map.dataProvider.images.length; x++) {
-  //
-  //         // get MapImage object
-  //         const image = map.dataProvider.images[x];
-  //
-  //         // Is it a Pie?
-  //     if (image.pie === undefined) {
-  //       continue;
-  //     }
-  //
-  //     // create id
-  //     if (image.id === undefined) {
-  //       image.id = 'amcharts_pie_' + x;
-  //     }
-  //     // Add theme
-  //     if ('undefined' == typeof image.pie.theme) {
-  //       image.pie.theme = map.theme;
-  //     }
-  //
-  //     // check if it has corresponding HTML element
-  //     if ('undefined' == typeof image.externalElement) {
-  //       image.externalElement = this.createCustomMarker(image);
-  //     }
-  //
-  //     // reposition the element accoridng to coordinates
-  //     const xy = map.coordinatesToStageXY(image.longitude, image.latitude);
-  //     image.externalElement.style.top = xy.y + 'px';
-  //     image.externalElement.style.left = xy.x + 'px';
-  //     image.externalElement.style.marginTop = Math.round(image.height / -2) + 'px';
-  //     image.externalElement.style.marginLeft = Math.round(image.width / -2) + 'px';
-  //   }
-  // }
-
-  /**
-   * Creates a custom map marker - a div for container and a
-   * pie chart in it
-   */
-  // createCustomMarker(image) {
-  //   // Create chart container
-  //   const holder = document.createElement('div');
-  //   holder.id = image.id;
-  //   holder.title = image.title;
-  //   holder.style.position = 'absolute';
-  //   holder.style.width = image.width + 'px';
-  //   holder.style.height = image.height + 'px';
-  //
-  //   // Append the chart container to the map container
-  //   image.chart.chartDiv.appendChild(holder);
-  //
-  //   // Create a pie chart
-  //   this.map = this.AmCharts.makeChart(image.id, image.pie);
-  //
-  //   return holder;
-  // }
-  //
-  // ngAfterViewInit() {
-  // }
 }

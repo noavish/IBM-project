@@ -10,7 +10,7 @@ export class SalesService {
 
   constructor( private http: HttpClient ) { }
 
-  getSales(): Observable<any[]> {
+  getSalesSums(): Observable<any[]> {
     return this.http.get<any[]>('/api/sales');
   }
 
@@ -24,8 +24,6 @@ export class SalesService {
 
   getFromAPI(location: string): Observable<any> {
     return this.http.get<any>(`/search_places/${location}`);
-    // return this.http.get<any>(`https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${location}&key=AIzaSyDOVMcO9XGEh9iGT_16wp_s4swj575tj_Y`,
-    //   {headers: {'Access-Control-Allow-Origin': '*'}});
   }
 
   addSaleToDB(sale: Sale): Observable<Sale> {
