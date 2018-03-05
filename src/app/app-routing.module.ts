@@ -8,6 +8,7 @@ import { UserPageComponent } from './user-page/user-page.component';
 import { SigninComponent } from './signin/signin.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { WeatherComponent } from './weather/weather.component';
+import {UnitAmountGraphComponent} from './unit-amount-graph/unit-amount-graph.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   // { path: 'dashboard', component: DashboardComponent },
   { path: 'analytics', component: AnalyticsComponent },
   { path: 'user', component: UserPageComponent },
+  { path: 'amount', component: UnitAmountGraphComponent },
 ];
 
 @NgModule({

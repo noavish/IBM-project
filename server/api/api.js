@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const mysql = require('mysql');
 const config = require('../config');
+const bcrypt = require('bcrypt');
+
 
 const connection = mysql.createConnection(config);
 
@@ -20,6 +22,16 @@ router.get('/sales', function (req, res, next) {
     else
       res.send('Error while performing Query.');
   });
+});
+
+router.get('/amount', (req,res)=>{
+  connection.query('select date, sum(sales_count) as value from sales group by date',(err,rows)=>{
+    if(!err) {
+      res.send(rows)
+    } else {
+      res.send(err)
+    }
+  })
 });
 
 router.get('/products', function (req, res, next) {

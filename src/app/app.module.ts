@@ -20,6 +20,7 @@ import { UnitAmountGraphComponent } from './unit-amount-graph/unit-amount-graph.
 import { AgmCoreModule } from '@agm/core';
 import { MapWithPieComponent } from './map-with-pie/map-with-pie.component';
 import { AmChartsModule } from '@amcharts/amcharts3-angular';
+import { AmChartsService } from '@amcharts/amcharts3-angular';
 
 
 @NgModule({
@@ -50,7 +51,7 @@ import { AmChartsModule } from '@amcharts/amcharts3-angular';
     FormsModule,
     AmChartsModule
   ],
-  providers: [AuthService, WeatherService, SalesService],
+  providers: [AuthService, WeatherService, SalesService, AmChartsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
