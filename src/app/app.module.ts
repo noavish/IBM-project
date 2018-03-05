@@ -1,9 +1,9 @@
-import { WeatherService } from './weather.service';
+import { WeatherService } from './services/weather.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MaterializeModule } from 'angular2-materialize';
-import { AuthService } from './auth.service';
-import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './services/auth.service';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { LoginComponent } from './login/login.component';
@@ -14,10 +14,16 @@ import { MainComponent } from './main/main.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 import { WeatherComponent } from './weather/weather.component';
-import { SalesService } from './sales.service';
+import { SalesService } from './services/sales.service';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UnitAmountGraphComponent } from './unit-amount-graph/unit-amount-graph.component';
 import { AgmCoreModule } from '@agm/core';
+import { MapWithPieComponent } from './map-with-pie/map-with-pie.component';
+import { AmChartsModule } from '@amcharts/amcharts3-angular';
+import { AmChartsService } from '@amcharts/amcharts3-angular';
+import { JwtModule } from '@auth0/angular-jwt';
+import { DashBoardComponent } from './dash-board/dash-board.component';
+import { TasksComponent } from './tasks/tasks.component'
 
 
 @NgModule({
@@ -29,8 +35,11 @@ import { AgmCoreModule } from '@agm/core';
     UserPageComponent,
     MainComponent,
     AnalyticsComponent,
-    WeatherComponent
-    UnitAmountGraphComponent
+    WeatherComponent,
+    UnitAmountGraphComponent,
+    MapWithPieComponent,
+    DashBoardComponent,
+    TasksComponent
   ],
   imports: [
     AgmCoreModule.forRoot({
@@ -44,9 +53,17 @@ import { AgmCoreModule } from '@agm/core';
     HttpClientModule,
     AppRoutingModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    AmChartsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('token');
+        },
+      }
+    })
   ],
-  providers: [AuthService,WeatherService, SalesService],
+  providers: [AuthService, WeatherService, SalesService, AmChartsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

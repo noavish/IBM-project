@@ -1,5 +1,6 @@
 <app-navbar></app-navbar>
 <div class="row">
+  <div class="col s4"></div>
   <div class="col s4">
     <div class="card blue-grey darken-1">
       <div class="card-content white-text">
@@ -13,7 +14,6 @@
       </div>
     </div>
   </div>
-  <div class="col s4"></div>
   <div class="col s4">
     <div class="card blue-grey darken-1">
       <div class="card-content white-text">
@@ -30,12 +30,6 @@
     </div>
   </div>
 </div>
-<div class="row">
-  <div class="col s8">
-    <!--<img class="responsive-img" src="cool_pic.jpg">-->
-  </div>
-</div>
-
 
   <!-- Log Sale Modal -->
   <div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="logSaleClicked">
@@ -54,14 +48,18 @@
           <!--<input placeholder="location" id="location" type="location" class="validate" name="location" [(ngModel)]="location" (input)="findLocation()">-->
           <!--&lt;!&ndash;<label for="first_name">Date</label>&ndash;&gt;-->
           <!--</div>-->
-          <select materialize="material_select" [materializeSelectOptions]="products" (change)="getSKU()" name="chosenProduct" [(ngModel)]="chosenProduct">
+          <select materialize="material_select" [materializeSelectOptions]="products" (change)="getSKU()" name="chosenProduct" [(ngModel)]="sale.product_id_fk">
             <option [value]="" disabled>Product</option>
-            <option value={{product.Product_name}} *ngFor="let product of products; let i = index">{{product.Product_name}}</option>
+            <option value={{product.product_id}} *ngFor="let product of products; let i = index">{{product.product_name}}</option>
           </select>
-          <select materialize="material_select" [materializeSelectOptions]="SKUs">
+          <select materialize="material_select" [materializeSelectOptions]="items" name="chosenSKU" [(ngModel)]="chosenSKU">
             <option [value]="" disabled>Item</option>
-            <option value={{SKU.sku_name}} *ngFor="let SKU of SKUs; let i = index">{{SKU.sku_name}}</option>
+            <option value={{item.sku_id}} *ngFor="let item of items; let i = index">{{item.sku_name}}</option>
           </select>
+          <div class="input-field col s6">
+            <input placeholder="Number of units" id="unit_number" type="number" class="validate" name="sales_count" [(ngModel)]="sale.sales_count">
+            <label for="number">Units Sold</label>
+          </div>
       </form>
     </div>
     <div class="modal-footer">
