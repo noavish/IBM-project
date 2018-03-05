@@ -46,6 +46,19 @@ app.post('/login', passport.authenticate('local', {session:false}), (req,res)=>{
   res.send({token})
 });
 
+app.post('/signin', (req,res)=>{
+  console.log(req.body);
+  // var sql = `INSERT INTO users (username, email,channel_id_fk) VALUES (${req.body.user.username},${req.body.user.email},${1})`;
+  var sql = "INSERT INTO users (username, channel_id_fk) VALUES (username, 1)";
+  connection.query(sql, function (err, rows, fields) {
+    if (err) throw err;
+    console.log("1 record inserted");
+    res.send(rows);
+  });
+  // res.send("222222")
+  // res.send(resualt);
+});
+
 app.get('/userDetails', AuthCheck, (req,res)=>{
   res.send(req.user)
 });

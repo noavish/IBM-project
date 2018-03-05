@@ -29,7 +29,7 @@ import { AgmCoreModule } from '@agm/core';
     UserPageComponent,
     MainComponent,
     AnalyticsComponent,
-    WeatherComponent
+    WeatherComponent,
     UnitAmountGraphComponent
   ],
   imports: [
