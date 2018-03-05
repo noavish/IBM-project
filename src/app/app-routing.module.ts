@@ -9,9 +9,11 @@ import { SigninComponent } from './signin/signin.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { WeatherComponent } from './weather/weather.component';
 import {UnitAmountGraphComponent} from './unit-amount-graph/unit-amount-graph.component';
+import { UsMapComponent } from './us-map/us-map.component';
 
 
 const routes: Routes = [
+  { path: 'mmm', component: UsMapComponent },
   { path: '', component: MainComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signin', component: SigninComponent },

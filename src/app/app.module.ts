@@ -22,6 +22,7 @@ import { MapWithPieComponent } from './map-with-pie/map-with-pie.component';
 import { AmChartsModule } from '@amcharts/amcharts3-angular';
 import { AmChartsService } from '@amcharts/amcharts3-angular';
 import { JwtModule } from '@auth0/angular-jwt';
+import { UsMapComponent } from './us-map/us-map.component';
 
 
 
@@ -36,7 +37,8 @@ import { JwtModule } from '@auth0/angular-jwt';
     AnalyticsComponent,
     WeatherComponent,
     UnitAmountGraphComponent,
-    MapWithPieComponent
+    MapWithPieComponent,
+    UsMapComponent
   ],
   imports: [
     AgmCoreModule.forRoot({
