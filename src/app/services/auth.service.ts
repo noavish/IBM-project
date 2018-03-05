@@ -24,8 +24,4 @@ export class AuthService {
       ()=>console.log(this.user)
       );
   }
-
-  addUser(newUser: User): Observable<User> {
-    return this.http.post<User>('signin', { user: newUser });
-  }
 }
