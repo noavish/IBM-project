@@ -18,10 +18,10 @@ import { SalesService } from './services/sales.service';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UnitAmountGraphComponent } from './unit-amount-graph/unit-amount-graph.component';
 import { AgmCoreModule } from '@agm/core';
+import { MapWithPieComponent } from './map-with-pie/map-with-pie.component';
 import { AmChartsModule } from '@amcharts/amcharts3-angular';
-import {AmChartsService} from '@amcharts/amcharts3-angular';
+import { AmChartsService } from '@amcharts/amcharts3-angular';
 import { JwtModule } from '@auth0/angular-jwt';
-
 
 
 
@@ -35,7 +35,8 @@ import { JwtModule } from '@auth0/angular-jwt';
     MainComponent,
     AnalyticsComponent,
     WeatherComponent,
-    UnitAmountGraphComponent
+    UnitAmountGraphComponent,
+    MapWithPieComponent
   ],
   imports: [
     AgmCoreModule.forRoot({

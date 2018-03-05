@@ -6,6 +6,7 @@ import {AuthService} from '../services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
   password: string;
   username: string;
