@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MaterializeModule } from 'angular2-materialize';
 import { AuthService } from './services/auth.service';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { LoginComponent } from './login/login.component';
@@ -21,6 +21,8 @@ import { AgmCoreModule } from '@agm/core';
 import { MapWithPieComponent } from './map-with-pie/map-with-pie.component';
 import { AmChartsModule } from '@amcharts/amcharts3-angular';
 import { AmChartsService } from '@amcharts/amcharts3-angular';
+import { JwtModule } from '@auth0/angular-jwt';
+
 
 
 @NgModule({
@@ -49,7 +51,14 @@ import { AmChartsService } from '@amcharts/amcharts3-angular';
     AppRoutingModule,
     RouterModule,
     FormsModule,
-    AmChartsModule
+    AmChartsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('token');
+        },
+      }
+    })
   ],
   providers: [AuthService, WeatherService, SalesService, AmChartsService],
   bootstrap: [AppComponent]

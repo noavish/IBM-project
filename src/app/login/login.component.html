@@ -16,19 +16,19 @@
                 <form class="col s12">
                   <div class="row">
                     <div class="input-field col s6">
-                      <input id="name" type="text" class="validate" [(ngModel)]="user.username" name="uname">
+                      <input id="name" type="text" class="validate" name="username" [(ngModel)]="username">
                       <label for="name">Username</label>
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col s6">
-                      <input id="password" type="password" class="validate" [(ngModel)]="user.password" name="pass">
+                      <input id="password" type="password" name="password" class="validate" [(ngModel)]="password">
                       <label for="password">Password</label>
                     </div>
                   </div>
-                  <button type="submit" class="btn float-right blue-grey darken-2" id="btnSignin" (click)="log()">Log in</button>
+                  <button type="button" class="btn float-right blue-grey darken-2" id="btnSignin" (click)="login()">Log in</button>
                   <span>Not a user yet?
-                    <a class="signup" routerLink="/signin">Sign-up</a>
+                    <a class="signup" href="/signin">Sign-in</a>
                   </span>
                 </form>
               </div>
