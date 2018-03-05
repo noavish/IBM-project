@@ -18,6 +18,8 @@ import { SalesService } from './sales.service';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UnitAmountGraphComponent } from './unit-amount-graph/unit-amount-graph.component';
 import { AgmCoreModule } from '@agm/core';
+import { FacechartComponent } from './facechart/facechart.component';
+import { AmChartsModule } from "@amcharts/amcharts3-angular";
 
 
 @NgModule({
@@ -30,7 +32,8 @@ import { AgmCoreModule } from '@agm/core';
     MainComponent,
     AnalyticsComponent,
     WeatherComponent,
-    UnitAmountGraphComponent
+    UnitAmountGraphComponent,
+    FacechartComponent
   ],
   imports: [
     AgmCoreModule.forRoot({
@@ -44,7 +47,8 @@ import { AgmCoreModule } from '@agm/core';
     HttpClientModule,
     AppRoutingModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    AmChartsModule
   ],
   providers: [AuthService,WeatherService, SalesService],
   bootstrap: [AppComponent]

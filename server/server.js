@@ -58,6 +58,16 @@ app.post('/signin', (req,res)=>{
   // res.send("222222")
   // res.send(resualt);
 });
+app.get('/analytics', function (req, res, next) {
+  connection.query('select 4 from users left join products on sales.user_id_fk = sales.sales_counts where ORDER BY sales_counts ASC', function(err, rows, fields) {
+    if (!err){
+      res.send(rows);
+      console.log(rows);
+    }
+    else
+      res.send('Error while performing Query. ');
+  });
+});
 
 app.get('/userDetails', AuthCheck, (req,res)=>{
   res.send(req.user)
