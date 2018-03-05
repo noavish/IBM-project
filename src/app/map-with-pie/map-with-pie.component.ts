@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { AmChartsService, AmChart } from '@amcharts/amcharts3-angular';
 import { SalesService } from '../services/sales.service';
-import { Sale } from '../models/saleModel';
 
 
 @Component({
@@ -11,7 +10,6 @@ import { Sale } from '../models/saleModel';
 })
 export class MapWithPieComponent implements OnInit {
   private map: AmChart;
-  salesSum: any[];
   latlong: any = {};
   mapData: any[];
   constructor(private AmCharts: AmChartsService, private salesService: SalesService) {}

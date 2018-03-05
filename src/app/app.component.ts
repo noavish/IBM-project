@@ -10,7 +10,7 @@ export class AppComponent implements   OnInit {
   title = 'IBM-Project';
 
   get user(){
-    return this.authService.getUser()
+    return this.authService.getUser();
   }
   constructor(private authService:AuthService) {}
 

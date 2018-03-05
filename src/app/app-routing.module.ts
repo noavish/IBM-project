@@ -8,7 +8,8 @@ import { SigninComponent } from './signin/signin.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { WeatherComponent } from './weather/weather.component';
 import {UnitAmountGraphComponent} from './unit-amount-graph/unit-amount-graph.component';
-import {DashBoardComponent} from './dash-board/dash-board.component'
+import {DashBoardComponent} from './dash-board/dash-board.component';
+import {TasksComponent} from './tasks/tasks.component';
 
 const routes: Routes = [
   { path: '', component: MainComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'analytics', component: AnalyticsComponent },
   { path: 'user', component: UserPageComponent },
   { path: 'amount', component: UnitAmountGraphComponent },
+  { path: 'tasks', component: TasksComponent }
 ];
 
 @NgModule({
