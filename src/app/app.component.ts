@@ -9,12 +9,12 @@ import {AuthService} from './services/auth.service';
 export class AppComponent implements   OnInit {
   title = 'IBM-Project';
 
-  get user(){
-    return this.authService.getUser()
+  get user() {
+    return this.authService.getUser();
   }
-  constructor(private authService:AuthService) {}
+  constructor(private authService: AuthService) {}
 
-  ngOnInit(){
+  ngOnInit() {
     this.authService.getUserDetail();
   }
 }
