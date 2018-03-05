@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import {User} from '../models/userModel';
+import {CanActivate, Router} from '@angular/router';
+import {local} from 'd3-selection';
 
 @Injectable()
 export class AuthService {
   private user;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   login(user): Observable<any> {
     return this.http.post<any>('login', user);
@@ -28,4 +30,14 @@ export class AuthService {
       (err) => console.log(err),
       );
   }
+
+  isloggedIn(){
+    if(localStorage.token){
+      return true
+    } else {
+      return false
+    }
+  }
+
+
 }
