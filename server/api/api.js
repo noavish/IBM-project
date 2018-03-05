@@ -14,7 +14,7 @@ router.get('/', function (req, res, next) {
 
 //getAllSales
 router.get('/sales', function (req, res, next) {
-  connection.query('select * from sales', function(err, rows, fields) {
+  connection.query('select country, country_code, item_revenue, sum(sales_count) as value FROM sales LEFT JOIN pricing ON pricing.item_id = sales.item_id_fk group by country_code', function(err, rows, fields) {
     if (!err)
       res.send(rows);
     else
@@ -31,12 +31,21 @@ router.get('/products', function (req, res, next) {
   });
 });
 
-router.get('/sku/:product_name', function (req, res, next) {
-  connection.query('select * from  sku left join products on products.product_id = sku.products_sku where Product_name = ?', req.params.product_name , function(err, rows, fields) {
+router.get('/sku/:product_id', function (req, res, next) {
+  connection.query('SELECT * FROM pricing LEFT JOIN sku ON sku.sku_id = pricing.sku_id_fk LEFT JOIN products ON products.product_id = sku.product_id_fk where product_id = ?', req.params.product_id , function(err, rows, fields) {
     if (!err)
       res.send(rows);
     else
       res.send('Error while performing Query. ');
+  });
+});
+
+router.post('/logSale', function (req, res, next) {
+  connection.query('insert into sales set ?',req.body, function(err, rows, fields) {
+    if (!err)
+      res.send(rows);
+    else
+      res.send('Error while performing Query.');
   });
 });
 
