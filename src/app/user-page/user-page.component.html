@@ -44,10 +44,6 @@
             <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
           </agm-map>
         </div>
-        <!--<div class="row">-->
-          <!--<input placeholder="location" id="location" type="location" class="validate" name="location" [(ngModel)]="location" (input)="findLocation()">-->
-          <!--&lt;!&ndash;<label for="first_name">Date</label>&ndash;&gt;-->
-          <!--</div>-->
           <select materialize="material_select" [materializeSelectOptions]="products" (change)="getSKU()" name="chosenProduct" [(ngModel)]="sale.product_id_fk">
             <option [value]="" disabled>Product</option>
             <option value={{product.product_id}} *ngFor="let product of products; let i = index">{{product.product_name}}</option>

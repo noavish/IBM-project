@@ -22,10 +22,12 @@ import { MapWithPieComponent } from './map-with-pie/map-with-pie.component';
 import { AmChartsModule } from '@amcharts/amcharts3-angular';
 import { AmChartsService } from '@amcharts/amcharts3-angular';
 import { JwtModule } from '@auth0/angular-jwt';
+import { DashBoardComponent } from './dash-board/dash-board.component';
+import { TasksComponent } from './tasks/tasks.component';
+import { AddTaskComponent } from './add-task/add-task.component'
+import { TaskService } from './services/task.service';
 import { UsMapComponent } from './us-map/us-map.component';
 import { AuthGuard } from './AuthGuard';
-import { DashBoardComponent } from './dash-board/dash-board.component';
-import { TasksComponent } from './tasks/tasks.component'
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { TasksComponent } from './tasks/tasks.component'
     MapWithPieComponent,
     UsMapComponent,
     DashBoardComponent,
-    TasksComponent
+    TasksComponent,
+    AddTaskComponent
   ],
   imports: [
     AgmCoreModule.forRoot({
@@ -65,7 +68,7 @@ import { TasksComponent } from './tasks/tasks.component'
       }
     })
   ],
-  providers: [AuthService, WeatherService, SalesService, AmChartsService, AuthGuard],
+  providers: [AuthService, WeatherService, SalesService, AmChartsService, TaskService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

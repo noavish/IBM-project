@@ -63,7 +63,7 @@ router.get('/sku/:product_id', function (req, res, next) {
 });
 
 router.post('/logSale', function (req, res, next) {
-  connection.query('insert into sales set ?',req.body, function(err, rows, fields) {
+  connection.query('insert into sales set ?', req.body, function(err, rows, fields) {
     if (!err)
       res.send(rows);
     else
@@ -71,18 +71,46 @@ router.post('/logSale', function (req, res, next) {
   });
 });
 
-// router.get('/search_places/:location', function (req, res, next) {
-//   axios.get(`https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${req.params.location}&key=AIzaSyDOVMcO9XGEh9iGT_16wp_s4swj575tj_Y`)
-//     .then(function (response) {
-//       var places = response.data.predictions.map(function(place) { return {name: place.description, id: place.place_id}});
-//       console.log(places);
-//       res.json({places: places});
-//     })
-//     .catch(function (error) {
-//       console.log(error);
-//     });
-// });
 
+//getAllTasks
+router.get('/tasks', function (req, res, next) {
+  connection.query('select * from tasks', function(err, rows, fields) {
+    if (!err)
+      res.send(rows);
+    else
+      res.send('Error while performing Query.');
+  });
+});
+
+//getAllUsers
+router.get('/users', function (req, res, next) {
+  connection.query('select * from users', function (err, rows, fields) {
+    if (!err)
+      res.send(rows);
+    else
+      res.send('Error while performing Query.');
+  });
+});
+
+//addNewTask
+router.post('/addTask', function (req, res, next) {
+  connection.query('insert into tasks set ?', req.body, function (err, rows, fields) {
+    if (!err)
+      res.send(rows);
+    else
+      res.send('Error while performing Query.');
+  });
+});
+
+//reviseTaskDone
+router.put('/:task_id', function (req, res, next) {
+  connection.query(`update tasks set done = ${req.body.done} where task_id = ?`, req.params, function (err, rows, fields) {
+    if (!err)
+      res.send(rows);
+    else
+      res.send('Error while performing Query.');
+  });
+});
 
 
 module.exports = router;

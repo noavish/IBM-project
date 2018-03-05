@@ -32,6 +32,10 @@ export class AuthService {
       );
   }
 
+  getAllUsers(): Observable<any[]> {
+    return this.http.get<any[]>('api/users');
+  }
+
   isloggedIn(){
     if(localStorage.token){
       return true
@@ -45,6 +49,4 @@ export class AuthService {
     this.router.navigate(['/']);
 
   }
-
-
 }
