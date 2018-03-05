@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MaterializeModule } from 'angular2-materialize';
 import { AuthService } from './services/auth.service';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { LoginComponent } from './login/login.component';
@@ -20,6 +20,7 @@ import { UnitAmountGraphComponent } from './unit-amount-graph/unit-amount-graph.
 import { AgmCoreModule } from '@agm/core';
 import { AmChartsModule } from '@amcharts/amcharts3-angular';
 import {AmChartsService} from '@amcharts/amcharts3-angular';
+import {AuthInterceptor} from './AuthInterceptor';
 
 
 @NgModule({
@@ -49,7 +50,11 @@ import {AmChartsService} from '@amcharts/amcharts3-angular';
     FormsModule,
     AmChartsModule
   ],
-  providers: [AuthService, WeatherService, SalesService,AmChartsService],
+  providers: [AuthService, WeatherService, SalesService, AmChartsService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -27,10 +27,8 @@ app.use('/api', api);
 
 
 app.post('/login', passport.authenticate('local-login', {session:false}), (req,res)=>{
-  console.log(req.body);
   const payload = {user:req.user,role:req.user.level};
   const token = jwt.sign(payload,secret,{expiresIn:'7d'});
-  console.log(token);
 
   res.send({token})
 });
