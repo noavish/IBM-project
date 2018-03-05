@@ -23,13 +23,13 @@ export class TasksComponent implements OnInit {
     );
   }
 
-  markAsDone() {
-    this.task.done = !this.task.done;
-    this.taskService.markDoneInDB(this.task).subscribe(
-      data => {
-        console.log(data);
-      },
-      error => console.log(error)
-    );
-  }
+  // markAsDone() {
+  //   this.task.done = !this.task.done;
+  //   this.taskService.markDoneInDB(this.task).subscribe(
+  //     data => {
+  //       console.log(data);
+  //     },
+  //     error => console.log(error)
+  //   );
+  // }
 }
