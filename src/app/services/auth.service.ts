@@ -24,4 +24,8 @@ export class AuthService {
       () => console.log(this.user)
       );
   }
+
+  getAllUsers(): Observable<any[]> {
+    return this.http.get<any[]>('api/users');
+  }
 }

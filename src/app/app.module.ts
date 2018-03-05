@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MaterializeModule } from 'angular2-materialize';
 import { AuthService } from './services/auth.service';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { LoginComponent } from './login/login.component';
@@ -22,8 +22,10 @@ import { MapWithPieComponent } from './map-with-pie/map-with-pie.component';
 import { AmChartsModule } from '@amcharts/amcharts3-angular';
 import { AmChartsService } from '@amcharts/amcharts3-angular';
 import { JwtModule } from '@auth0/angular-jwt';
-import {DashBoardComponent} from './dash-board/dash-board.component';
-import { TasksComponent } from './tasks/tasks.component'
+import { DashBoardComponent } from './dash-board/dash-board.component';
+import { TasksComponent } from './tasks/tasks.component';
+import { AddTaskComponent } from './add-task/add-task.component'
+import { TaskService } from './services/task.service';
 
 
 @NgModule({
@@ -39,7 +41,8 @@ import { TasksComponent } from './tasks/tasks.component'
     UnitAmountGraphComponent,
     MapWithPieComponent,
     DashBoardComponent,
-    TasksComponent
+    TasksComponent,
+    AddTaskComponent
   ],
   imports: [
     AgmCoreModule.forRoot({
@@ -63,7 +66,7 @@ import { TasksComponent } from './tasks/tasks.component'
       }
     })
   ],
-  providers: [AuthService, WeatherService, SalesService, AmChartsService],
+  providers: [AuthService, WeatherService, SalesService, AmChartsService, TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
