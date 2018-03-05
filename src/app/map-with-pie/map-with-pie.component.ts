@@ -21,7 +21,7 @@ export class MapWithPieComponent implements OnInit {
           item.country_code = data[index].country_code;
           item.country = data[index].country;
           item.value = data[index].value;
-          item.color = '#d8854f';
+          item.color = '#ad0003';
           return item;
         });
       },
@@ -333,8 +333,8 @@ export class MapWithPieComponent implements OnInit {
         'size': 11
       }],
       'areasSettings': {
-        'unlistedAreasColor': '#000000',
-        'unlistedAreasAlpha': 0.1
+        'unlistedAreasColor': '#95919c',
+        'unlistedAreasAlpha':0.8
       },
       'dataProvider': {
         'map': 'worldLow',
