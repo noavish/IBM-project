@@ -15,38 +15,35 @@
                 <form class="col s12">
                   <div class="row">
                     <div class="input-field col s6">
-                      <input id="firstname" type="text" class="validate">
+                      <input id="firstname" type="text" class="validate" [(ngModel)]="user.firstname" name="fname">
                       <label for="firstname">First Name</label>
                     </div>
                   </div>
                   <div class="row">
                       <div class="input-field col s6">
-                        <input id="lastname" type="text" class="validate">
+                        <input id="lastname" type="text" class="validate" [(ngModel)]="user.lastname" name="lname">
                         <label for="lastname">Last Name</label>
                       </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                          <input id="email" type="text" class="validate">
+                          <input id="email" type="text" class="validate" [(ngModel)]="user.email" name="mail">
                           <label for="email">Email</label>
                         </div>
                       </div>
                     <div class="row">
                         <div class="input-field col s6">
-                          <input id="username" type="text" class="validate">
+                          <input id="username" type="text" class="validate" [(ngModel)]="user.username" name="uname">
                           <label for="username">Username</label>
                         </div>
                       </div>
                   <div class="row">
                     <div class="input-field col s6">
-                      <input id="password" type="password" class="validate">
+                      <input id="password" type="password" class="validate" [(ngModel)]="user.password" name="passw">
                       <label for="password">Password</label>
                     </div>
                   </div>
-                  <button type="submit" class="btn float-right blue-grey darken-2" id="btnSignin">Log in</button>
-                  <span>Not a user yet?
-                    <a class="signup" href="#" (click)="logIn()">sign up</a>
-                  </span>
+                  <button type="submit" class="btn float-right blue-grey darken-2" id="btnSignin" (click)='signup()'>Sign up</button>
                 </form>
               </div>
             </div>

@@ -11,11 +11,11 @@ const secret = require('./secret');
 const AuthCheck = require('./AuthCheck');
 const api = require('./api/api');
 const crypto = require('crypto');
-const config = require('./config')
+const config = require('./config');
 const connection = mysql.createConnection(config);
 require('./passport')(passport); // pass passport for configuration
 
-connection.connect()
+connection.connect();
 
 
 const app = express();
@@ -31,15 +31,12 @@ app.post('/login', passport.authenticate('local-login', {session:false}), (req,r
   const payload = {user:req.user,role:req.user.level};
   const token = jwt.sign(payload,secret,{expiresIn:'7d'});
   console.log(token);
-
-  res.send({token})
+  res.send({token});
 });
 
 app.post('/register',passport.authenticate('local-signup',{
   successRedirect : '/'
 }))
-
-
 
 app.get('/userDetails', AuthCheck, (req,res)=>{
   res.send(req.user)

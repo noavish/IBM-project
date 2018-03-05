@@ -19,7 +19,7 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UnitAmountGraphComponent } from './unit-amount-graph/unit-amount-graph.component';
 import { AgmCoreModule } from '@agm/core';
 import { AmChartsModule } from '@amcharts/amcharts3-angular';
-import {AmChartsService} from '@amcharts/amcharts3-angular';
+import { AmChartsService } from '@amcharts/amcharts3-angular';
 
 
 @NgModule({
@@ -49,7 +49,7 @@ import {AmChartsService} from '@amcharts/amcharts3-angular';
     FormsModule,
     AmChartsModule
   ],
-  providers: [AuthService, WeatherService, SalesService,AmChartsService],
+  providers: [AuthService, WeatherService, SalesService, AmChartsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
