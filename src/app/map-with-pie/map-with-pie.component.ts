@@ -275,8 +275,8 @@ export class MapWithPieComponent implements OnInit {
 
   createGraph() {
     // get min and max values
-    const minBulletSize = 3;
-    const maxBulletSize = 70;
+    const minBulletSize = 10;
+    const maxBulletSize = 30;
     let min = Infinity;
     let max = -Infinity;
     for (let i = 0; i < this.mapData.length; i++) {
@@ -325,10 +325,10 @@ export class MapWithPieComponent implements OnInit {
       'type': 'map',
       'projection': 'eckert6',
       'titles': [{
-        'text': 'Population of the World in 2011',
+        'text': 'Global Sales per Country',
         'size': 14
       }, {
-        'text': 'source: Gapminder',
+        'text': '',
         'size': 11
       }],
       'areasSettings': {
