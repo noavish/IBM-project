@@ -37,4 +37,6 @@ export class SalesService {
   addSaleToDB(sale: Sale): Observable<Sale> {
     return this.http.post<Sale>('/api/logSale', sale);
   }
+
 }
+
