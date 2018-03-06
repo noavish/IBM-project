@@ -30,7 +30,7 @@ export class AddTaskComponent implements OnInit {
 
   addTask() {
     this.task.task_creator_id = this.creator_id;
-    this.task.done = false;
+    this.task.done = 0;
     this.taskService.addTaskToDB(this.task).subscribe(
       data => {console.log(data); this.taskAdded.emit(this.task); },
       error => console.log(error)

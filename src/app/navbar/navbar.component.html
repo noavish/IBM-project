@@ -64,20 +64,54 @@
               </a>
             </li>
             <li class="bold active">
-                <a class="collapsible-header waves-effect waves-cyan active" routerLink="/login">
-                  <i class="material-icons">lock_open</i>
-                  <span class="nav-text">Login</span>
-                </a>
-              </li>
+              <a class="collapsible-header waves-effect waves-cyan active" routerLink="/login">
+                <i class="material-icons">lock_open</i>
+                <span class="nav-text">Login</span>
+              </a>
+            </li>
             <li class="bold active">
-              <a class="collapsible-header waves-effect waves-cyan active"routerLink="/signin">
+              <a class="collapsible-header waves-effect waves-cyan active" routerLink="/signin">
                 <i class="material-icons">dashboard</i>
                 <span class="nav-text">Signin</span>
+              </a>
+            </li>
+            <li class="bold active" *ngIf="user?.level == 'manager'">
+              <a class="waves-effect collapsible-header waves-cyan active" (click)="openManageUsers()">
+                <i class="material-icons">dashboard</i>
+                <span class="nav-text">Manage Users</span>
               </a>
             </li>
           </ul>
         </li>
       </ul>
     </aside>
+  </div>
+</div>
+
+<!-- Manage Users Modal -->
+<div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="manageUserClicked">
+  <div class="modal-content">
+    <h4>Manage users</h4>
+    <form class="col s12">
+      <div class="row">
+        <select class="col s4" materialize="material_select" [materializeSelectOptions]="users" name="user" [(ngModel)]="newUser.user_id">
+          <option [value]="" disabled>User</option>
+          <option value={{user.user_id}} *ngFor="let user of users; let i = index">{{user.user_id}} | {{user.username}}</option>
+        </select>
+        <select class="col s4" materialize="material_select" [materializeSelectOptions]="levels" name="level" [(ngModel)]="chosenLevel">
+          <option [value]="" disabled>Level</option>
+          <option value={{level.level}} *ngFor="let level of levels; let i = index">{{level.level}}</option>
+        </select>
+        <select class="col s4" materialize="material_select" [materializeSelectOptions]="channels" name="channel" [(ngModel)]="chosenChannel">
+          <option [value]="" disabled>Channel</option>
+          <option value={{channel.channel_id}} *ngFor="let channel of channels; let i = index">{{channel.channel_name}}</option>
+        </select>
+      </div>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <a class="waves-effect waves-green btn-flat" (click)="closeManageUsers()">Dismiss</a>
+    <a class="modal-action modal-close waves-effect waves-green btn-flat" (click)="submitChanges()">Submit</a>
   </div>
 </div>

@@ -32,6 +32,7 @@ import { UsMapComponent } from './us-map/us-map.component';
 import { AuthGuard } from './AuthGuard';
 import { FacechartComponent } from './facechart/facechart.component';
 import { TaskItemComponent } from './task-item/task-item.component';
+import { ManageUsersComponent } from './manage-users/manage-users.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { TaskItemComponent } from './task-item/task-item.component';
     AddTaskComponent,
     FacechartComponent,
     TaskItemComponent,
-    WeatherSaleGraphComponent
+    WeatherSaleGraphComponent,
+    ManageUsersComponent
   ],
   imports: [
     AgmCoreModule.forRoot({
