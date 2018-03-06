@@ -32,6 +32,7 @@ import { UsMapComponent } from './us-map/us-map.component';
 import { AuthGuard } from './AuthGuard';
 import { FacechartComponent } from './facechart/facechart.component';
 import { TaskItemComponent } from './task-item/task-item.component';
+import {CommonModule} from '@angular/common';
 
 
 @NgModule({
@@ -61,6 +62,7 @@ import { TaskItemComponent } from './task-item/task-item.component';
       libraries: ['places']
     }),
     BrowserModule,
+    CommonModule,
     ReactiveFormsModule,
     MaterializeModule,
     HttpClientModule,
