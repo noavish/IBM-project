@@ -2,20 +2,22 @@
     width: 120%;
 }
 .profile-card{
-position: relative;
+    position: absolute;
+/* position: relative;
 overflow: hidden;
 margin: 0.5rem 0 1rem 0;
 background-color: #fff;
-border-radius: 2px;
+border-radius: 2px; */
 }
-
-.contanier{
-    width:80%;
-    float:right;
-}
-
 .map {
   padding-left: 300px;
 }
+
+.contanier{
+    margin: 0 auto;
+    max-width: 100% !important;
+    height: 98%;
+    width: 98%;
+  }
 
 
