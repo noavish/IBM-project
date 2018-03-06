@@ -9,14 +9,6 @@
 		fill-opacity: 0.5;
 	}
 
-	#tooltip {
-		position: absolute;
-		margin: 10px;
-		font: 12px sans-serif;
-		border: 1px;
-		pointer-events: none;
-	}
-
 	#tooltip h4 {
 		/*name of the states*/
 		margin: 0;
