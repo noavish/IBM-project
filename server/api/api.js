@@ -43,6 +43,15 @@ router.get('/amount', (req,res)=>{
   })
 });
 
+router.get('/amount/:id',(req,res)=>{
+  connection.query('SELECT user_id_fk, username, product_id_fk, product_name, date, SUM(sales_count) AS value FROM sales JOIN users ON sales.user_id_fk = ? JOIN products ON products.product_id = sales.product_id_fk GROUP BY date',[req.params.id],(err,result)=>{
+    if(!err){
+      res.send(result)
+    }
+    else {console.log(err)}
+  })
+});
+
 router.get('/products', function (req, res, next) {
   connection.query('select * from products', function (err, rows, fields) {
     if (!err)

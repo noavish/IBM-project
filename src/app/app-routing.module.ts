@@ -22,6 +22,7 @@ const routes: Routes = [
   //need change root route 
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  { path: 'amount', component: UnitAmountGraphComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'weather', component: WeatherComponent },
   { path: 'analytics', canActivate : [AuthGuard], component: AnalyticsComponent },

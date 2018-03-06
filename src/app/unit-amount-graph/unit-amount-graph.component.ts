@@ -9,10 +9,12 @@ import {SalesService} from '../services/sales.service';
 })
 export class UnitAmountGraphComponent implements OnInit {
   private data: any[];
+  private newdata: { date: string; value: number }[];
 
   constructor(private AmCharts: AmChartsService, private salesService: SalesService) { }
 
   private chart: AmChart;
+  option: number;
 
 
   ngOnInit() {
@@ -26,6 +28,18 @@ export class UnitAmountGraphComponent implements OnInit {
 
 
   }
+
+  getSalesbyUser() {
+    this.salesService.getSalesByPerson(this.option).subscribe(data => {
+      this.newdata = data;
+    },
+      (err) => console.log(err),
+      () => {
+      this.chart.dataProvider = this.newdata;
+      this.chart.validateData();
+      });
+  }
+
    createGraph() {
     this.chart = this.AmCharts.makeChart('chartdiv', {
       'type': 'serial',
@@ -110,10 +124,11 @@ export class UnitAmountGraphComponent implements OnInit {
     });
 
     this.AmCharts.addListener(this.chart, 'rendered', () => {
+      this.chart.zoomToIndexes(this.chart.dataProvider.length - 2, this.chart.dataProvider.length - 1);
+    });
+    this.AmCharts.addListener(this.chart, 'dataUpdated', () => {
       console.log(this.chart);
     });
   }
-  zoomChart() {
-    this.chart.__proto__.zoomToIndexes(this.chart.dataProvider.length - 40, this.chart.dataProvider.length - 1);
-  }
+
 }
