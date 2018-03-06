@@ -326,7 +326,7 @@ export class MapWithPieComponent implements OnInit {
         'homeButtonEnabled': false
       },
       'titles': [{
-        'text': 'Global Sales Per Country',
+        'text': '',
         'size': 14
       }, {
         'text': '',

@@ -5,7 +5,8 @@
         <input id="task" type="text" class="validate" name="task" [(ngModel)]="task.task_text">
         <label for="task">Task</label>
       </div>
-      <select class="col s4" materialize="material_select" [materializeSelectOptions]="users" name="user" [(ngModel)]="task.assign_to_id">
+
+      <select *ngIf="user?.level=='manager'; else user_menu" class="col s4" materialize="material_select" [materializeSelectOptions]="users" name="user" [(ngModel)]="task.assign_to_id">
         <option [value]="" disabled>User</option>
         <option value={{user.user_id}} *ngFor="let user of users; let i = index">{{user.user_id}} | {{user.username}}</option>
       </select>
@@ -15,3 +16,9 @@
     </div>
   </form>
 </div>
+
+<ng-template #user_menu>
+  <select class="col s4" materialize="material_select" name = 'user'[(ngModel)]="task.assign_to_id">
+  <option [value]="" disabled>User</option>
+  <option value=user?.user_id>{{user?.user_id}} | {{user?.username}}</option>
+</select></ng-template>

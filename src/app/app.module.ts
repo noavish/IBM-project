@@ -31,6 +31,9 @@ import { TaskService } from './services/task.service';
 import { UsMapComponent } from './us-map/us-map.component';
 import { AuthGuard } from './AuthGuard';
 import { PiechartComponent } from './piechart/piechart.component';
+import { FacechartComponent } from './facechart/facechart.component';
+import { TaskItemComponent } from './task-item/task-item.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -50,6 +53,10 @@ import { PiechartComponent } from './piechart/piechart.component';
     WeatherSaleGraphComponent,
     AddTaskComponent,
     PiechartComponent
+    AddTaskComponent,
+    FacechartComponent,
+    TaskItemComponent,
+    WeatherSaleGraphComponent
   ],
   imports: [
     AgmCoreModule.forRoot({
@@ -58,6 +65,7 @@ import { PiechartComponent } from './piechart/piechart.component';
       libraries: ['places']
     }),
     BrowserModule,
+    CommonModule,
     ReactiveFormsModule,
     MaterializeModule,
     HttpClientModule,

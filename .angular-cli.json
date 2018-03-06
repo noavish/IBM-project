@@ -9,7 +9,8 @@
       "outDir": "dist",
       "assets": [
         "assets",
-        "favicon.ico"
+        "favicon.ico",
+        "../node_modules/amcharts3/amcharts/images"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -29,6 +30,7 @@
         "../node_modules/materialize-css/dist/js/materialize.js",
         "../node_modules/amcharts3/amcharts/amcharts.js",
         "../node_modules/amcharts3/amcharts/pie.js",
+        "../node_modules/amcharts3/amcharts/serial.js",
         "../node_modules/amcharts3/amcharts/themes/light.js",
         "../node_modules/amcharts3/amcharts/plugins/export/export.min.js"
       ],
