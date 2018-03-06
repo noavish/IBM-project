@@ -58,10 +58,15 @@ ul.side-nav.leftside-navigation {
 }
 ul.side-nav.leftside-navigation li:not(.no-padding) {
     line-height: 44px;
-    
+
 }
 .side-nav {
     width: 240px;
 }
-
+.navbar-name{
+  margin:25px;
+  font-weight:bold;
+  font-size: 22px;
+  color:whitesmoke;
+}
 
