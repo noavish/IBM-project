@@ -30,10 +30,10 @@ import { AddTaskComponent } from './add-task/add-task.component'
 import { TaskService } from './services/task.service';
 import { UsMapComponent } from './us-map/us-map.component';
 import { AuthGuard } from './AuthGuard';
+import { PiechartComponent } from './piechart/piechart.component';
 import { FacechartComponent } from './facechart/facechart.component';
 import { TaskItemComponent } from './task-item/task-item.component';
-import {CommonModule} from '@angular/common';
-
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -50,6 +50,9 @@ import {CommonModule} from '@angular/common';
     UsMapComponent,
     DashBoardComponent,
     TasksComponent,
+    WeatherSaleGraphComponent,
+    AddTaskComponent,
+    PiechartComponent
     AddTaskComponent,
     FacechartComponent,
     TaskItemComponent,
@@ -78,7 +81,7 @@ import {CommonModule} from '@angular/common';
       }
     })
   ],
-  providers: [AuthService, WeatherService, SalesService, AmChartsService, TaskService, AuthGuard,WeatherSaleService],
+  providers: [AuthService, WeatherService, SalesService, AmChartsService, WeatherSaleService, TaskService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

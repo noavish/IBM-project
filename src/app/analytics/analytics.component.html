@@ -37,20 +37,56 @@
           </div>
         </div>
       </div>
-      <div class="col s12 m6 l3">
-        <div class="card">
-          <div class="card-content  yellow darken-3 white-text">
-            <p class="card-stats-title">
-              <i class="material-icons">trending_up</i> Today Profit</p>
-            <h4 class="card-stats-number">number</h4>
-            <p class="card-stats-compare">
-              <i class="material-icons">keyboard_arrow_up</i> 80%
-              <span class="grey darken-3-text text-lighten-5">from yesterday</span>
-            </p>
-          </div>
-          <div class="card-action  yellow darken-4">
-            <div id="profit-tristate" class="center-align">
-              <canvas width="227" height="25" style="display: inline-block; width: 227px; height: 25px; vertical-align: top;"></canvas>
+    </div>
+    <!--chart dashboard start-->
+    <div id="chart-dashboard">
+      <div class="row">
+        <div class="col s12 m8 l4">
+          <div class="card">
+            <div class="card-move-up waves-effect waves-block waves-light">
+                <!--card stats end-->
+              <div class="move-up grey darken-3 darken-1">
+                <div>
+                  <span class="chart-title white-text">Chart</span>
+                  <div class="chart-revenue grey darken-3 darken-2 white-text">
+                     
+                        </div>
+                </div>
+                <div class="trending-line-chart-wrapper">
+                  <canvas id="trending-line-chart" height="276" width="1186" style="width: 1186px; height: 276px;"></canvas>
+                </div>
+              </div>
+            </div>
+            <app-piechart></app-piechart>
+
+            <div class="card-content">
+            <p>content</p>
+              <div class="col s12 m3 l3">
+                <div id="doughnut-chart-wrapper">
+                  <canvas id="doughnut-chart" height="184" width="277" style="width: 277px; height: 184px;"></canvas>
+                  <div class="doughnut-chart-status">
+                  </div>
+                </div>
+              </div>
+              <div class="col s12 m2 l2">
+                <ul class="doughnut-chart-legend">
+               <li>text</li>
+               <li>text</li>
+               <li>text</li>
+               <li>text</li>
+
+                </ul>
+              </div>
+              <div class="col s12 m5 l6">
+                <div class="trending-bar-chart-wrapper">
+                  <canvas id="trending-bar-chart" height="173" width="577" style="width: 577px; height: 173px;"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Revenue by Month
+                <i class="material-icons right">close</i>
+              </span>
             </div>
           </div>
         </div>

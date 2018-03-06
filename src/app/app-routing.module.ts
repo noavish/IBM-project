@@ -14,9 +14,8 @@ import { AuthService } from './services/auth.service';
 import { AuthGuard } from './AuthGuard';
 import { DashBoardComponent } from './dash-board/dash-board.component';
 import { TasksComponent } from './tasks/tasks.component';
-import {FacechartComponent} from './facechart/facechart.component';
-
-
+import { PiechartComponent } from './piechart/piechart.component';
+import { FacechartComponent } from './facechart/facechart.component';
 
 const routes: Routes = [
   //need change root route 
@@ -29,7 +28,8 @@ const routes: Routes = [
   { path: 'user', canActivate : [AuthGuard], component: UserPageComponent },
   { path: 'dashboard', canActivate: [AuthGuard], component: DashBoardComponent },
   { path: 'tasks', canActivate : [AuthGuard], component: TasksComponent },
-  {path: 'face', component: FacechartComponent}
+  { path: 'pie',component:PiechartComponent },
+  { path: 'face', component: FacechartComponent }
 ];
 
 @NgModule({
