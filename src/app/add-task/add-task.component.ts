@@ -1,7 +1,7 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { Task } from '../models/taskModel';
-import { AuthService } from '../services/auth.service';
 import { TaskService } from '../services/task.service';
+import { User } from '../models/userModel';
 
 @Component({
   selector: 'app-add-task',
@@ -9,22 +9,14 @@ import { TaskService } from '../services/task.service';
   styleUrls: ['./add-task.component.css']
 })
 export class AddTaskComponent implements OnInit {
-  users: any[];
   task: Task = new Task();
   creator_id = 1;
+  @Input() users: User[];
   @Output() taskAdded: EventEmitter<Task> = new EventEmitter();
 
-  constructor( private authService: AuthService, private taskService: TaskService ) { }
+  constructor( private taskService: TaskService ) { }
 
   ngOnInit() {
-    this.getUsers();
-  }
-
-  getUsers() {
-    this.authService.getAllUsers().subscribe(
-      data => this.users = data,
-      error => console.log(error)
-    );
   }
 
   addTask() {

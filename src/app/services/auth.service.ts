@@ -7,6 +7,8 @@ import {local} from 'd3-selection';
 
 @Injectable()
 export class AuthService {
+
+
   private user;
 
   constructor(private http: HttpClient, private router: Router) { }
@@ -36,17 +38,17 @@ export class AuthService {
     return this.http.get<any[]>('api/users');
   }
 
-  isloggedIn(){
-    if(localStorage.token){
-      return true
+  isloggedIn() {
+    if (localStorage.token) {
+      return true;
     } else {
-      return false
+      return false;
     }
   }
 
   logOut(){
     localStorage.removeItem('token');
-    this.router.navigate(['/']);
-
+    this.router.navigate(['login'])
   }
+
 }

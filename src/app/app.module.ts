@@ -15,7 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 import { WeatherComponent } from './weather/weather.component';
 import { SalesService } from './services/sales.service';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UnitAmountGraphComponent } from './unit-amount-graph/unit-amount-graph.component';
 import { AgmCoreModule } from '@agm/core';
 import { MapWithPieComponent } from './map-with-pie/map-with-pie.component';
@@ -24,10 +24,16 @@ import { AmChartsService } from '@amcharts/amcharts3-angular';
 import { JwtModule } from '@auth0/angular-jwt';
 import { DashBoardComponent } from './dash-board/dash-board.component';
 import { TasksComponent } from './tasks/tasks.component';
+<<<<<<< HEAD
+import { WeatherSaleService } from './services/weather-sale.service'
+import { WeatherSaleGraphComponent } from './weather-sale-graph/weather-sale-graph.component'
+
+=======
 import { AddTaskComponent } from './add-task/add-task.component'
 import { TaskService } from './services/task.service';
 import { UsMapComponent } from './us-map/us-map.component';
 import { AuthGuard } from './AuthGuard';
+>>>>>>> 02b3b40d09371680ff89f3cc6cf77f9a74940d57
 
 @NgModule({
   declarations: [
@@ -44,7 +50,11 @@ import { AuthGuard } from './AuthGuard';
     UsMapComponent,
     DashBoardComponent,
     TasksComponent,
+<<<<<<< HEAD
+    WeatherSaleGraphComponent
+=======
     AddTaskComponent
+>>>>>>> 02b3b40d09371680ff89f3cc6cf77f9a74940d57
   ],
   imports: [
     AgmCoreModule.forRoot({
@@ -68,7 +78,11 @@ import { AuthGuard } from './AuthGuard';
       }
     })
   ],
+<<<<<<< HEAD
+  providers: [AuthService, WeatherService, SalesService, AmChartsService, WeatherSaleService],
+=======
   providers: [AuthService, WeatherService, SalesService, AmChartsService, TaskService, AuthGuard],
+>>>>>>> 02b3b40d09371680ff89f3cc6cf77f9a74940d57
   bootstrap: [AppComponent]
 })
 export class AppModule { }
