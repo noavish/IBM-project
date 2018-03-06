@@ -93,7 +93,7 @@ router.get('/weathersale', function (req, res, next) {
 
 //getAllTasks
 router.get('/tasks', function (req, res, next) {
-  connection.query('select * from tasks', function(err, rows, fields) {
+  connection.query('select task_id, task_creator_id, assign_to_id, task_text, done, username FROM tasks LEFT JOIN users ON users.user_id = tasks.assign_to_id', function(err, rows, fields) {
     if (!err)
       res.send(rows);
     else
@@ -121,9 +121,20 @@ router.post('/addTask', function (req, res, next) {
   });
 });
 
+//getBestSellers
+router.get('/bestSellers', function (req, res, next) {
+  connection.query('select sales_count, user_id_fk, username, item_revenue, sales_count * item_revenue as \'total_revenue\' from sales join users on users.user_id = sales.user_id_fk join pricing where sales.product_id_fk = pricing.product_id_fk group by username order by sales_count desc', function(err, rows, fields) {
+    if (!err)
+      res.send(rows);
+    else
+      res.send('Error while performing Query.');
+  });
+});
+
 //reviseTaskDone
 router.put('/:task_id', function (req, res, next) {
-  connection.query(`update tasks set done = ${req.body.done} where task_id = ?`, req.params, function (err, rows, fields) {
+  console.log(req.params.task_id, req.body)
+  connection.query(`update tasks set done = ${req.body.done} where task_id = ?`, req.params.task_id, function (err, rows, fields) {
     if (!err)
       res.send(rows);
     else
