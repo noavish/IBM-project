@@ -33,6 +33,7 @@ import { AuthGuard } from './AuthGuard';
 import { PiechartComponent } from './piechart/piechart.component';
 import { FacechartComponent } from './facechart/facechart.component';
 import { TaskItemComponent } from './task-item/task-item.component';
+import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
@@ -56,7 +57,8 @@ import { CommonModule } from '@angular/common';
     AddTaskComponent,
     FacechartComponent,
     TaskItemComponent,
-    WeatherSaleGraphComponent
+    WeatherSaleGraphComponent,
+    ManageUsersComponent
   ],
   imports: [
     AgmCoreModule.forRoot({

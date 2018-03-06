@@ -110,16 +110,6 @@ router.get('/tasks', function (req, res, next) {
   });
 });
 
-//getAllUsers
-router.get('/users', function (req, res, next) {
-  connection.query('select * from users', function (err, rows, fields) {
-    if (!err)
-      res.send(rows);
-    else
-      res.send('Error while performing Query.');
-  });
-});
-
 //addNewTask
 router.post('/addTask', function (req, res, next) {
   connection.query('insert into tasks set ?', req.body, function (err, rows, fields) {
@@ -130,9 +120,9 @@ router.post('/addTask', function (req, res, next) {
   });
 });
 
-//getBestSellers
-router.get('/bestSellers', function (req, res, next) {
-  connection.query('select sales_count, user_id_fk, username, item_revenue, sales_count * item_revenue as \'total_revenue\' from sales join users on users.user_id = sales.user_id_fk join pricing where sales.product_id_fk = pricing.product_id_fk group by username order by sales_count desc', function(err, rows, fields) {
+//reviseTaskDone
+router.put('/:task_id', function (req, res, next) {
+  connection.query(`update tasks set done = ${req.body.done} where task_id = ?`, req.params.task_id, function (err, rows, fields) {
     if (!err)
       res.send(rows);
     else
@@ -140,10 +130,49 @@ router.get('/bestSellers', function (req, res, next) {
   });
 });
 
-//reviseTaskDone
-router.put('/:task_id', function (req, res, next) {
-  console.log(req.params.task_id, req.body)
-  connection.query(`update tasks set done = ${req.body.done} where task_id = ?`, req.params.task_id, function (err, rows, fields) {
+//getAllUsers
+router.get('/users', function (req, res, next) {
+  connection.query('select * from users', function (err, rows, fields) {
+    if (!err)
+      res.send(rows);
+    else
+      res.send('Error while performing Query.');
+  });
+});
+
+//getAllLevels
+router.get('/levels', function (req, res, next) {
+  connection.query('select level from users group by level', function (err, rows, fields) {
+    if (!err)
+      res.send(rows);
+    else
+      res.send('Error while performing Query.');
+  });
+});
+
+//getAllChannels
+router.get('/channels', function (req, res, next) {
+  connection.query('select * from channel', function (err, rows, fields) {
+    if (!err)
+      res.send(rows);
+    else
+      res.send('Error while performing Query.');
+  });
+});
+
+//ChangeUserDetails
+router.put('/changeDetails/:user_id', function (req, res, next) {
+  connection.query(`update users set channel_id_fk = ${req.body.channel_id_fk}, level = '${req.body.level}' where user_id = ${req.params.user_id}`, function (err, rows, fields) {
+    if (!err)
+      res.send(rows);
+    else
+      res.send('Error while performing Query.'+ err);
+  });
+});
+
+//getBestSellers
+router.get('/bestSellers', function (req, res, next) {
+  connection.query('select sales_count, user_id_fk, username, item_revenue, sales_count * item_revenue as \'total_revenue\' from sales join users on users.user_id = sales.user_id_fk join pricing where sales.product_id_fk = pricing.product_id_fk group by username order by sales_count desc', function(err, rows, fields) {
     if (!err)
       res.send(rows);
     else
