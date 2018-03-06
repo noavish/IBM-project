@@ -15,7 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 import { WeatherComponent } from './weather/weather.component';
 import { SalesService } from './services/sales.service';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UnitAmountGraphComponent } from './unit-amount-graph/unit-amount-graph.component';
 import { AgmCoreModule } from '@agm/core';
 import { MapWithPieComponent } from './map-with-pie/map-with-pie.component';
@@ -24,6 +24,8 @@ import { AmChartsService } from '@amcharts/amcharts3-angular';
 import { JwtModule } from '@auth0/angular-jwt';
 import { DashBoardComponent } from './dash-board/dash-board.component';
 import { TasksComponent } from './tasks/tasks.component';
+import { WeatherSaleService } from './services/weather-sale.service'
+import { WeatherSaleGraphComponent } from './weather-sale-graph/weather-sale-graph.component'
 import { AddTaskComponent } from './add-task/add-task.component'
 import { TaskService } from './services/task.service';
 import { UsMapComponent } from './us-map/us-map.component';
@@ -49,7 +51,8 @@ import { TaskItemComponent } from './task-item/task-item.component';
     TasksComponent,
     AddTaskComponent,
     FacechartComponent,
-    TaskItemComponent
+    TaskItemComponent,
+    WeatherSaleGraphComponent
   ],
   imports: [
     AgmCoreModule.forRoot({
@@ -73,7 +76,7 @@ import { TaskItemComponent } from './task-item/task-item.component';
       }
     })
   ],
-  providers: [AuthService, WeatherService, SalesService, AmChartsService, TaskService, AuthGuard],
+  providers: [AuthService, WeatherService, SalesService, AmChartsService, TaskService, AuthGuard,WeatherSaleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

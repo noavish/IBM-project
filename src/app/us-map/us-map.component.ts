@@ -99,13 +99,16 @@ export class UsMapComponent implements OnInit {
           d.state_sum=s.state_sum;
         }
       })
+      var gcolor="rgba("+(207+Math.floor(Math.random()*50)+Math.floor(Math.random()*20))+","+(75+Math.floor(Math.random()*10))+", 14,"+ Math.random()+")"
         vm.sampleData.push({
           n: d.id,
           state: d.n,
           state_sum: d.state_sum,
           path: d.d,
-          color: '#' + (Math.random().toString(16) + "000000").substring(2, 8),
-          color2: '#' + (Math.random().toString(16) + "000000").substring(2, 8),
+          color: gcolor
+          // '#' + (726951+Math.floor(Math.random()*990+9)),
+          //color2:'#' + (726951+Math.floor(Math.random()*990+9))
+          
         });
       });
       /* draw states on id #statesvg */

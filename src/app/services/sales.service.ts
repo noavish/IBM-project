@@ -42,3 +42,4 @@ export class SalesService {
     return this.http.get<any>('/api/bestSellers');
   };
 }
+

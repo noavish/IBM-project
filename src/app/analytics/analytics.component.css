@@ -2,8 +2,11 @@
     padding: 0 0.5rem;
     margin: 0 auto;
     max-width: 100% !important;
-    width: 98%;
+    width: 87%;
+    float:right;
+    font-family: 'Raleway';
 }
+
 #card-stats {
     padding-top: 12px;
 }
