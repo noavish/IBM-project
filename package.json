@@ -13,7 +13,7 @@
   "private": true,
   "dependencies": {
     "@agm/core": "^1.0.0-beta.2",
-    "@amcharts/amcharts3-angular": "^2.0.3",
+    "@amcharts/amcharts3-angular": "github:amcharts/amcharts3-angular2",
     "@angular/animations": "^5.2.7",
     "@angular/common": "^5.2.0",
     "@angular/compiler": "^5.2.0",
@@ -26,6 +26,7 @@
     "@angular/router": "^5.2.0",
     "@auth0/angular-jwt": "^1.0.0-beta.9",
     "angular2-jwt": "^0.2.3",
+    "amcharts3": "github:amcharts/amcharts3",
     "angular2-materialize": "^15.1.10",
     "axios": "^0.18.0",
     "bcrypt": "^1.0.3",

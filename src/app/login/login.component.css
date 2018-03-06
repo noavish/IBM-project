@@ -1,22 +1,27 @@
 .container-fluid {
     margin:0;
-    padding: 16.5rem;
+    padding: 17rem;
     background: url("/assets/image/background.png") no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    background-repeat:no-repeat;
+    background-size: 100%;
+    background-position:center;
+    font-family: 'Raleway';
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
 }
 
 .card-header {
- 
     color: #f5f7fa;
+    padding:2rem;
+}
+.card-body{
+    padding:2rem;
 }
 
-/* .custom-checkbox {
-    color: #23b7e5;
-    border: 1em;
-} */
 
 .custom-control {
     position: relative;
@@ -33,7 +38,7 @@ label {
 }
 
 .brand-logo{
-    top:0;
+top:0;
   float: right;
   width: 10rem;
 }
@@ -43,9 +48,20 @@ label {
     top: 10px;
     right: 2rem;
 }
-.text-logo{
-    bottom:30px;
-    float: right;
-    position: absolute;
-    left:60px;
-}
+
+.fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    }
+    @-webkit-keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+    }
+    @keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+    } 
