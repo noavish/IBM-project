@@ -22,6 +22,10 @@ export class SalesService {
     return this.http.get<any>('/api/amount');
   }
 
+  getSalesBySKU():Observable<any>{
+    return this.http.get('/api/skusales')
+  }
+
   getProductsFromDB(): Observable<Product[]> {
     return this.http.get<Product[]>('/api/products');
   }

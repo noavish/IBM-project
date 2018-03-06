@@ -24,11 +24,17 @@ router.get('/sales', function (req, res, next) {
   });
 });
 
-<<<<<<< HEAD
-router.get('/amount', (req, res) => {
-  connection.query('select date, sum(sales_count) as value from sales group by date', (err, rows) => {
-    if (!err) {
-=======
+// get Sales by SKU
+router.get('/skusales',(req,res)=>{
+  connection.query('select sku_id,sku_name,sum(sales_count) as value from sku join sales on sales.product_id_fk = sku.product_id_fk group by sku_id',(err,result)=>{
+    if(!err){
+      res.send(result)
+    } else {
+      console.log(err)
+    }
+  })
+})
+
 
 router.get('/countriessales', function (req, res, next) {
   connection.query("SELECT state, sum(sales_count) as state_sum  FROM fanco.sales   WHERE country='United States' GROUP BY state", function(err, rows, fields) {
@@ -42,7 +48,6 @@ router.get('/countriessales', function (req, res, next) {
 router.get('/amount', (req,res)=>{
   connection.query('select date, sum(sales_count) as value from sales group by date',(err,rows)=>{
     if(!err) {
->>>>>>> 02b3b40d09371680ff89f3cc6cf77f9a74940d57
       res.send(rows)
     } else {
       res.send(err)
@@ -69,11 +74,7 @@ router.get('/sku/:product_id', function (req, res, next) {
 });
 
 router.post('/logSale', function (req, res, next) {
-<<<<<<< HEAD
-  connection.query('insert into sales set ?', req.body, function (err, rows, fields) {
-=======
   connection.query('insert into sales set ?', req.body, function(err, rows, fields) {
->>>>>>> 02b3b40d09371680ff89f3cc6cf77f9a74940d57
     if (!err)
       res.send(rows);
     else
@@ -81,7 +82,6 @@ router.post('/logSale', function (req, res, next) {
   });
 });
 
-<<<<<<< HEAD
 //************** */
 router.get('/weathersale', function (req, res, next) {
   connection.query('SELECT DATE_FORMAT(date, "%m") AS Month, SUM(sales_count),AVG(weather) FROM sales WHERE date GROUP BY DATE_FORMAT(date, "%m")', function (err, rows, fields) {
@@ -103,8 +103,6 @@ router.get('/weathersale', function (req, res, next) {
 //       console.log(error);
 //     });
 // });
-=======
->>>>>>> 02b3b40d09371680ff89f3cc6cf77f9a74940d57
 
 //getAllTasks
 router.get('/tasks', function (req, res, next) {
