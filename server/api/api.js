@@ -24,6 +24,17 @@ router.get('/sales', function (req, res, next) {
   });
 });
 
+// get Sales by SKU
+router.get('/skusales',(req,res)=>{
+  connection.query('select sku_id,sku_name,sum(sales_count) as value from sku join sales on sales.product_id_fk = sku.product_id_fk group by sku_id',(err,result)=>{
+    if(!err){
+      res.send(result)
+    } else {
+      console.log(err)
+    }
+  })
+})
+
 router.get('/countriessales', function (req, res, next) {
   connection.query("SELECT state, sum(sales_count) as state_sum  FROM fanco.sales   WHERE country='United States' GROUP BY state", function(err, rows, fields) {
     if (!err){
@@ -40,6 +51,15 @@ router.get('/amount', (req,res)=>{
     } else {
       res.send(err)
     }
+  })
+});
+
+router.get('/amount/:id',(req,res)=>{
+  connection.query('SELECT user_id_fk, username, product_id_fk, product_name, date, SUM(sales_count) AS value FROM sales JOIN users ON sales.user_id_fk = ? JOIN products ON products.product_id = sales.product_id_fk GROUP BY date',[req.params.id],(err,result)=>{
+    if(!err){
+      res.send(result)
+    }
+    else {console.log(err)}
   })
 });
 
@@ -69,6 +89,7 @@ router.post('/logSale', function (req, res, next) {
       res.send('Error while performing Query.');
   });
 });
+
 
 router.get('/weathersale', function (req, res, next) {
   connection.query('SELECT DATE_FORMAT(date, "%m") AS Month, SUM(sales_count),AVG(weather) FROM sales WHERE date GROUP BY DATE_FORMAT(date, "%m")', function (err, rows, fields) {

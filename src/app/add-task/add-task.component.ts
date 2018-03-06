@@ -14,6 +14,9 @@ export class AddTaskComponent implements OnInit {
   task: Task = new Task();
   creator_id = 1;
   @Output() taskAdded: EventEmitter<Task> = new EventEmitter();
+  get user(){
+    return this.authService.getUser();
+  }
 
   constructor( private authService: AuthService, private taskService: TaskService ) { }
 
