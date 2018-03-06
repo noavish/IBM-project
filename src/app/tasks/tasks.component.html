@@ -3,18 +3,33 @@
   <app-add-task (taskAdded)="getTasks($event)"></app-add-task>
 </div>
 <div class="row tasks">
-  <ul class="collection with-header">
-    <li class="collection-header"><h4>Task List</h4></li>
-    <li class="collection-item" *ngFor="let task of tasks; let i = index">
-      <div>
-        <p>
-          <input type="checkbox" class="filled-in" id="filled-in-box" (click)="markAsDone()"/>
-          <label for="filled-in-box">{{task.task_text}}</label>
-          <a href="#!" class="secondary-content"><i class="material-icons">send</i></a>
-        </p>
-      </div>
-    </li>
-  </ul>
+  <table>
+    <thead>
+    <tr>
+      <th><h4>Task List</h4></th>
+      <th>Assign to:</th>
+      <th>Task</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let task of tasks; let i = index">
+      <td>Alvin</td>
+      <td>{{user.user_id}} | {{user.username}}</td>
+      <td>{{task.task_text}}</td>
+    </tr>
+    </tbody>
+  </table>
 </div>
 
-
+<ul class="collection with-header">
+  <li class="collection-header"></li>
+  <li class="collection-item" >
+    <div>
+      <p>
+        <input type="checkbox" class="filled-in" id="filled-in-box" name="checkbox" (click)="markAsDone()" [(ngModel)]="task.done"/>
+        <label for="filled-in-box"></label>
+        <a href="#!" class="secondary-content"><i class="material-icons">send</i></a>
+      </p>
+    </div>
+  </li>
+</ul>
