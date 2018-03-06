@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { TaskService } from '../services/task.service';
 import { Task } from '../models/taskModel';
-import {AuthService} from '../services/auth.service';
 
 @Component({
   selector: 'app-tasks',
@@ -9,21 +8,12 @@ import {AuthService} from '../services/auth.service';
   styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent implements OnInit {
-  users: any[];
   tasks: Task[];
   task: Task = new Task();
-  constructor( private authService: AuthService, private taskService: TaskService ) { }
+  constructor( private taskService: TaskService ) { }
 
   ngOnInit() {
-    this.getUsers();
     this.getTasks();
-  }
-
-  getUsers() {
-    this.authService.getAllUsers().subscribe(
-      data => this.users = data,
-      error => console.log(error)
-    );
   }
 
   getTasks() {
@@ -32,16 +22,9 @@ export class TasksComponent implements OnInit {
       error => console.log(error)
     );
   }
+  // markAsDone(task) {
+  //   console.log('clicked', task.task_id);
+  // }
 
-  markAsDone() {
-    console.log(this.task)
-    this.task.done = !this.task.done;
-    console.log(this.task)
-    this.taskService.markDoneInDB(this.task).subscribe(
-      data => {
-        console.log(data);
-      },
-      error => console.log(error)
-    );
+
   }
-}

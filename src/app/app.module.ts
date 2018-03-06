@@ -28,6 +28,9 @@ import { AddTaskComponent } from './add-task/add-task.component'
 import { TaskService } from './services/task.service';
 import { UsMapComponent } from './us-map/us-map.component';
 import { AuthGuard } from './AuthGuard';
+import { FacechartComponent } from './facechart/facechart.component';
+import { TaskItemComponent } from './task-item/task-item.component';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +47,9 @@ import { AuthGuard } from './AuthGuard';
     UsMapComponent,
     DashBoardComponent,
     TasksComponent,
-    AddTaskComponent
+    AddTaskComponent,
+    FacechartComponent,
+    TaskItemComponent
   ],
   imports: [
     AgmCoreModule.forRoot({
