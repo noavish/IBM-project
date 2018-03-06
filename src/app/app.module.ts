@@ -30,6 +30,7 @@ import { AddTaskComponent } from './add-task/add-task.component'
 import { TaskService } from './services/task.service';
 import { UsMapComponent } from './us-map/us-map.component';
 import { AuthGuard } from './AuthGuard';
+import { UserSalesComponent } from './user-sales/user-sales.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { AuthGuard } from './AuthGuard';
     DashBoardComponent,
     TasksComponent,
     WeatherSaleGraphComponent,
-    AddTaskComponent
+    AddTaskComponent,
+    UserSalesComponent
   ],
   imports: [
     AgmCoreModule.forRoot({

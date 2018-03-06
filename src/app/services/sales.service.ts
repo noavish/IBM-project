@@ -25,6 +25,9 @@ export class SalesService {
   getProductsFromDB(): Observable<Product[]> {
     return this.http.get<Product[]>('/api/products');
   }
+  getSalesByUser(userID): Observable<any> {
+    return this.http.get<Product[]>(`/api/usersaels/${userID}`);
+  }
 
   getSKUFromDB(product_id: number): Observable<any[]> {
     return this.http.get<any[]>(`/api/sku/${product_id}`);
