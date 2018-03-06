@@ -1,4 +1,4 @@
-<header>
+<header *ngIf="user?.username">
   <div class="navbar-fixed">
     <nav class="navbar-color blue-grey darken-2">
       <div class="nav-wrapper">
@@ -16,13 +16,16 @@
         </ul>
         <ul class="right right-nav-icons">
           <li>
+            <span class="navbar-name">{{user?.username}}</span>
+          </li>
+          <li>
             <i class="large material-icons">account_circle</i>
           </li>
           <li>
             <i class="large material-icons">notifications</i>
           </li>
           <li>
-            <i class="large material-icons">power_settings_new</i>
+            <i class="large material-icons" (click)="logOut()" style="cursor: pointer">power_settings_new</i>
           </li>
         </ul>
       </div>

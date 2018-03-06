@@ -7,6 +7,7 @@ import { Sale } from '../models/saleModel';
 import { FormControl } from '@angular/forms';
 import { } from 'googlemaps';
 import { MapsAPILoader } from '@agm/core';
+import {AuthService} from '../services/auth.service';
 
 
 @Component({
@@ -35,7 +36,7 @@ export class UserPageComponent implements OnInit {
   @ViewChild("search")
   public searchElementRef: ElementRef;
 
-  constructor( private salesService: SalesService, private mapsAPILoader: MapsAPILoader, private ngZone: NgZone ) { }
+  constructor( private salesService: SalesService, private mapsAPILoader: MapsAPILoader, private ngZone: NgZone,private authservice:AuthService ) { }
 
   ngOnInit() {
     // this.getAllSales();

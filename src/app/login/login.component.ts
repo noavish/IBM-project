@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, NgZone, OnInit} from '@angular/core';
 import {AuthService} from '../services/auth.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,10 +11,12 @@ import {AuthService} from '../services/auth.service';
 export class LoginComponent implements OnInit {
   password: string;
   username: string;
+  returnUrl: string;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private zone: NgZone,private route:ActivatedRoute,private router:Router) { }
 
   ngOnInit() {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
 
@@ -21,7 +24,10 @@ export class LoginComponent implements OnInit {
     const user = {username: this.username, password: this.password};
     this.authService.login(user).subscribe(res => {
       localStorage.setItem('token', res.token);
-    });
+    },
+      (err) => console.log(err),
+      () => this.router.navigateByUrl(this.returnUrl)
+      );
 
     }
 }

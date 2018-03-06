@@ -24,9 +24,16 @@ import { AmChartsService } from '@amcharts/amcharts3-angular';
 import { JwtModule } from '@auth0/angular-jwt';
 import { DashBoardComponent } from './dash-board/dash-board.component';
 import { TasksComponent } from './tasks/tasks.component';
+<<<<<<< HEAD
 import { WeatherSaleService } from './services/weather-sale.service'
 import { WeatherSaleGraphComponent } from './weather-sale-graph/weather-sale-graph.component'
 
+=======
+import { AddTaskComponent } from './add-task/add-task.component'
+import { TaskService } from './services/task.service';
+import { UsMapComponent } from './us-map/us-map.component';
+import { AuthGuard } from './AuthGuard';
+>>>>>>> 02b3b40d09371680ff89f3cc6cf77f9a74940d57
 
 @NgModule({
   declarations: [
@@ -40,9 +47,14 @@ import { WeatherSaleGraphComponent } from './weather-sale-graph/weather-sale-gra
     WeatherComponent,
     UnitAmountGraphComponent,
     MapWithPieComponent,
+    UsMapComponent,
     DashBoardComponent,
     TasksComponent,
+<<<<<<< HEAD
     WeatherSaleGraphComponent
+=======
+    AddTaskComponent
+>>>>>>> 02b3b40d09371680ff89f3cc6cf77f9a74940d57
   ],
   imports: [
     AgmCoreModule.forRoot({
@@ -66,7 +78,11 @@ import { WeatherSaleGraphComponent } from './weather-sale-graph/weather-sale-gra
       }
     })
   ],
+<<<<<<< HEAD
   providers: [AuthService, WeatherService, SalesService, AmChartsService, WeatherSaleService],
+=======
+  providers: [AuthService, WeatherService, SalesService, AmChartsService, TaskService, AuthGuard],
+>>>>>>> 02b3b40d09371680ff89f3cc6cf77f9a74940d57
   bootstrap: [AppComponent]
 })
 export class AppModule { }

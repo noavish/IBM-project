@@ -31,9 +31,9 @@ app.post('/login', passport.authenticate('local-login', {session:false}), (req,r
   res.send({token})
 });
 
-app.post('/register',passport.authenticate('local-signup',{
-  successRedirect : '/'
-}))
+app.post('/register',passport.authenticate('local-signup',{}),(req,res)=>{
+  res.send('yay')
+})
 
 app.get('/userDetails', AuthCheck, (req,res)=>{
   res.send(req.user)
