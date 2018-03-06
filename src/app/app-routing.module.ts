@@ -7,17 +7,7 @@ import { UserPageComponent } from './user-page/user-page.component';
 import { SigninComponent } from './signin/signin.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { WeatherComponent } from './weather/weather.component';
-<<<<<<< HEAD
-import {UnitAmountGraphComponent} from './unit-amount-graph/unit-amount-graph.component';
-import {DashBoardComponent} from './dash-board/dash-board.component';
-import {TasksComponent} from './tasks/tasks.component';
 import { WeatherSaleGraphComponent } from './weather-sale-graph/weather-sale-graph.component'
-
-
-const routes: Routes = [
-  //need change root route 
-  { path: '', component: WeatherSaleGraphComponent },
-=======
 import { UnitAmountGraphComponent } from './unit-amount-graph/unit-amount-graph.component';
 import { UsMapComponent } from './us-map/us-map.component';
 import { AuthService } from './services/auth.service';
@@ -25,10 +15,10 @@ import { AuthGuard } from './AuthGuard';
 import { DashBoardComponent } from './dash-board/dash-board.component';
 import { TasksComponent } from './tasks/tasks.component';
 
+
 const routes: Routes = [
-  { path: 'mmm', component: UsMapComponent },
+  //need change root route 
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
->>>>>>> 02b3b40d09371680ff89f3cc6cf77f9a74940d57
   { path: 'login', component: LoginComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'weather', component: WeatherComponent },
