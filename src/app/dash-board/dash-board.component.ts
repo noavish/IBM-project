@@ -13,6 +13,9 @@ export class DashBoardComponent implements OnInit {
   // newTask: string;
 
   constructor( private authService: AuthService ) { }
+  get user() {
+    return this.authService.getUser();
+  }
 
   ngOnInit() {
   }

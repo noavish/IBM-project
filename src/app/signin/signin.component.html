@@ -1,59 +1,52 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="row">
-        <div class="col-md-6 mx-auto">
-          <div class="card rounded-0">
-            <div class="card-header blue-grey darken-2">
-              <h3 class="mb-0">Sign-in</h3>
-              <div class="brand-logo">
-                <img class="responsive-img" src="../assets/image/FancoLogo.png">
-              </div>
-            </div>
-            <div class="card-body">
+  <div class="row card-sizing">
+    <div class="col s6 offset-s3">
+      <div class="card rounded-0">
+        <div class="card-header grey darken-3">
+          <h3 class="mb-0">Sign-in</h3>
+          <div class="brand-logo">
+            <img class="responsive-img" src="../assets/image/FancoLogo.png">
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row ">
+            <form class="col s12">
               <div class="row">
-                <form class="col s12">
-                  <div class="row">
-                    <div class="input-field col s6">
-                      <input id="firstname" type="text" class="validate" [(ngModel)]="user.firstname" name="fname">
-                      <label for="firstname">First Name</label>
-                    </div>
-                  </div>
-                  <div class="row">
-                      <div class="input-field col s6">
-                        <input id="lastname" type="text" class="validate" [(ngModel)]="user.lastname" name="lname">
-                        <label for="lastname">Last Name</label>
-                      </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                          <input id="email" type="text" class="validate" [(ngModel)]="user.email" name="mail">
-                          <label for="email">Email</label>
-                        </div>
-                      </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                          <input id="username" type="text" class="validate" [(ngModel)]="user.username" name="uname">
-                          <label for="username">Username</label>
-                        </div>
-                      </div>
-                  <div class="row">
-                    <div class="input-field col s6">
-                      <input id="password" type="password" class="validate" [(ngModel)]="user.password" name="passw">
-                      <label for="password">Password</label>
-                    </div>
-                  </div>
-                  <button type="button" class="btn float-right blue-grey darken-2" id="btnSignin" (click)='newUser()'>Sign up</button>
-                </form>
+                <div class="input-field col s12">
+                  <input id="firstname" type="text" class="validate" [(ngModel)]="user.firstname" name="fname" required>
+                  <label data-error="wrong" for="firstname">First Name</label>
+                </div>
               </div>
-            </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="lastname" type="text" class="validate" [(ngModel)]="user.lastname" name="lname" required>
+                  <label  data-error="wrong" for="lastname">Last Name</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="email" type="text" class="validate" [(ngModel)]="user.email" name="mail" required >
+                  <label  data-error="wrong" for="email">Email</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="username" type="text" class="validate" [(ngModel)]="user.username" name="uname" required>
+                  <label  data-error="wrong" for="username">Username</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="password" type="password" class="validate" [(ngModel)]="user.password" name="passw" required>
+                  <label data-error="wrong" for="password">Password</label>
+                </div>
+              </div>
+              <button type="button" class="btn float-right amber darken-4" id="btnSignin" (click)='newUser()'>Sign up</button>
+            </form>
           </div>
         </div>
       </div>
     </div>
   </div>
   <div>
-    <span>
-      <img class="responsive-img text-logo" id="text-logo" src="../assets/image/fancotextlogo.png">
-    </span>
   </div>
