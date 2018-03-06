@@ -1,5 +1,6 @@
 import {Component, NgZone, OnInit} from '@angular/core';
 import {AuthService} from '../services/auth.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,10 +11,12 @@ import {AuthService} from '../services/auth.service';
 export class LoginComponent implements OnInit {
   password: string;
   username: string;
+  returnUrl: string;
 
-  constructor(private authService: AuthService, private zone: NgZone) { }
+  constructor(private authService: AuthService, private zone: NgZone,private route:ActivatedRoute,private router:Router) { }
 
   ngOnInit() {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
 
@@ -23,9 +26,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('token', res.token);
     },
       (err) => console.log(err),
-      () => this.zone.runOutsideAngular(() => {
-        window.location.href = '/';
-      })
+      () => this.router.navigateByUrl(this.returnUrl)
       );
 
     }
