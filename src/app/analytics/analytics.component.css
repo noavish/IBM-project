@@ -45,7 +45,7 @@
     border-radius: 2px;
     background-clip: padding-box;
 }
-#chart-dashboard{
+.chart-dashboard{
     -webkit-animation-name: zoomIn;
     animation-name: zoomIn;
     -webkit-animation-duration: 1s;

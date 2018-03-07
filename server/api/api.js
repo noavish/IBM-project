@@ -37,11 +37,11 @@ router.get('/skusales',(req,res)=>{
 
 router.get('/countriessales', function (req, res, next) {
   connection.query("SELECT state, sum(sales_count) as state_sum  FROM fanco.sales   WHERE country='United States' GROUP BY state", function(err, rows, fields) {
-    if (!err){
+    if (!err) {
       res.send(rows);
-      console.log(rows);}
-    else
+    } else {
       res.send('Error while performing Query.');
+    }
   });
 });
 router.get('/amount', (req,res)=>{
@@ -114,7 +114,7 @@ router.post('/logSale', function (req, res, next) {
 
 
 router.get('/weathersale', function (req, res, next) {
-  connection.query('SELECT DATE_FORMAT(date, "%m") AS Month, SUM(sales_count),AVG(weather) FROM sales WHERE date GROUP BY DATE_FORMAT(date, "%m")', function (err, rows, fields) {
+  connection.query('SELECT DATE_FORMAT(date, "%m") AS Month, SUM(sales_count) as sales_count, ROUND( AVG(weather) ) as weather FROM sales WHERE date GROUP BY DATE_FORMAT(date, "%m")', function (err, rows, fields) {
     if (!err)
       res.send(rows);
     else
