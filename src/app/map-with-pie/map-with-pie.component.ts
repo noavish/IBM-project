@@ -317,7 +317,7 @@ export class MapWithPieComponent implements OnInit {
         'title': dataItem.country,
         'value': value,
         'balloonText': '<span style=\'font-size:18px;\'>[[title]] - [[value]]</span>',
-        'description': '<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>'
+        'description': '<a class="waves-effect waves-light btn modal-trigger" (click)="openPie()">Modal</a>'
       });
     }
 
@@ -349,7 +349,11 @@ export class MapWithPieComponent implements OnInit {
     });
   }
 
-  clicked() {
-    console.log('clicked')
+  openPie() {
+    this.countryClicked.emit({action: 'modal', params: ['open']});
+  }
+
+  closePie() {
+    this.countryClicked.emit({action: 'modal', params: ['close']});
   }
 }

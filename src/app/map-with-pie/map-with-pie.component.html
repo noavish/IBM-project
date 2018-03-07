@@ -1,12 +1,12 @@
 <div id="chartdiv" [style.width.%]="100" [style.height.px]="500"></div>
 
 <!-- Modal Structure -->
-<div id="modal1" class="modal">
+<div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="countryClicked">
   <div class="modal-content">
-    <h4>Modal Header</h4>
-    <p>A bunch of text</p>
+    <h4>Log Sale</h4>
+
   </div>
   <div class="modal-footer">
-    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    <a class="waves-effect waves-green btn-flat" (click)="closePie()">Dismiss</a>
   </div>
 </div>
