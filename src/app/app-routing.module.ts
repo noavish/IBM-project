@@ -30,7 +30,6 @@ const routes: Routes = [
   { path: 'dashboard', canActivate: [AuthGuard], component: DashBoardComponent },
   { path: 'tasks', canActivate : [AuthGuard], component: TasksComponent },
   { path: 'pie', component: PiechartComponent },
-  { path: 'face', component: FacechartComponent }
 ];
 
 @NgModule({
