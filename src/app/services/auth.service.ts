@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { User} from '../models/userModel';
@@ -10,8 +10,12 @@ export class AuthService {
 
   static getUser: any;
   private user;
+  currentUser = new EventEmitter();
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {
+    this.currentUser.emit(this.user);
+  }
+
 
   login(user): Observable<any> {
     return this.http.post<any>('login', user);
@@ -34,7 +38,7 @@ export class AuthService {
       );
   }
 
-  getCurrentUser(): Observable<any[]> {
+  getCurrentUser(): Observable<any> {
     return this.http.get<any>('userdetails')
   }
 
