@@ -46,7 +46,7 @@ export class WeatherSaleGraphComponent implements OnInit {
         );
     }
     weatherChartMaker() {
-        this.map = this.AmCharts.makeChart('chartdiv', {
+        this.map = this.AmCharts.makeChart('chartdiv6', {
             "type": "serial",
             "theme": "light",
             "fontFamily": "Lato",

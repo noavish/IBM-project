@@ -2,12 +2,13 @@
     padding: 0 0.5rem;
     margin: 0 auto;
     max-width: 100% !important;
-    width: 87%;
+    width: 99%;
     float:right;
     font-family: 'Raleway';
 }
 
 #card-stats {
+    padding:1rem;
     -webkit-animation-name: pulse;
     animation-name: pulse;
     -webkit-animation-duration: 1s;
