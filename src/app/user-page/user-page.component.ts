@@ -34,6 +34,7 @@ export class UserPageComponent implements OnInit {
   public searchControl: FormControl;
   public zoom: number;
   myTasks: Task[];
+  task: Task = new Task();
 
   @ViewChild('search')
   public searchElementRef: ElementRef;
@@ -42,7 +43,7 @@ export class UserPageComponent implements OnInit {
 
   ngOnInit() {
     // this.getUserTasks
-    this.getTasks();
+    // this.getMyTasks();
     // set google maps defaults
     this.zoom = 4;
     this.latitude = 39.8282;
@@ -82,16 +83,33 @@ export class UserPageComponent implements OnInit {
 
   getUser(currentUser: any) {
     this.user = currentUser;
-    console.log(this.user);
+    this.getMyTasks();
   }
 
-  getTasks() {
-    this.taskService.getTasks().subscribe(
+  getMyTasks() {
+    this.taskService.getMyTasks(this.user.user_id).subscribe(
       data => {
         this.myTasks = data;
       },
       error => console.log(error)
     );
+  }
+
+  markAsDone() {
+    console.log('clicked', this.task);
+    console.log(this.myTasks)
+    // if (this.task.done == 0) {
+    //   this.task.done = 1;
+    // } else {
+    //   this.task.done = 0;
+    // }
+    // console.log('1', this.task);
+    // this.taskService.markDoneInDB(this.task).subscribe(
+    //   data => {
+    //     console.log('2', data);
+    //   },
+    //   error => console.log(error)
+    // );
   }
 
   getProducts() {

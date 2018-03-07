@@ -86,7 +86,7 @@
         <div class="card-content white-text">
           <span class="card-title">Tasks</span>
           <ul *ngFor="let task of myTasks; let i = index">
-            <app-task-item [task]='task'></app-task-item>
+            <app-task-item [task]="task"></app-task-item>
           </ul>
         </div>
         <div class="card-action">
@@ -102,7 +102,7 @@
     <app-user-sales (currentUser)="getUser($event)"></app-user-sales>
     <app-facechart></app-facechart>
 
-  <!-- Log Sale Modal -->
+   <!--Log Sale Modal -->
   <div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="logSaleClicked">
     <div class="modal-content">
       <h4>Log Sale</h4>

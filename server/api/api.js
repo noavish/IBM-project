@@ -132,6 +132,16 @@ router.get('/tasks', function (req, res, next) {
   });
 });
 
+//getMyTasks
+router.get('/myTasks/:user_id', function (req, res, next) {
+  connection.query('select task_id, task_creator_id, assign_to_id, task_text, done, username FROM tasks LEFT JOIN users ON users.user_id = tasks.assign_to_id where assign_to_id = ?', req.params.user_id, function(err, rows, fields) {
+    if (!err)
+      res.send(rows);
+    else
+      res.send('Error while performing Query.');
+  });
+});
+
 //addNewTask
 router.post('/addTask', function (req, res, next) {
   connection.query('insert into tasks set ?', req.body, function (err, rows, fields) {
