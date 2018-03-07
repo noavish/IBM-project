@@ -8,6 +8,8 @@ import { FormControl } from '@angular/forms';
 import { } from 'googlemaps';
 import { MapsAPILoader } from '@agm/core';
 import {AuthService} from '../services/auth.service';
+import {Task} from "../models/taskModel";
+import {TaskService} from "../services/task.service";
 
 
 @Component({
@@ -31,14 +33,16 @@ export class UserPageComponent implements OnInit {
   public longitude: number;
   public searchControl: FormControl;
   public zoom: number;
+  myTasks: Task[];
 
   @ViewChild("search")
   public searchElementRef: ElementRef;
 
-  constructor( private salesService: SalesService, private mapsAPILoader: MapsAPILoader, private ngZone: NgZone,private authservice:AuthService ) { }
+  constructor( private salesService: SalesService, private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private authservice:AuthService, private taskService: TaskService ) { }
 
   ngOnInit() {
-    // this.getAllSales();
+    // this.getUserTasks
+    this.getTasks();
     // set google maps defaults
     this.zoom = 4;
     this.latitude = 39.8282;
@@ -74,6 +78,15 @@ export class UserPageComponent implements OnInit {
         });
       });
     });
+  }
+
+  getTasks() {
+    this.taskService.getTasks().subscribe(
+      data => {
+        this.myTasks = data;
+      },
+      error => console.log(error)
+    );
   }
 
   getProducts() {

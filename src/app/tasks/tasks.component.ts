@@ -9,7 +9,6 @@ import { Task } from '../models/taskModel';
 })
 export class TasksComponent implements OnInit {
   tasks: Task[];
-  task: Task = new Task();
   constructor( private taskService: TaskService ) { }
 
   ngOnInit() {
@@ -18,13 +17,12 @@ export class TasksComponent implements OnInit {
 
   getTasks() {
     this.taskService.getTasks().subscribe(
-      data => {this.tasks = data; console.log(this.tasks); },
+      data => {
+        this.tasks = data;
+        console.log(this.tasks);
+      },
       error => console.log(error)
     );
   }
-  // markAsDone(task) {
-  //   console.log('clicked', task.task_id);
-  // }
-
 
   }
