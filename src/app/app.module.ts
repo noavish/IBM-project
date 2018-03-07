@@ -53,7 +53,7 @@ import { CommonModule } from '@angular/common';
     TasksComponent,
     WeatherSaleGraphComponent,
     AddTaskComponent,
-    PiechartComponent
+    PiechartComponent,
     AddTaskComponent,
     FacechartComponent,
     TaskItemComponent,

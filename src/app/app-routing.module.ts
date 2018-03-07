@@ -17,7 +17,7 @@ import { TasksComponent } from './tasks/tasks.component';
 import { FacechartComponent } from './facechart/facechart.component';
 import { ManageUsersComponent } from "./manage-users/manage-users.component";
 import { PiechartComponent } from './piechart/piechart.component';
-import { FacechartComponent } from './facechart/facechart.component';
+
 
 const routes: Routes = [
   //need change root route
