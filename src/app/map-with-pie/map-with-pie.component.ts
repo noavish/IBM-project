@@ -314,7 +314,7 @@ export class MapWithPieComponent implements OnInit {
         'longitude': this.latlong[id].longitude,
         'latitude': this.latlong[id].latitude,
         'title': dataItem.country,
-        'value': value
+        'value': value,
       });
     }
 
