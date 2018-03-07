@@ -91,7 +91,7 @@ router.get('/usersaels/:userID', function (req, res, next) {
 });
 
 router.get('/usersaelslog/:userID', function (req, res, next){
-  connection.query('SELECT user_id_fk,date,country,city, sales_count,username  FROM fanco.sales   INNER JOIN  users ON users.user_id=fanco.sales.user_id_fk  WHERE user_id_fk= ?  GROUP BY user_id_fk', req.params.userID, function (err, rows, fields) {
+  connection.query('SELECT date,country,city, sales_count, sku.sku_name  as model_name FROM fanco.sales INNER JOIN  fanco.pricing  ON  fanco.pricing.item_id = fanco.sales.item_id_fk INNER JOIN fanco.sku  on fanco.sku.sku_id=fanco.pricing.sku_id_fk WHERE user_id_fk= ? ', req.params.userID, function (err, rows, fields) {
     if (!err){
       res.send(rows);
       console.log(rows)
