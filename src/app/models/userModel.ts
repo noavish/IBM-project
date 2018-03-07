@@ -6,4 +6,5 @@ export class User{
 	password: string;
 	firstname: string;
 	lastname: string;
+	channel_id_fk: number;
 }

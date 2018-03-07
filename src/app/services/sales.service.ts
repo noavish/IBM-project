@@ -22,6 +22,14 @@ export class SalesService {
     return this.http.get<any>('/api/amount');
   }
 
+  getSalesBySKU(): Observable<any> {
+    return this.http.get('/api/skusales');
+  }
+
+  getSalesByPerson(id): Observable<any> {
+    return this.http.get<any>(`/api/amount/${id}`);
+  }
+
   getProductsFromDB(): Observable<Product[]> {
     return this.http.get<Product[]>('/api/products');
   }
@@ -40,4 +48,9 @@ export class SalesService {
   addSaleToDB(sale: Sale): Observable<Sale> {
     return this.http.post<Sale>('/api/logSale', sale);
   }
+
+  getBestSellersFromDB(): Observable<any> {
+    return this.http.get<any>('/api/bestSellers');
+  }
 }
+

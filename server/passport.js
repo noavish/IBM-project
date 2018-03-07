@@ -89,7 +89,7 @@ module.exports = function(passport) {
             return done(null, false);
 
           // all is well, return successful user
-          return done(null, {username:rows[0].username,level:rows[0].level});
+          return done(null, {username:rows[0].username,level:rows[0].level,user_id:rows[0].user_id});
         });
       })
   );

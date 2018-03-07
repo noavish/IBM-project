@@ -1,20 +1,18 @@
-<app-navbar></app-navbar>
-<section id="content">
-  <div class="container grey lighten-5">
-    <!--card stats start-->
+<div class="container ">
     <div id="card-stats">
       <div class="row">
         <div class="col s12 m6 l3">
           <div class="card">
-            <div class="card-content grey darken-3 white-text">
+            <div class="card-content  light-blue darken-3 white-text">
               <p class="card-stats-title">
-                <h4 class="card-stats-number">Analytics</h4>
-                <p class="card-stats-compare">
-                  <i class="material-icons">keyboard_arrow_up</i>
-                  <span class="grey darken-3 text text-lighten-5">Analytics</span>
-                </p>
+                <i class="material-icons">trending_up</i> Today Profit</p>
+              <h4 class="card-stats-number">number</h4>
+              <p class="card-stats-compare">
+                <i class="material-icons">keyboard_arrow_up</i>
+                <span class="grey darken-3 text text-lighten-5">Analytics</span>
+              </p>
             </div>
-            <div class="card-action grey darken-3 darken-1">
+            <div class="card-action  light-blue darken-4 darken-1">
               <div id="clients-bar" class="center-align">
                 <canvas width="227" height="25" style="display: inline-block; width: 227px; height: 25px; vertical-align: top;"></canvas>
               </div>
@@ -23,16 +21,17 @@
         </div>
         <div class="col s12 m6 l3">
           <div class="card">
-            <div class="card-content  grey darken-3 white-text">
+            <div class="card-content  teal lighten-2 white-text">
               <p class="card-stats-title">
-                <i class="material-icons">attach_money</i>Total Sales</p>
+                <i class="material-icons">trending_up</i> Today Profit</p>
+              <h4 class="card-stats-number">number</h4>
               <p class="card-stats-compare">
                 <i class="material-icons">keyboard_arrow_up</i>
-                <span class="red-text text-lighten-5">Analytics</span>
+                <span class="grey darken-3 text text-lighten-5">Analytics</span>
               </p>
             </div>
-            <div class="card-action grey darken-3">
-              <div id="sales-compositebar" class="center-align">
+            <div class="card-action  teal darken-3 darken-1">
+              <div id="clients-bar" class="center-align">
                 <canvas width="227" height="25" style="display: inline-block; width: 227px; height: 25px; vertical-align: top;"></canvas>
               </div>
             </div>
@@ -40,7 +39,7 @@
         </div>
         <div class="col s12 m6 l3">
           <div class="card">
-            <div class="card-content grey darken-3 white-text">
+            <div class="card-content  yellow darken-3 white-text">
               <p class="card-stats-title">
                 <i class="material-icons">trending_up</i> Today Profit</p>
               <h4 class="card-stats-number">number</h4>
@@ -49,7 +48,7 @@
                 <span class="grey darken-3-text text-lighten-5">from yesterday</span>
               </p>
             </div>
-            <div class="card-action grey darken-3">
+            <div class="card-action  yellow darken-4">
               <div id="profit-tristate" class="center-align">
                 <canvas width="227" height="25" style="display: inline-block; width: 227px; height: 25px; vertical-align: top;"></canvas>
               </div>
@@ -58,7 +57,7 @@
         </div>
         <div class="col s12 m6 l3">
           <div class="card">
-            <div class="card-content grey darken-3 white-text">
+            <div class="card-content purple darken-2 white-text">
               <p class="card-stats-title">
                 <i class="material-icons">content_copy</i> Analytics</p>
               <h4 class="card-stats-number">numbers</h4>
@@ -67,7 +66,7 @@
                 <span class="deep-orange-text text-lighten-5">from last year</span>
               </p>
             </div>
-            <div class="card-action  orange darken-4">
+            <div class="card-action  purple darken-4">
               <div id="invoice-line" class="center-align">
                 <canvas style="display: inline-block; width: 417.609px; height: 25px; vertical-align: top;" width="417" height="25"></canvas>
               </div>
@@ -77,6 +76,7 @@
       </div>
     </div>
     <!--chart dashboard start-->
+    <h4 class="truncate center-align">Unit Amount Grpah (fix the text~)</h4>
     <div id="chart-dashboard">
       <div class="row">
         <div class="col s12 m12 l12">
@@ -89,13 +89,20 @@
             </div>
           </div>
         </div>
-        <div class="col s12 m12 l12">
-          <div class="card">
-            <div class="card-move-up grey darken-3 waves-effect waves-block waves-light">
-              <div class="move-up">
-                <p class="margin white-text">Text </p>
-                <div>
-                  <app-us-map></app-us-map>
+        <div>
+          <h4 class="truncate center-align">Us Map (fix the text~)</h4>
+          <div id="chart-dashboard">
+            <div class="row">
+              <div class="col s12 m12 l12">
+                <div class="card">
+                  <div class="card-move-up waves-effect waves-block waves-light">
+                    <div class="move-up">
+                      <p class="margin white-text">Text </p>
+                      <div>
+                        <app-us-map></app-us-map>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -103,16 +110,3 @@
         </div>
       </div>
     </div>
-    <!--chart dashboard end-->
-    <!--work collections start-->
-    <footer class="page-footer grey lighten-5">
-        <div class="container grey lighten-5">
-          <div class="row">
-            <div class="col l12 s12">
-              <app-weather-sale-graph></app-weather-sale-graph>
-            </div>
-          </div>
-        </div>
-    </footer>
-  </div>
-</section>
