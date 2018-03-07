@@ -121,11 +121,11 @@ export class UsMapComponent implements OnInit {
   mouseOver(d) {
 
     d3.select("#tooltip").transition().duration(200).style("opacity", .9);
-    let addToData = "<h4>" + d.state + "</h4><hr/><table><tr><td>state_sum</td><td>" + (d.state_sum) + "</td></tr></table>"
+    let addToData = "<h4>" + d.state + "</h4><hr/><table><tr><td>Total Orders</td><td>" + (d.state_sum) + "</td></tr></table>"
     //console.log("mouseover:", d)
     d3.select("#tooltip").html(addToData)
-      .style("left", (d3.event.pageX-600) + "px")
-      .style("top", (d3.event.pageY-400) + "px");
+      .style("left", (d3.event.pageX-300) + "px")
+      .style("top", (d3.event.pageY-999) + "px");
   }
 
   mouseOut() {
