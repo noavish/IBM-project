@@ -1,13 +1,23 @@
-<h4 class="truncate center-align ">Global Sales Overview</h4>
-<div class=" col l10 ">
-  <div id="chartdiv"></div>
+<h5 class="truncate center-align ">Global Sales Overview</h5>
+<div class="row center-align">
+  <div class=" col l12 ">
+    <form>
+      <div class=" col l2 ">
+        <p class="flow-text">Choose Seller</p>
+      </div>
+      <div class=" col l6 ">
+        <select style="display: block" [(ngModel)]="option" name="option">
+          <option *ngFor="let user of users" [value]="user.user_id">{{user.username}}</option>
+        </select>
+      </div>
+      <div class=" col l2 ">
+        <a class="btn waves-effect waves-light light-blue darken-4" (click)="getSalesbyUser()">Change</a>
+      </div>
+    </form>
+  </div>
 </div>
-<div class=" col s2 ">
-  <form>
-    <p class="flow-text">Choose Seller</p>
-    <select style="display: block" [(ngModel)]="option" name="option">
-      <option *ngFor="let user of users" [value]="user.user_id">{{user.username}}</option>
-    </select>
-    <a class="btn waves-effect waves-light light-blue darken-4" (click)="getSalesbyUser()">Change</a>
-  </form>
+<div class="row">
+  <div class=" col l12 ">
+    <div id="chartdiv"></div>
+  </div>
 </div>

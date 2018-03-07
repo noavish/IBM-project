@@ -123,7 +123,7 @@ export class WeatherSaleGraphComponent implements OnInit {
             ],
             "graphs": [
                 {
-                    "type": "line",
+                    "type": "smoothedLine",
                     "title": "Weather",
                     "valueField": "weather",
                     "fillColors": [
