@@ -34,6 +34,7 @@ const routes: Routes = [
   { path: 'tasks', canActivate : [AuthGuard], component: TasksComponent },
   { path: 'sh', component: UserSalesComponent },
   { path: 'pie', component: PiechartComponent },
+
   { path: 'face', component: FacechartComponent }
 
 ];

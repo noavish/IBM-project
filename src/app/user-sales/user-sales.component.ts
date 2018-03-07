@@ -15,20 +15,33 @@ export class UserSalesComponent implements OnInit {
   chart: AmChart;
   user: any;
 
-  async ngOnInit() {
-    this.user=await this.authService.getUserDetail();
-    console.log(this.user);
-    this.salesService.getSalesByUser(this.user.user_id).subscribe(data => {
-      this.uSales = data[0].user_sum;
-      console.log(data[0].user_sum)
+  ngOnInit() {
+    this.authService.getCurrentUser().subscribe(data => {
+      this.user = data;
+
     },
       (error2 => console.log(error2)),
-      () => {this.createGauge()}
-      );
+      () => {this.getDataForGrafh()}
+      );;
+  
     
   }
 
-
+    getDataForGrafh(){
+      var id=this.user.user.user_id;
+      this.salesService.getSalesByUser(id).subscribe(data => {
+        if(data[0].user_sum==undefined){
+          this.uSales =0;
+        }
+        else {
+          this.uSales = data[0].user_sum;
+        }
+        console.log(data[0].user_sum)
+      },
+        (error2 => console.log(error2)),
+        () => {this.createGauge()}
+        );
+    }
     createGauge(){
       this.chart = this.AmCharts.makeChart("chartdiv", {
         "theme": "light",

@@ -34,6 +34,10 @@ export class AuthService {
       );
   }
 
+  getCurrentUser(): Observable<any[]> {
+    return this.http.get<any>('userdetails')
+  }
+
   getAllUsers(): Observable<any[]> {
     return this.http.get<any[]>('api/users');
   }
