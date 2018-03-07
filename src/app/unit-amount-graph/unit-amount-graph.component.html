@@ -1,14 +1,15 @@
-<div id="chartdiv"></div>
-<br>
-<div>
-  <form>
-<select style="display: block" [(ngModel)]="option" name="option">
-  <option [value]="1">1</option>
-  <option [value]="2">2</option>
-  <option [value]="3">3</option>
-</select>
-  <button type="button" (click)="getSalesbyUser()">CLICK MEH</button>
 
-  </form>
-
-</div>
+  <div class=" col s9 ">
+    <div id="chartdiv"></div>
+  </div>
+  <div class=" col s3 ">
+    <form>
+        <p class="flow-text">Custom graph (fix the text) </p>
+      <select style="display: block" [(ngModel)]="option" name="option">
+        <option [value]="1">1</option>
+        <option [value]="2">2</option>
+        <option [value]="3">3</option>
+      </select>
+      <a class="btn waves-effect waves-light light-blue darken-4" (click)="getSalesbyUser()">Change</a>
+    </form>
+  </div>
