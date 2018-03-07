@@ -9,7 +9,7 @@
     <div *ngIf="!loading" class="row">
       <select *ngIf="user?.level=='manager'; else user_menu" title="user" materialize="material_select" [materializeSelectOptions]="users" name="user" [(ngModel)]="task.assign_to_id">
         <option [value]="" disabled>User</option>
-        <option value={{user.user_id}} *ngFor="let options of users; let i = index">{{user.user_id}} | {{user.username}}</option>
+        <option value={{user.user_id}} *ngFor="let user of users; let i = index">{{user.user_id}} | {{user.username}}</option>
       </select>
     </div>
     <div class="row">
