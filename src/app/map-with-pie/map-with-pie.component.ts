@@ -307,7 +307,6 @@ export class MapWithPieComponent implements OnInit {
       images.push({
         'type': 'circle',
         'theme': 'light',
-
         'width': size,
         'height': size,
         'color': dataItem.color,
@@ -344,5 +343,9 @@ export class MapWithPieComponent implements OnInit {
         'enabled': true
       }
     });
+  }
+
+  clicked() {
+    console.log('clicked')
   }
 }
