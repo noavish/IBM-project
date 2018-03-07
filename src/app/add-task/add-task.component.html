@@ -2,11 +2,11 @@
   <form class="col s12">
     <div class="row">
       <div class="input-field">
-        <input type="text" class="validate task" name="task" [(ngModel)]="task.task_text">
+        <input id='task' type="text" class="validate task" name="task" [(ngModel)]="task.task_text">
         <label for="task">Task</label>
       </div>
     </div>
-    <div class="row">
+    <div *ngIf="!loading" class="row">
       <select *ngIf="user?.level=='manager'; else user_menu" title="user" materialize="material_select" [materializeSelectOptions]="users" name="user" [(ngModel)]="task.assign_to_id">
         <option [value]="" disabled>User</option>
         <option value={{user.user_id}} *ngFor="let user of users; let i = index">{{user.user_id}} | {{user.username}}</option>

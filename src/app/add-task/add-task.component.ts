@@ -13,6 +13,7 @@ export class AddTaskComponent implements OnInit {
   users: any[];
   user: any;
   task: Task = new Task();
+  loading:boolean
   @Output() taskAdded: EventEmitter<Task> = new EventEmitter();
 
   // get user() {
@@ -22,17 +23,20 @@ export class AddTaskComponent implements OnInit {
   constructor( private authService: AuthService, private taskService: TaskService ) { }
 
   ngOnInit() {
+    this.loading=true
     this.authService.getCurrentUser().subscribe(
       data => {this.user = data.user; console.log(this.user); },
-      error => console.log(error)
+      error => console.log(error),
+      () => this.getUsers()
     );
-    this.getUsers();
+    // this.getUsers();
   }
 
   getUsers() {
     this.authService.getAllUsers().subscribe(
       data => this.users = data,
-      error => console.log(error)
+      error => console.log(error),
+      ()=>this.loading=false
     );
   }
 
