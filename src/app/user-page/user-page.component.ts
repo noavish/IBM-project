@@ -26,7 +26,7 @@ export class UserPageComponent implements OnInit {
   chosenSKU: number;
   items: any[];
   channel: number = 1;
-  user_id: number = 1;
+  user_id: number = 9;
   weather: number = 25;
   // location: string;
   public latitude: number;

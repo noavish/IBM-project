@@ -8,6 +8,7 @@ import { CanActivate, Router } from '@angular/router';
 export class AuthService {
 
 
+  static getUser: any;
   private user;
 
   constructor(private http: HttpClient, private router: Router) { }
@@ -31,6 +32,10 @@ export class AuthService {
       (err) => console.log(err),
       () => console.log(this.user)
       );
+  }
+
+  getCurrentUser(): Observable<any[]> {
+    return this.http.get<any>('userdetails')
   }
 
   getAllUsers(): Observable<any[]> {

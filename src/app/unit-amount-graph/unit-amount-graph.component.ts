@@ -1,6 +1,8 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import {AmChartsService, AmChart} from '@amcharts/amcharts3-angular';
 import {SalesService} from '../services/sales.service';
+import {AuthService} from '../services/auth.service';
+import {User} from '../models/userModel';
 
 @Component({
   selector: 'app-unit-amount-graph',
@@ -11,10 +13,11 @@ export class UnitAmountGraphComponent implements OnInit {
   private data: any[];
   private newdata: { date: string; value: number }[];
 
-  constructor(private AmCharts: AmChartsService, private salesService: SalesService) { }
+  constructor(private AmCharts: AmChartsService, private salesService: SalesService, private authService: AuthService) { }
 
   private chart: AmChart;
   option: number;
+  users: User[];
 
 
   ngOnInit() {
@@ -24,9 +27,9 @@ export class UnitAmountGraphComponent implements OnInit {
       (error2 => console.log(error2)),
       () => this.createGraph()
       );
-
-
-
+    this.authService.getAllUsers().subscribe(data => {
+      this.users = data;
+    });
   }
 
   getSalesbyUser() {
