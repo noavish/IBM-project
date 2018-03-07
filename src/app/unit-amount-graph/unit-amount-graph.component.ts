@@ -29,7 +29,6 @@ export class UnitAmountGraphComponent implements OnInit {
       );
     this.authService.getAllUsers().subscribe(data => {
       this.users = data;
-      console.log(this.users)
     });
   }
 
