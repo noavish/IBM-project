@@ -26,7 +26,7 @@ export class PiechartComponent implements OnInit, OnDestroy {
 
 
 createGraph(){
-  var chart = this.AmCharts.makeChart( "chartdiv", {
+  var chart = this.AmCharts.makeChart( "chartdiv3", {
     "type": "pie",
     "theme": "light",
     "dataProvider":this.graphData,

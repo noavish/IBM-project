@@ -1,7 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { WeatherSaleService } from '../services/weather-sale.service'
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { AmChartsService, AmChart } from '@amcharts/amcharts3-angular';
+import { WeatherSaleService } from '../services/weather-sale.service'
 
+// template
+// var xchartData = [{
+//     "date": 1,
+//     "weather": 1600,
+//     "sales_count": 1500
+// }]
 
 @Component({
     selector: 'app-weather-sale-graph',
@@ -9,82 +15,38 @@ import { AmChartsService, AmChart } from '@amcharts/amcharts3-angular';
     styleUrls: ['./weather-sale-graph.component.css']
 })
 
+
 export class WeatherSaleGraphComponent implements OnInit {
     private map: AmChart;
     ready: any;
     isReady: any;
     chart: any;
+    chartData: any[];
+    mapData: any[];
     constructor(private WeatherSaleService: WeatherSaleService,
         private AmCharts: AmChartsService) { }
 
     ngOnInit() {
-
+        this.getWeatherBySale()
     }
 
-    ngAfterViewInit() {
-        var chartData = [{
-            "date": 1,
-            "weather": 1600,
-            "red": 737,
-            "sales_count": 1500
-
-        }, {
-            "date": 2,
-            "weather": 1700,
-            "red": 680,
-            "sales_count": 1600
-        }, {
-            "date": 3,
-            "weather": 2000,
-            "red": 664,
-            "sales_count": 670
-        }, {
-            "date": 4,
-            "weather": 2100,
-            "red": 648,
-            "sales_count": 2000
-        }, {
-            "date": 5,
-            "weather": 1500,
-            "red": 637,
-            "sales_count": 1300
-        }, {
-            "date": 6,
-            "weather": 1400,
-            "red": 133,
-            "sales_count": 1000
-        }, {
-            "date": 7,
-            "weather": 2100,
-            "red": 621,
-            "sales_count": 2000
-        }, {
-            "date": 8,
-            "weather": 2300,
-            "red": 10,
-            "sales_count": 1050
-        }, {
-            "date": 9,
-            "weather": 1900,
-            "red": 232,
-            "sales_count": 650
-        }, {
-            "date": 10,
-            "weather": 1700,
-            "red": 219,
-            "sales_count": 780
-        }, {
-            "date": 11,
-            "weather": 1500,
-            "red": 201,
-            "sales_count": 1300
-        }, {
-            "date": 12,
-            "weather": 1100,
-            "red": 85,
-            "sales_count": 1200
-        },];
-        this.map = this.AmCharts.makeChart('chartdiv', {
+    getWeatherBySale() {
+        this.WeatherSaleService.getWeatherSales().subscribe(
+            data => {
+                this.mapData = data.map((item, index) => {
+                    item.date = data[index].Month;
+                    item.weather = data[index].weather+"00";
+                    item.sales_count = data[index].sales_count;
+                    return item;
+                });
+                console.log(this.mapData)
+            },
+            error => console.log(error),
+            () => this.weatherChartMaker()
+        );
+    }
+    weatherChartMaker() {
+        this.map = this.AmCharts.makeChart('chartdiv6', {
             "type": "serial",
             "theme": "light",
             "fontFamily": "Lato",
@@ -134,7 +96,7 @@ export class WeatherSaleGraphComponent implements OnInit {
             },
             "fontSize": 15,
             "pathToImages": "../amcharts/images/",
-            "dataProvider": chartData,
+            "dataProvider": this.mapData,
             "dataDateFormat": "MM",
             "marginTop": 0,
             "marginRight": 1,
@@ -173,17 +135,6 @@ export class WeatherSaleGraphComponent implements OnInit {
                     "showBalloon": false
                 },
                 {
-                //     // heat
-                //     "id": "g2",
-                //     "type": "line",
-                //     "title": "Red",
-                //     "valueField": "red",
-                //     "lineAlpha": 0,
-                //     "fillAlphas": 0.8,
-                //     "lineColor": "#fc4e4e",
-                //     "showBalloon": false
-                 },
-                {
                     //point
                     "id": "g3",
                     "title": "sales_count",
@@ -219,12 +170,12 @@ export class WeatherSaleGraphComponent implements OnInit {
                 "offsetY": -50
             }
         });
-
-        // we zoom chart in order to have better blur (form side to side)
-        this.chart.addListener("dataUpdated", zoomChart);
-
-        function zoomChart() {
-            this.chart.zoomToIndexes(1, chartData.length - 2);
-        }
     }
 }
+// this.AmCharts.addListener(this.chart, 'rendered', () => {
+//     this.chart.zoomToIndexes(this.chart.dataProvider.length - 2, this.chart.dataProvider.length - 1);
+// });
+// this.AmCharts.addListener(this.chart, 'dataUpdated', () => {
+//     console.log(this.chart);
+// });
+ 

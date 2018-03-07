@@ -30,11 +30,13 @@ import { AddTaskComponent } from './add-task/add-task.component';
 import { TaskService } from './services/task.service';
 import { UsMapComponent } from './us-map/us-map.component';
 import { AuthGuard } from './AuthGuard';
+import { UserSalesComponent } from './user-sales/user-sales.component';
 import { PiechartComponent } from './piechart/piechart.component';
 import { FacechartComponent } from './facechart/facechart.component';
 import { TaskItemComponent } from './task-item/task-item.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { CommonModule } from '@angular/common';
+import { UserSalesTableComponent } from './user-sales-table/user-sales-table.component';
 
 @NgModule({
   declarations: [
@@ -53,12 +55,15 @@ import { CommonModule } from '@angular/common';
     TasksComponent,
     WeatherSaleGraphComponent,
     AddTaskComponent,
+    UserSalesComponent,
     PiechartComponent,
     AddTaskComponent,
     FacechartComponent,
     TaskItemComponent,
     WeatherSaleGraphComponent,
-    ManageUsersComponent
+    ManageUsersComponent,
+    UserSalesTableComponent
+
   ],
   imports: [
     AgmCoreModule.forRoot({

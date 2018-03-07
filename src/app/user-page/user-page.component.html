@@ -78,28 +78,15 @@
     </div>
 <!-- need to add tusk to check -->
     <div class="col s12 m6 l6">
-        <ul id="task-card" class="collection with-header gradient-45deg-black-teal gradient-shadow white-text">
-          <li class="collection-header gradient-45deg-black-teal gradient-shadow white-text">
-            <h4 class="task-card-title">My Task</h4>
-            <p class="task-card-date">Date</p>
-          </li>
-          <li class="collection-item dismissable" style="touch-action: pan-y; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-            <input type="checkbox" id="task1">
-            <!-- need to add click to change style to text-decoration: line-through; -->
-            <label for="task1" style="text-decoration: none;">Title Task
-              <a href="#" class="secondary-content">
-                <span class="ultra-small">Date</span>
-              </a>
-            </label>
-        </ul>
-      </div>
+      <app-add-task></app-add-task>
+    </div>
 <!-- noa  -->
     <div class="col s6">
       <div class="card gradient-45deg-black-teal gradient-shadow min-height-100 white-text">
         <div class="card-content white-text">
-          <span class="card-title">User Tasks</span>
-          <ul>
-            <li *ngFor="">task</li>
+          <span class="card-title">Tasks</span>
+          <ul *ngFor="let task of myTasks; let i = index">
+            <app-task-item [task]="task"></app-task-item>
           </ul>
         </div>
         <div class="card-action">
@@ -111,25 +98,24 @@
     </div>
   </div>
 <!--  -->
-<h4 class="truncate center-align">need to add Boring Tables(fix the text)</h4>
-
+<h4 class="truncate center-align">text</h4>
+    <app-user-sales (currentUser)="getUser($event)"></app-user-sales>
     <app-facechart></app-facechart>
 
-
-  <!-- Log Sale Modal -->
+   <!--Log Sale Modal -->
   <div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="logSaleClicked">
     <div class="modal-content">
       <h4>Log Sale</h4>
-      <form class="col s12 ">
-        <div class="container">
-          <div class="form-group">
+      <!--<form class="col s12 ">-->
+        <!--<div class="container">-->
+          <!--<div class="form-group">-->
             <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control"
               #search [formControl]="searchControl">
-          </div>
+          <!--</div>-->
           <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
             <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
           </agm-map>
-        </div>
+        <!--</div>-->
         <select materialize="material_select" [materializeSelectOptions]="products" (change)="getSKU()" name="chosenProduct" [(ngModel)]="sale.product_id_fk">
           <option [value]="" disabled>Product</option>
           <option value={{product.product_id}} *ngFor="let product of products; let i = index">{{product.product_name}}</option>
@@ -142,7 +128,7 @@
           <input placeholder="Number of units" id="unit_number" type="number" class="validate" name="sales_count" [(ngModel)]="sale.sales_count">
           <label for="number">Units Sold</label>
         </div>
-      </form>
+      <!--</form>-->
     </div>
     <div class="modal-footer">
       <a class="waves-effect waves-green btn-flat" (click)="closeLog()">Dismiss</a>
@@ -150,51 +136,5 @@
     </div>
   </div>
 
-  <!-- Order Inventory Modal -->
-  <div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="orderInventory">
-    <div class="modal-content">
-      <h4>Choose inventory:</h4>
-      <form class="col s12">
-        <div class="row">
-          <select materialize="material_select" [materializeSelectOptions]="selectOptions">
-            <option [value]="">Existing product</option>
-            <option [value]="">New product</option>
-          </select>
-          <div class="input-field col s6">
-            <input placeholder="product" id="product" type="product" class="validate">
-            <!--<label for="first_name">Date</label>-->
-          </div>
-          <select materialize="material_select" [materializeSelectOptions]="selectOptions">
-            <option [value]="" disabled>product</option>
-          </select>
-          <div class="input-field col s6">
-            <input placeholder="units" id="units" type="number" class="validate">
-            <!--<label for="first_name">Date</label>-->
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="modal-footer">
-      <a class="waves-effect waves-green btn-flat" (click)="closeOrder()">Dismiss</a>
-      <a class="modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
-    </div>
-  </div>
+
   <!-- Revert Modal -->
-  <div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="revert">
-    <div class="modal-content">
-      <h4>Log Sale</h4>
-      <form class="col s12">
-        <div class="row">
-          <div class="input-field col s6">
-            <input placeholder="task" id="text" type="text" class="validate">
-            <label for="task">Start dialog about task</label>
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="modal-footer">
-      <a class="waves-effect waves-green btn-flat" (click)="closeRevert()">Dismiss</a>
-      <a class="modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
-    </div>
-  </div>
-</div>

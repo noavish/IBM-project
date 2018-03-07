@@ -1,16 +1,19 @@
 <div class="row">
   <form class="col s12">
     <div class="row">
-      <div class="input-field col s6">
-        <input id="task" type="text" class="validate" name="task" [(ngModel)]="task.task_text">
+      <div class="input-field">
+        <input type="text" class="validate task" name="task" [(ngModel)]="task.task_text">
         <label for="task">Task</label>
       </div>
-
-      <select *ngIf="user?.level=='manager'; else user_menu" class="col s4" materialize="material_select" [materializeSelectOptions]="users" name="user" [(ngModel)]="task.assign_to_id">
+    </div>
+    <div class="row">
+      <select *ngIf="user?.level=='manager'; else user_menu" title="user" materialize="material_select" [materializeSelectOptions]="users" name="user" [(ngModel)]="task.assign_to_id">
         <option [value]="" disabled>User</option>
         <option value={{user.user_id}} *ngFor="let user of users; let i = index">{{user.user_id}} | {{user.username}}</option>
       </select>
-      <div class="input-field col s2">
+    </div>
+    <div class="row">
+      <div class="input-field">
         <a class="waves-effect waves-light btn" (click)="addTask()">button</a>
       </div>
     </div>
@@ -18,7 +21,6 @@
 </div>
 
 <ng-template #user_menu>
-  <select class="col s4" materialize="material_select" name = 'user'[(ngModel)]="task.assign_to_id">
-  <option [value]="" disabled>User</option>
-  <option value=user?.user_id>{{user?.user_id}} | {{user?.username}}</option>
+  <select class="col s4" materialize="material_select" name = 'user'[(ngModel)]="task.assign_to_id" disabled>
+  <option value=user?.user_id >{{user?.user_id}} | {{user?.username}}</option>
 </select></ng-template>

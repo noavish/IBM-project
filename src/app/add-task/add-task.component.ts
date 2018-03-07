@@ -11,16 +11,21 @@ import {AuthService} from '../services/auth.service';
 })
 export class AddTaskComponent implements OnInit {
   users: any[];
+  user: any;
   task: Task = new Task();
-  creator_id = 1;
   @Output() taskAdded: EventEmitter<Task> = new EventEmitter();
-  get user(){
-    return this.authService.getUser();
-  }
+
+  // get user() {
+  //   return this.authService.getUser();
+  // }
 
   constructor( private authService: AuthService, private taskService: TaskService ) { }
 
   ngOnInit() {
+    this.authService.getCurrentUser().subscribe(
+      data => {this.user = data.user; console.log(this.user); },
+      error => console.log(error)
+    );
     this.getUsers();
   }
 
@@ -32,7 +37,10 @@ export class AddTaskComponent implements OnInit {
   }
 
   addTask() {
-    this.task.task_creator_id = this.creator_id;
+    this.task.task_creator_id = this.user.user_id;
+    if (this.user.level !== 'manager') {
+      this.task.assign_to_id = this.user.user_id;
+    }
     this.task.done = 0;
     this.taskService.addTaskToDB(this.task).subscribe(
       data => {console.log(data); this.taskAdded.emit(this.task); },

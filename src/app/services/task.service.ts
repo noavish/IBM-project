@@ -13,6 +13,10 @@ export class TaskService {
     return this.http.get<Task[]>('api/tasks');
   }
 
+  getMyTasks(user_id): Observable<Task[]> {
+    return this.http.get<Task[]>(`api/myTasks/${user_id}`);
+  }
+
   addTaskToDB(task: Task): Observable<Task> {
     return this.http.post<Task>('api/addTask', task);
   }

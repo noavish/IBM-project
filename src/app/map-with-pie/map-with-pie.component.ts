@@ -10,7 +10,7 @@ import {MaterializeAction} from "angular2-materialize";
   styleUrls: ['./map-with-pie.component.css']
 })
 export class MapWithPieComponent implements OnInit {
-  countryClicked = new EventEmitter<string|MaterializeAction>();
+  // countryClicked = new EventEmitter<string|MaterializeAction>();
   private map: AmChart;
   latlong: any = {};
   mapData: any[];
@@ -322,7 +322,7 @@ export class MapWithPieComponent implements OnInit {
     }
 
 // build map
-    this.map = this.AmCharts.makeChart('chartdiv', {
+    this.map = this.AmCharts.makeChart('chartdiv2', {
       'type': 'map',
       'projection': 'eckert6',
       'zoomControl': {
@@ -349,11 +349,11 @@ export class MapWithPieComponent implements OnInit {
     });
   }
 
-  openPie() {
-    this.countryClicked.emit({action: 'modal', params: ['open']});
-  }
+  // openPie() {
+  //   this.countryClicked.emit({action: 'modal', params: ['open']});
+  // }
 
-  closePie() {
-    this.countryClicked.emit({action: 'modal', params: ['close']});
-  }
+  // closePie() {
+  //   this.countryClicked.emit({action: 'modal', params: ['close']});
+  // }
 }

@@ -10,13 +10,36 @@
           <p class="flow-text">Hey {{user?.username}} ! </p>
           <p class="flow-text">Welcome to Fan.Co Dashboard </p>
           <div>
-            <h5 class="right-align"></h5>
-            <h4 class="truncate">Global Sales Overview for Every Country</h4>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col l12 amount-graph">
+      <app-unit-amount-graph></app-unit-amount-graph>
+    </div>
+  </div>
+  <footer class="page-footer gradient-45deg-nav-nav gradient-shadow">
+    <h4 class="truncate center-align ">Global Sales Overview for Every Country</h4>
+    <div class="row gradient-45deg-nav-nav">
+      <div class="col l12 amount-graph">
+        <app-map-with-pie></app-map-with-pie>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <p class="copyright"> © 2017 Copyright Fan.Co Team  :)</p>
+    </div>
+  </footer>
+</div>
+<!-- 
+  <h4 class="truncate center-align">Weather Sales (fix the text~)</h4>
+  <div class="row">
+    <div class="col s12 m12 l12">
+      <app-unit-amount-graph></app-unit-amount-graph>
+    </div>
+  </div>
+  
   <footer class="page-footer grey lighten-5">
     <div class="container">
       <div class="row">
@@ -25,5 +48,4 @@
         </div>
       </div>
     </div>
-  </footer>
-</div>
+  </footer> -->

@@ -1,11 +1,11 @@
-#chartdiv {
-    width: 96%;
-    height: 700px;
+#chartdiv6 {
+    width: 98%;
+    height: 500px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 15px;
+    margin-top: 15px; 
   }
-  
+   
   .amcharts-graph-g1 .amcharts-graph-fill {
     filter: url(#blur);
   }
