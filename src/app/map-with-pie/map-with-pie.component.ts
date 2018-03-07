@@ -316,11 +316,8 @@ export class MapWithPieComponent implements OnInit {
         'latitude': this.latlong[id].latitude,
         'title': dataItem.country,
         'value': value,
-<<<<<<< HEAD
         'balloonText': '<span style=\'font-size:18px;\'>[[title]] - [[value]]</span>',
-        'description': '<a class="waves-effect waves-light btn modal-trigger" (click)="openPie()">Modal</a>'
-=======
->>>>>>> origin/master
+        // 'description': '<button class="waves-effect waves-light btn modal-trigger" (click)="openPie()">Modal</button>'
       });
     }
 
