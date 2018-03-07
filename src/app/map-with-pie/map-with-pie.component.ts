@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit} from '@angular/core';
 import { AmChartsService, AmChart } from '@amcharts/amcharts3-angular';
 import { SalesService } from '../services/sales.service';
+import {MaterializeAction} from "angular2-materialize";
 
 
 @Component({
@@ -9,6 +10,7 @@ import { SalesService } from '../services/sales.service';
   styleUrls: ['./map-with-pie.component.css']
 })
 export class MapWithPieComponent implements OnInit {
+  countryClicked = new EventEmitter<string|MaterializeAction>();
   private map: AmChart;
   latlong: any = {};
   mapData: any[];
@@ -21,7 +23,7 @@ export class MapWithPieComponent implements OnInit {
           item.country_code = data[index].country_code;
           item.country = data[index].country;
           item.value = data[index].value;
-          item.color = '#d8854f';
+          item.color = '#d83872';
           return item;
         });
       },
@@ -313,7 +315,9 @@ export class MapWithPieComponent implements OnInit {
         'longitude': this.latlong[id].longitude,
         'latitude': this.latlong[id].latitude,
         'title': dataItem.country,
-        'value': value
+        'value': value,
+        'balloonText': '<span style=\'font-size:18px;\'>[[title]] - [[value]]</span>',
+        'description': '<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>'
       });
     }
 

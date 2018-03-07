@@ -17,7 +17,6 @@ import {AuthService} from '../services/auth.service';
 })
 export class UserPageComponent implements OnInit {
   logSaleClicked = new EventEmitter<string|MaterializeAction>();
-  orderInventory = new EventEmitter<string|MaterializeAction>();
   revert = new EventEmitter<string|MaterializeAction>();
   sale: Sale = new Sale();
   timeStamp = new Date();
@@ -96,16 +95,8 @@ export class UserPageComponent implements OnInit {
     this.getProducts();
   }
 
-  openOrderInventory() {
-    this.orderInventory.emit({action: 'modal', params: ['open']});
-  }
-
   closeLog() {
     this.logSaleClicked.emit({action: 'modal', params: ['close']});
-  }
-
-  closeOrder() {
-    this.orderInventory.emit({action: 'modal', params: ['close']});
   }
 
   markTaskDone() {
