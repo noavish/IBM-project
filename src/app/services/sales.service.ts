@@ -22,7 +22,11 @@ export class SalesService {
     return this.http.get<any>('/api/amount');
   }
 
-  getSalesByPerson(id):Observable<any> {
+  getSalesBySKU(): Observable<any> {
+    return this.http.get('/api/skusales');
+  }
+
+  getSalesByPerson(id): Observable<any> {
     return this.http.get<any>(`/api/amount/${id}`);
   }
 
@@ -44,6 +48,6 @@ export class SalesService {
 
   getBestSellersFromDB(): Observable<any> {
     return this.http.get<any>('/api/bestSellers');
-  };
+  }
 }
 
