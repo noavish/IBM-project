@@ -106,16 +106,16 @@
   <div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="logSaleClicked">
     <div class="modal-content">
       <h4>Log Sale</h4>
-      <form class="col s12 ">
-        <div class="container">
-          <div class="form-group">
+      <!--<form class="col s12 ">-->
+        <!--<div class="container">-->
+          <!--<div class="form-group">-->
             <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control"
               #search [formControl]="searchControl">
-          </div>
+          <!--</div>-->
           <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
             <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
           </agm-map>
-        </div>
+        <!--</div>-->
         <select materialize="material_select" [materializeSelectOptions]="products" (change)="getSKU()" name="chosenProduct" [(ngModel)]="sale.product_id_fk">
           <option [value]="" disabled>Product</option>
           <option value={{product.product_id}} *ngFor="let product of products; let i = index">{{product.product_name}}</option>
@@ -128,7 +128,7 @@
           <input placeholder="Number of units" id="unit_number" type="number" class="validate" name="sales_count" [(ngModel)]="sale.sales_count">
           <label for="number">Units Sold</label>
         </div>
-      </form>
+      <!--</form>-->
     </div>
     <div class="modal-footer">
       <a class="waves-effect waves-green btn-flat" (click)="closeLog()">Dismiss</a>
@@ -138,21 +138,3 @@
 
 
   <!-- Revert Modal -->
-  <div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="revert">
-    <div class="modal-content">
-      <h4>Log Sale</h4>
-      <form class="col s12">
-        <div class="row">
-          <div class="input-field col s6">
-            <input placeholder="task" id="text" type="text" class="validate">
-            <label for="task">Start dialog about task</label>
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="modal-footer">
-      <a class="waves-effect waves-green btn-flat" (click)="closeRevert()">Dismiss</a>
-      <a class="modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
-    </div>
-  </div>
-</div>
