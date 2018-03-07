@@ -99,7 +99,7 @@
   </div>
 <!--  -->
 <h4 class="truncate center-align">need to add Boring Tables(fix the text)</h4>
-
+    <app-user-sales (currentUser)="getUser($event)"></app-user-sales>
     <app-facechart></app-facechart>
 
   <!-- Log Sale Modal -->
@@ -136,35 +136,7 @@
     </div>
   </div>
 
-  <!-- Order Inventory Modal -->
-  <div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="orderInventory">
-    <div class="modal-content">
-      <h4>Choose inventory:</h4>
-      <form class="col s12">
-        <div class="row">
-          <select materialize="material_select" [materializeSelectOptions]="selectOptions">
-            <option [value]="">Existing product</option>
-            <option [value]="">New product</option>
-          </select>
-          <div class="input-field col s6">
-            <input placeholder="product" id="product" type="product" class="validate">
-            <!--<label for="first_name">Date</label>-->
-          </div>
-          <select materialize="material_select" [materializeSelectOptions]="selectOptions">
-            <option [value]="" disabled>product</option>
-          </select>
-          <div class="input-field col s6">
-            <input placeholder="units" id="units" type="number" class="validate">
-            <!--<label for="first_name">Date</label>-->
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="modal-footer">
-      <a class="waves-effect waves-green btn-flat" (click)="closeOrder()">Dismiss</a>
-      <a class="modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
-    </div>
-  </div>
+
   <!-- Revert Modal -->
   <div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="revert">
     <div class="modal-content">

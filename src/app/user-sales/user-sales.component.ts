@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AmChartsService, AmChart } from '@amcharts/amcharts3-angular';
 import { SalesService } from '../services/sales.service';
 import { AuthService } from '../services/auth.service';
@@ -11,91 +11,89 @@ import { AuthService } from '../services/auth.service';
 export class UserSalesComponent implements OnInit {
 
   uSales = 4000;
-  constructor(private AmCharts: AmChartsService,private salesService: SalesService,private authService :AuthService) { }
+  constructor(private AmCharts: AmChartsService, private salesService: SalesService, private authService: AuthService) { }
+  @Output() currentUser: EventEmitter<any> = new EventEmitter();
   chart: AmChart;
   user: any;
 
   ngOnInit() {
-    this.authService.getCurrentUser().subscribe(data => {
-      this.user = data;
-
-    },
-      (error2 => console.log(error2)),
-      () => {this.getDataForGrafh()}
-      );;
-  
-    
+    this.authService.getCurrentUser().subscribe(
+      data => {
+        this.user = data;
+        this.currentUser.emit(this.user.user);
+      },
+          error2 => console.log(error2),
+          () => this.getDataForGrafh()
+      );
   }
 
-    getDataForGrafh(){
-      var id=this.user.user.user_id;
+    getDataForGrafh() {
+      const id = this.user.user.user_id;
       this.salesService.getSalesByUser(id).subscribe(data => {
-        if(data[0].user_sum==undefined){
-          this.uSales =0;
-        }
-        else {
+        if (data.length < 1) {
+          this.uSales = 0;
+        } else {
           this.uSales = data[0].user_sum;
         }
-        console.log(data[0].user_sum)
       },
         (error2 => console.log(error2)),
-        () => {this.createGauge()}
+        () => {this.createGauge(); }
         );
     }
-    createGauge(){
-      this.chart = this.AmCharts.makeChart("chartdiv", {
-        "theme": "light",
-        "type": "gauge",
-        "axes": [{
-          'topText':this.uSales+'units',
-          "topTextFontSize": 12,
-          "topTextYOffset": 90,
-          "axisColor": "#3100ea",
-          "axisThickness": 1,
-          "endValue": 10000,
-          "gridInside": true,
-          "inside": true,
-          "radius": "50%",
-          "valueInterval": 1000,
-          "tickColor": "#6755dc",
-          "startAngle": -90,
-          "endAngle": 90,
-          "unit": "",
-          "bandOutlineAlpha": 0,
-          "bands": [{
-            "color": "#0955ff",
-            "endValue": 10000,
-            "innerRadius": "105%",
-            "radius": "170%",
-            "gradientRatio": [0.5, 0, -0.5],
-            "startValue": 0
+    createGauge() {
+      this.chart = this.AmCharts.makeChart('chartdiv', {
+        'theme': 'light',
+        'type': 'gauge',
+        'axes': [{
+          'topText': this.uSales + ' ' + 'Units',
+          'topTextFontSize': 12,
+          'topTextYOffset': 90,
+          'axisColor': '#3100ea',
+          'axisThickness': 1,
+          'endValue': 10000,
+          'gridInside': true,
+          'inside': true,
+          'radius': '50%',
+          'valueInterval': 1000,
+          'tickColor': '#6755dc',
+          'startAngle': -90,
+          'endAngle': 90,
+          'unit': '',
+          'bandOutlineAlpha': 0,
+          'bands': [{
+            'color': '#0955ff',
+            'endValue': 10000,
+            'innerRadius': '105%',
+            'radius': '170%',
+            'gradientRatio': [0.5, 0, -0.5],
+            'startValue': 0
           }, {
-            "color": "#3cd363",
-            "endValue": 0,
-            "innerRadius": "105%",
-            "radius": "170%",
-            "gradientRatio": [0.5, 0, -0.5],
-            "startValue": 0
+            'color': '#3cd363',
+            'endValue': 0,
+            'innerRadius': '105%',
+            'radius': '170%',
+            'gradientRatio': [0.5, 0, -0.5],
+            'startValue': 0
           }]
         }],
-        "arrows": [{
-          "alpha": 1,
-          "innerRadius": "35%",
-          "nailRadius": 0,
-          "radius": "170%"
+        'arrows': [{
+          'alpha': 1,
+          'innerRadius': '35%',
+          'nailRadius': 0,
+          'radius': '170%'
         }]
       });
 
-      this.numSales(this.uSales,this.chart);
+      this.numSales(this.uSales, this.chart);
 
 
     }
 
-  numSales(value,chart) {
-    console.log(this.chart)
-    chart.arrows[0].value=value;
-    chart.axes[0].TopText= value + " units";
+  numSales(value, chart) {
+    console.log(this.chart);
+    chart.arrows[0].value = value;
+    chart.axes[0].TopText = value + ' units';
     // adjust darker band to new value
-    this.chart.axes[0].bands[1].endValue=value;
+    this.chart.axes[0].bands[1].endValue = value;
   }
 }
