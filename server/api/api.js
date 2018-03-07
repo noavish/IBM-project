@@ -106,7 +106,7 @@ router.get('/weathersale', function (req, res, next) {
     if (!err)
       res.send(rows);
     else
-      res.send('Error while performing Query. ');
+      res.send('Error while performing Query.');
   });
 });
 
@@ -126,7 +126,7 @@ router.post('/addTask', function (req, res, next) {
     if (!err)
       res.send(rows);
     else
-      res.send('Error while performing Query.');
+      res.send(err);
   });
 });
 
