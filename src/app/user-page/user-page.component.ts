@@ -28,7 +28,6 @@ export class UserPageComponent implements OnInit {
   channel = 1;
   user: any;
   weather = 25;
-  // location: string;
   public latitude: number;
   public longitude: number;
   public searchControl: FormControl;
@@ -95,9 +94,9 @@ export class UserPageComponent implements OnInit {
     );
   }
 
-  markAsDone() {
-    console.log('clicked', this.task);
-    console.log(this.myTasks)
+  // markAsDone() {
+  //   console.log('clicked', this.task);
+  //   console.log(this.myTasks)
     // if (this.task.done == 0) {
     //   this.task.done = 1;
     // } else {
@@ -110,7 +109,7 @@ export class UserPageComponent implements OnInit {
     //   },
     //   error => console.log(error)
     // );
-  }
+  // }
 
   getProducts() {
     this.salesService.getProductsFromDB().subscribe(

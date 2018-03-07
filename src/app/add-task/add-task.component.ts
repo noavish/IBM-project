@@ -23,7 +23,9 @@ export class AddTaskComponent implements OnInit {
 
   ngOnInit() {
     this.authService.getCurrentUser().subscribe(
-      data => this.user = data.user);
+      data => {this.user = data.user; console.log(this.user); },
+      error => console.log(error)
+    );
     this.getUsers();
   }
 
