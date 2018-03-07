@@ -18,6 +18,7 @@ agm-map {
 #card-stats {
   padding-top: 12px;
 }
+
 #content .container .row {
   margin-bottom: 0;
 }
@@ -153,6 +154,7 @@ h5 {
 .mt-5 {
   margin-top: 5% !important;
 }
+
 #card-stats{
   -webkit-animation-name: bounce;
   animation-name: bounce;
@@ -162,7 +164,7 @@ h5 {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
-  animation-fill-mode: both; 
+  animation-fill-mode: both;
 }
 
 .bounce {
@@ -200,7 +202,7 @@ h5 {
   transform: translate3d(0,-4px,0);
   }
   }
-  
+
   @keyframes bounce {
   0%, 20%, 53%, 80%, 100% {
   -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
@@ -222,4 +224,4 @@ h5 {
   }
   90% { -webkit-transform: translate3d(0,-4px,0); transform: translate3d(0,-4px,0);
   }
-  } 
+  }
