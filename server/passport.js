@@ -36,7 +36,6 @@ module.exports = function(passport) {
           if (rows.length) {
             return done(null, false);
           } else {
-            console.log(req.body)
             // if there is no user with that username
             // create the user
             var newUserMysql = {
@@ -52,7 +51,7 @@ module.exports = function(passport) {
 
             connection.query(insertQuery,[newUserMysql.username, newUserMysql.password,newUserMysql.email,newUserMysql.firstname,newUserMysql.lastname],function(err, rows) {
               if(!err){
-              return done(null, newUserMysql);
+              return done(null, newUserMysql)
 
               } else {
                 console.log(err)

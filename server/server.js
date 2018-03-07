@@ -13,12 +13,14 @@ const api = require('./api/api');
 const crypto = require('crypto');
 const config = require('./config');
 const connection = mysql.createConnection(config);
+var morgan = require('morgan')
 require('./passport')(passport); // pass passport for configuration
 
 connection.connect();
 
 const app = express();
 
+app.use(morgan('dev'))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
@@ -31,8 +33,10 @@ app.post('/login', passport.authenticate('local-login', {session:false}), (req,r
   res.send({token})
 });
 
-app.post('/register',passport.authenticate('local-signup',{}),(req,res)=>{
-  res.send('yay')
+app.post('/register',passport.authenticate('local-signup',{session:false
+}),(req,res)=>{
+  res.send('y')
+  res.status(200).send({});
 });
 
 
