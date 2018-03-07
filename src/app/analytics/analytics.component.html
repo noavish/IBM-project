@@ -1,6 +1,7 @@
 <div class="container ">
   <div id="card-stats">
     <div class="row">
+      <!-- top4 start -->
       <div class="col s12 m6 l3">
         <div class="card">
           <div class="card-content  light-blue darken-3 white-text">
@@ -75,57 +76,42 @@
       </div>
     </div>
   </div>
-  <!--chart dashboard start-->
+  <!-- top4 end -->
   <h4 class="truncate center-align">Unit Amount Grpah (fix the text~)</h4>
-  <div class="chart-dashboard">
-    <div class="row">
-      <!-- <div class="col s12 m12 l12"> -->
+  <div class="row">
+    <div class="col l6">
       <div class="card">
-        <app-unit-amount-graph></app-unit-amount-graph>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Revenue by Month
-            <i class="material-icons right">close</i>
-          </span>
-        </div>
+        <h5 class="truncate center-align">User Sales (fix the text)</h5>
+        <app-user-sales></app-user-sales>
       </div>
-      <!-- </div> -->
-      <div>
-        <h4 class="truncate center-align">Us Map (fix the text~)</h4>
-        <div class="chart-dashboard">
-          <div class="row">
-            <div class="col s12 m12 l12">
-              <div class="card">
-                <div class="card-move-up waves-effect waves-block waves-light">
-                  <div class="move-up">
-                    <p class="margin white-text">Text </p>
-                    <div>
-                      <app-us-map></app-us-map>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <h4 class="truncate center-align">Weather Sales (fix the text~)</h4>
-          <div class="chart-dashboard">
-            <div class="row">
-              <div class="col s12 m12 l12">
-                <div class="card">
-                  <div class="card-move-up waves-effect waves-block waves-light">
-                    <div class="move-up">
-                      <p class="margin white-text">Text </p>
-                      <div>
-                        <app-weather-sale-graph></app-weather-sale-graph>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    </div>
+    <div class="col l6">
+      <div class="card">
+        <h5 class="truncate center-align">Pie Chart (fix the text)</h5>
+        <app-piechart></app-piechart>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col l8">
+      <div class="card">
+        <h5 class="truncate center-align">User Sales (fix the text)</h5>
+        <app-us-map></app-us-map>
+      </div>
+    </div>
+    <div class="col l4">
+      <div class="card">
+        <h5 class="truncate center-align">Boring Table(fix the text)</h5>
+        teteet
       </div>
     </div>
   </div>
 </div>
-<app-weather-sale-graph></app-weather-sale-graph>
+<div class="row">
+  <div class="col l12">
+    <div class="card">
+      <h5 class="truncate center-align">Weather Sales (fix the text)</h5>
+      <app-weather-sale-graph></app-weather-sale-graph>
+    </div>
+  </div>
+</div>
