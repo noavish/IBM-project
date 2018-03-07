@@ -41,7 +41,7 @@ export class UserSalesComponent implements OnInit {
         );
     }
     createGauge() {
-      this.chart = this.AmCharts.makeChart('chartdiv', {
+      this.chart = this.AmCharts.makeChart('chartdiv7', {
         'theme': 'light',
         'type': 'gauge',
         'axes': [{
