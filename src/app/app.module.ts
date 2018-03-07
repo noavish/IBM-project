@@ -36,6 +36,7 @@ import { FacechartComponent } from './facechart/facechart.component';
 import { TaskItemComponent } from './task-item/task-item.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { CommonModule } from '@angular/common';
+import { UserSalesTableComponent } from './user-sales-table/user-sales-table.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { CommonModule } from '@angular/common';
     FacechartComponent,
     TaskItemComponent,
     WeatherSaleGraphComponent,
-    ManageUsersComponent
+    ManageUsersComponent,
+    UserSalesTableComponent
 
   ],
   imports: [
