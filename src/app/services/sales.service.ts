@@ -3,12 +3,12 @@ import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Product } from '../models/productModel';
 import { SKU } from '../models/skuModel';
-import {Sale} from '../models/saleModel';
+import { Sale } from '../models/saleModel';
 
 @Injectable()
 export class SalesService {
 
-  constructor( private http: HttpClient ) { }
+  constructor(private http: HttpClient) { }
 
   getSalesSums(): Observable<any[]> {
     return this.http.get<any[]>('/api/sales');
@@ -23,9 +23,8 @@ export class SalesService {
   }
 
   getSalesBySKU(): Observable<any> {
-    return this.http.get('/api/skusales');
+    return this.http.get('/api/skusales')
   }
-
   getSalesByPerson(id): Observable<any> {
     return this.http.get<any>(`/api/amount/${id}`);
   }
@@ -50,4 +49,5 @@ export class SalesService {
     return this.http.get<any>('/api/bestSellers');
   }
 }
+  
 

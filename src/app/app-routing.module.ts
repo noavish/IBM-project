@@ -16,6 +16,7 @@ import { DashBoardComponent } from './dash-board/dash-board.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { PiechartComponent } from './piechart/piechart.component';
+import { FacechartComponent } from './facechart/facechart.component';
 
 
 const routes: Routes = [
@@ -31,7 +32,7 @@ const routes: Routes = [
   { path: 'tasks', canActivate : [AuthGuard], component: TasksComponent },
   { path: 'pie', component: PiechartComponent },
   { path: 'face', component: FacechartComponent }
-];
+  ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

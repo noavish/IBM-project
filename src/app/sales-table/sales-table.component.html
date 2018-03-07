@@ -1,0 +1,23 @@
+
+<h4><strong><u>{{title}}</u></strong></h4>
+<table class="striped">
+  <tr>
+    <th>Date</th>
+    <th>State</th>
+    <th>City</th>
+    <th>Product</th>
+    <th>Sales</th>
+  </tr>
+
+  <tr *ngFor="let item of SalesTableData; let idx = index">
+    <td>{{item.Date}}</td>
+    <td>{{item.State}}</td>
+    <td>{{item.City}}</td>
+    <td>{{item.Product}}</td>
+    <td>{{item.Sales}}</td>
+
+  </tr>
+
+ 
+</table>
+
