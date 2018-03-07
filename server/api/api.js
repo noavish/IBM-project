@@ -96,7 +96,7 @@ router.get('/usersaelslog/:userID', function (req, res, next){
       res.send(rows);
       console.log(rows)
     }
-      
+
     else
       res.send('Error while performing Query. ');
   });
@@ -138,7 +138,7 @@ router.post('/addTask', function (req, res, next) {
     if (!err)
       res.send(rows);
     else
-      res.send('Error while performing Query.');
+      console.log(err)
   });
 });
 
