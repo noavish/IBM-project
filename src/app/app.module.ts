@@ -24,12 +24,13 @@ import { AmChartsService } from '@amcharts/amcharts3-angular';
 import { JwtModule } from '@auth0/angular-jwt';
 import { DashBoardComponent } from './dash-board/dash-board.component';
 import { TasksComponent } from './tasks/tasks.component';
-import { WeatherSaleService } from './services/weather-sale.service'
-import { WeatherSaleGraphComponent } from './weather-sale-graph/weather-sale-graph.component'
-import { AddTaskComponent } from './add-task/add-task.component'
+import { WeatherSaleService } from './services/weather-sale.service';
+import { WeatherSaleGraphComponent } from './weather-sale-graph/weather-sale-graph.component';
+import { AddTaskComponent } from './add-task/add-task.component';
 import { TaskService } from './services/task.service';
 import { UsMapComponent } from './us-map/us-map.component';
 import { AuthGuard } from './AuthGuard';
+import { UserSalesComponent } from './user-sales/user-sales.component';
 import { PiechartComponent } from './piechart/piechart.component';
 import { FacechartComponent } from './facechart/facechart.component';
 import { TaskItemComponent } from './task-item/task-item.component';
@@ -53,18 +54,21 @@ import { CommonModule } from '@angular/common';
     TasksComponent,
     WeatherSaleGraphComponent,
     AddTaskComponent,
+    UserSalesComponent,
     PiechartComponent,
     AddTaskComponent,
     FacechartComponent,
     TaskItemComponent,
     WeatherSaleGraphComponent,
     ManageUsersComponent
+
   ],
   imports: [
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAQdvgsGn1ZefzGQ8zS7W5Y4myZSlI4Vfk',
       // apiKey: 'AIzaSyDOVMcO9XGEh9iGT_16wp_s4swj575tj_Y',
-      libraries: ['places']
+      libraries: ['places'],
+      language: 'en',
     }),
     BrowserModule,
     CommonModule,

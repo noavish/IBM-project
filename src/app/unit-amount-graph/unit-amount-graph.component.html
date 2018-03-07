@@ -3,12 +3,10 @@
 </div>
 <div class=" col s4 ">
   <form>
-    <p class="flow-text">Custom graph (fix the text) </p>
-    <select style="display: block" [(ngModel)]="option" name="option">
-      <option [value]="1">1</option>
-      <option [value]="2">2</option>
-      <option [value]="3">3</option>
-    </select>
-    <a class="btn waves-effect waves-light light-blue darken-4" (click)="getSalesbyUser()">Change</a>
-  </form>
+        <p class="flow-text">Custom graph (fix the text) </p>
+      <select style="display: block" [(ngModel)]="option" name="option">
+        <option *ngFor="let user of users"[value]="user.user_id">{{user.username}}</option>
+      </select>
+      <a class="btn waves-effect waves-light light-blue darken-4" (click)="getSalesbyUser()">Change</a>
+    </form>
 </div>
