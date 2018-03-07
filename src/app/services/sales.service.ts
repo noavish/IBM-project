@@ -14,6 +14,10 @@ export class SalesService {
     return this.http.get<any[]>('/api/sales');
   }
 
+  getCountrySalesByProducts(country_code: string): Observable<any[]> {
+    return this.http.get<any[]>(`/api/sales/${country_code}`);
+  }
+
   getSalesSumCountries(): Observable<any[]> {
     return this.http.get<any[]>('/api/countriessales');
   }
