@@ -317,7 +317,7 @@ export class MapWithPieComponent implements OnInit {
         'title': dataItem.country,
         'value': value,
         'balloonText': '<span style=\'font-size:18px;\'>[[title]] - [[value]]</span>',
-        // 'description': '<button class="waves-effect waves-light btn modal-trigger" (click)="openPie()">Modal</button>'
+        'description': '<div>hello</div>'
       });
     }
 
