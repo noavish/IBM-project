@@ -75,6 +75,12 @@
                   <span class="nav-text">Signin</span>
                 </a>
               </li>
+              <li class="bold active" *ngIf="user?.level == 'manager'">
+                <a class="waves-effect collapsible-header waves-cyan active" (click)="openManageUsers()">
+                  <i class="material-icons">dashboard</i>
+                  <span class="nav-text">Manage Users</span>
+                </a>
+              </li>
             </ul>
           </li>
         </ul>

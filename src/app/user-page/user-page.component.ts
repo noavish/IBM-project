@@ -7,7 +7,9 @@ import { Sale } from '../models/saleModel';
 import { FormControl } from '@angular/forms';
 import { } from 'googlemaps';
 import { MapsAPILoader } from '@agm/core';
-import {AuthService} from '../services/auth.service';
+import { AuthService } from '../services/auth.service';
+import { Task } from '../models/taskModel';
+import { TaskService } from '../services/task.service';
 
 
 @Component({
@@ -17,29 +19,30 @@ import {AuthService} from '../services/auth.service';
 })
 export class UserPageComponent implements OnInit {
   logSaleClicked = new EventEmitter<string|MaterializeAction>();
-  orderInventory = new EventEmitter<string|MaterializeAction>();
   revert = new EventEmitter<string|MaterializeAction>();
   sale: Sale = new Sale();
   timeStamp = new Date();
   products: Product[];
   chosenSKU: number;
   items: any[];
-  channel: number = 1;
-  user_id: number = 9;
-  weather: number = 25;
+  channel = 1;
+  user: any;
+  weather = 25;
   // location: string;
   public latitude: number;
   public longitude: number;
   public searchControl: FormControl;
   public zoom: number;
+  myTasks: Task[];
 
-  @ViewChild("search")
+  @ViewChild('search')
   public searchElementRef: ElementRef;
 
-  constructor( private salesService: SalesService, private mapsAPILoader: MapsAPILoader, private ngZone: NgZone,private authservice:AuthService ) { }
+  constructor( private salesService: SalesService, private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private authservice: AuthService, private taskService: TaskService ) { }
 
   ngOnInit() {
-    // this.getAllSales();
+    // this.getUserTasks
+    this.getTasks();
     // set google maps defaults
     this.zoom = 4;
     this.latitude = 39.8282;
@@ -54,9 +57,9 @@ export class UserPageComponent implements OnInit {
     // load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
       const autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-        types: ["(cities)"]
+        types: ['(cities)']
       });
-      autocomplete.addListener("place_changed", () => {
+      autocomplete.addListener('place_changed', () => {
         this.ngZone.run(() => {
           // get the place result
           const place: google.maps.places.PlaceResult = autocomplete.getPlace();
@@ -75,6 +78,20 @@ export class UserPageComponent implements OnInit {
         });
       });
     });
+  }
+
+  getUser(currentUser: any) {
+    this.user = currentUser;
+    console.log(this.user);
+  }
+
+  getTasks() {
+    this.taskService.getTasks().subscribe(
+      data => {
+        this.myTasks = data;
+      },
+      error => console.log(error)
+    );
   }
 
   getProducts() {
@@ -96,16 +113,8 @@ export class UserPageComponent implements OnInit {
     this.getProducts();
   }
 
-  openOrderInventory() {
-    this.orderInventory.emit({action: 'modal', params: ['open']});
-  }
-
   closeLog() {
     this.logSaleClicked.emit({action: 'modal', params: ['close']});
-  }
-
-  closeOrder() {
-    this.orderInventory.emit({action: 'modal', params: ['close']});
   }
 
   markTaskDone() {
@@ -124,7 +133,7 @@ export class UserPageComponent implements OnInit {
     this.sale.time = this.timeStamp.toISOString().split('T')[1].split('.')[0];
     this.sale.item_id_fk = this.items.find(item => item.product_id_fk == this.sale.product_id_fk && item.sku_id_fk == this.chosenSKU).item_id;
     this.sale.weather = this.weather;
-    this.sale.user_id_fk = this.user_id;
+    this.sale.user_id_fk = this.user.user_id;
     this.salesService.addSaleToDB(this.sale).subscribe(
       data => console.log(data),
       error => console.log(error)
@@ -139,7 +148,7 @@ export class UserPageComponent implements OnInit {
   // }
 
   private setCurrentPosition() {
-    if ("geolocation" in navigator) {
+    if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;

@@ -14,7 +14,7 @@ export class TaskItemComponent implements OnChanges, OnInit {
   }
   @Input() task: Task = new Task();
 
-  constructor( private taskService: TaskService) { }
+  constructor( private taskService: TaskService ) { }
 
   ngOnInit() {
     console.log(this.task);
