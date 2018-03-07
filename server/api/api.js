@@ -90,6 +90,18 @@ router.get('/usersaels/:userID', function (req, res, next) {
   });
 });
 
+router.get('/usersaelslog/:userID', function (req, res, next){
+  connection.query('SELECT user_id_fk,date,country,city, sales_count,username  FROM fanco.sales   INNER JOIN  users ON users.user_id=fanco.sales.user_id_fk  WHERE user_id_fk= ?  GROUP BY user_id_fk', req.params.userID, function (err, rows, fields) {
+    if (!err){
+      res.send(rows);
+      console.log(rows)
+    }
+      
+    else
+      res.send('Error while performing Query. ');
+  });
+});
+
 
 router.post('/logSale', function (req, res, next) {
   connection.query('insert into sales set ?', req.body, function(err, rows, fields) {

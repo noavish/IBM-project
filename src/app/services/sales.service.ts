@@ -37,6 +37,11 @@ export class SalesService {
     return this.http.get<Product[]>(`/api/usersaels/${userID}`);
   }
 
+  getSalesLogByUser(userID): Observable<any> {
+    return this.http.get<Product[]>(`/api/usersaelslog/${userID}`);
+  }
+
+
   getSKUFromDB(product_id: number): Observable<any[]> {
     return this.http.get<any[]>(`/api/sku/${product_id}`);
   }
