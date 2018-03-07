@@ -7,6 +7,7 @@ export class WeatherSaleService {
 
   constructor(private http: HttpClient) { }
   
-
-
+  getWeatherSales(): Observable<any> {
+    return this.http.get<any>(`/api/weathersale`);
+  }
 }
