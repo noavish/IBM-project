@@ -14,10 +14,8 @@
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
 }
-
-
 .card-sizing{
-    width:70%;
+    width:90%;
 }
 .card-body{
     padding:1rem;
