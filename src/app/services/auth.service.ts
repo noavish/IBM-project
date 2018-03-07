@@ -8,6 +8,7 @@ import { CanActivate, Router } from '@angular/router';
 export class AuthService {
 
 
+  static getUser: any;
   private user;
 
   constructor(private http: HttpClient, private router: Router) { }

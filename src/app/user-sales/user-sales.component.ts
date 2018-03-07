@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AmChartsService, AmChart } from '@amcharts/amcharts3-angular';
 import { SalesService } from '../services/sales.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-user-sales',
@@ -10,12 +11,14 @@ import { SalesService } from '../services/sales.service';
 export class UserSalesComponent implements OnInit {
 
   uSales = 4000;
-  constructor(private AmCharts: AmChartsService,private salesService: SalesService) { }
+  constructor(private AmCharts: AmChartsService,private salesService: SalesService,private authService :AuthService) { }
   chart: AmChart;
-  userID: number=2;
+  user: any;
 
-  ngOnInit() {
-    this.salesService.getSalesByUser(this.userID).subscribe(data => {
+  async ngOnInit() {
+    this.user=await this.authService.getUserDetail();
+    console.log(this.user);
+    this.salesService.getSalesByUser(this.user.user_id).subscribe(data => {
       this.uSales = data[0].user_sum;
       console.log(data[0].user_sum)
     },
