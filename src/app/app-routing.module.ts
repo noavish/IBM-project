@@ -18,6 +18,7 @@ import { UserSalesComponent } from './user-sales/user-sales.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { PiechartComponent } from './piechart/piechart.component';
 import { FacechartComponent } from './facechart/facechart.component';
+import { UserSalesTableComponent } from './user-sales-table/user-sales-table.component';
 
 const routes: Routes = [
   //need change root route
@@ -33,7 +34,7 @@ const routes: Routes = [
   { path: 'pie',component:PiechartComponent },
   { path: 'face', component: FacechartComponent },
   { path: 'weathersale', component: WeatherSaleGraphComponent },
-  { path: 'sh', component: UserSalesComponent },
+  { path: 'sh', component: UserSalesTableComponent },
 ];
 
 @NgModule({
