@@ -250,4 +250,15 @@ router.get('/monthlyBestSeller', function (req, res, next) {
   });
 });
 
+// GetTotalSalesToday
+router.get('/todaysSales/:user', (req,res)=>{
+  connection.query('select sum(sales_count) as count from sales join users where DATE(date)=curdate() and username= ?', req.params.user, (err,result)=>{
+    if(!err){
+      res.send(result)
+    } else {
+      res.send(err)
+    }
+  })
+})
+
 module.exports = router;

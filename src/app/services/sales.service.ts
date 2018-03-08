@@ -49,6 +49,10 @@ export class SalesService {
     return this.http.get<Product[]>(`/api/usersaelslog/${userID}`);
   }
 
+  getTodaysSales(user): Observable<any> {
+    return this.http.get<any>(`/api/todaysSales/${user}`);
+  }
+
 
   getSKUFromDB(product_id: number): Observable<any[]> {
     return this.http.get<any[]>(`/api/sku/${product_id}`);
