@@ -1,6 +1,6 @@
-import {Component, AfterViewInit, OnDestroy, OnInit} from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, OnInit } from '@angular/core';
 import { AmChartsService, AmChart } from '@amcharts/amcharts3-angular';
-import {SalesService} from '../services/sales.service';
+import { SalesService } from '../services/sales.service';
 
 @Component({
   selector: 'app-facechart',
@@ -10,8 +10,8 @@ import {SalesService} from '../services/sales.service';
 export class FacechartComponent implements OnInit, OnDestroy {
   graphData: any[];
   private chart: AmChart;
-
-  constructor(private AmCharts: AmChartsService, private salesService: SalesService) {}
+  facenum = 0;
+  constructor(private AmCharts: AmChartsService, private salesService: SalesService) { }
 
   ngOnInit() {
     this.salesService.getBestSellersFromDB().subscribe(
@@ -19,14 +19,15 @@ export class FacechartComponent implements OnInit, OnDestroy {
         item.bullet = this.randonImg();
         item.color = this.randomColor();
         return item;
-    }),
+      }),
       error => console.log(error),
       () => this.createChart()
     );
   }
 
   randonImg() {
-    return 'https://www.amcharts.com/lib/images/faces/F0' + Math.ceil(Math.random() * 5) + '.png';
+    this.facenum++;
+    return 'https://www.amcharts.com/lib/images/faces/F0' + this.facenum + '.png';
   }
 
   randomColor() {
@@ -40,7 +41,7 @@ export class FacechartComponent implements OnInit, OnDestroy {
       'dataProvider': this.graphData,
       'startDuration': 1,
       'graphs': [{
-        'balloonText': '<span style=\'font-size:13px;\'>[[category]]: <b>[[value]]</b></span>',
+        'balloonText': '<span style=\'font-size:13px;\'>[[category]]: <b>[[value]]$</b></span>',
         'bulletOffset': 10,
         'bulletSize': 52,
         'colorField': 'color',
@@ -61,7 +62,8 @@ export class FacechartComponent implements OnInit, OnDestroy {
         'axisAlpha': 0,
         'gridAlpha': 0,
         'inside': true,
-        'tickLength': 0
+        'tickLength': 0,
+        'zeroGridAlpha': 0
       },
       'export': {
         'enabled': true

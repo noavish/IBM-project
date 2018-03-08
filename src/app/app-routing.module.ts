@@ -34,7 +34,7 @@ const routes: Routes = [
   { path: 'pie',component:PiechartComponent },
   { path: 'face', component: FacechartComponent },
   { path: 'weathersale', component: WeatherSaleGraphComponent },
-  { path: 'sh', component: UserSalesTableComponent },
+  { path: 'sh', component: FacechartComponent },
 ];
 
 @NgModule({
