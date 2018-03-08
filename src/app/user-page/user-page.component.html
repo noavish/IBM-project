@@ -1,3 +1,4 @@
+<div class="container2">
 <div class="container">
   <div id="card-stats">
     <div class="row">
@@ -11,6 +12,7 @@
             <div class="col s5 m5 right-align">
               <h5 class="mb-0">New</h5>
               <p>+2</p>
+              <p class="no-margin">Growth</p>
             </div>
           </div>
         </div>
@@ -23,9 +25,10 @@
               <p>Clients</p>
             </div>
             <div class="col s5 m5 right-align">
-              <h5 class="mb-0">1885</h5>
+              <h5 class="mb-0">15</h5>
               <p class="no-margin">New</p>
               <p>1,12,900</p>
+              
             </div>
           </div>
         </div>
@@ -64,58 +67,81 @@
   </div>
   <h5 class="truncate center-align">User Dashboard</h5>
   <div class="row">
-    <div class="col s12 m6 l6">
-      <div class="card gradient-45deg-black-teal gradient-shadow min-height-100 white-text">
-        <div class="card-content white-text">
-          <span class="card-title">User Actions</span>
-          <p>Log your sales, order inventory and more</p>
+    <div class="col s12 m8 l8 ">
+      <nav class="nav-extended gardient-tasks">
+        <div class="nav-wrapper">
+          <a class="brand-logo center">Tasks</a>
+          <a href="#" data-activates="mobile-demo" class="button-collapse">
+            <i class="material-icons">menu</i>
+          </a>
         </div>
-        <div class="card-action">
-          <!-- Modal Trigger -->
-          <a class="waves-effect waves-light btn blue-grey lighten-5 black-text" (click)="openLogSale()">Log Sale</a>
-        </div>
-      </div>
-    </div>
-<!-- need to add tusk to check -->
-    <div class="col s12 m4 l4">
-      <app-add-task></app-add-task>
-    </div>
-<!-- noa  -->
-    <div class="col s6">
-      <div class="card gradient-45deg-black-teal gradient-shadow min-height-100 white-text">
-        <div class="card-content white-text">
-          <span class="card-title">Tasks</span>
-          <ul *ngFor="let task of myTasks; let i = index">
-            <app-task-item [task]="task"></app-task-item>
+        <div class="nav-content">
+          <ul class="tabs tabs-transparent">
+            <li class="tab">
+              <a href="#test1">Add Task</a>
+            </li>
+            <li class="tab">
+              <a class="active" href="#test2">User Task Log</a>
+            </li>
           </ul>
         </div>
-        <div class="card-action">
-          <!-- Modal Trigger -->
-          <a class="waves-effect waves-light btn blue-grey lighten-5 black-text" (click)="markTaskDone()">Done</a>
-          <a class="waves-effect waves-light btn blue-grey lighten-5 black-text" (click)="openRevert()">Revert</a>
+      </nav>
+      <div id="test1" class="col s12">
+        <div class="col s12 m8 l8 ">
+          <div class=" gradient-shadow min-height-100 white-text">
+            <div class="card-content black-text">
+              <app-add-task></app-add-task>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="test2" class="col s12">
+        <div class="col s12 m12 l12 ">
+          <div class=" min-height-100 black-text">
+            <div class="card-content black-text">
+              <app-user-sales-table></app-user-sales-table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+    <div class="col s12 m4 l4">
+      <app-user-sales (currentUser)="getUser($event)"></app-user-sales>
+    </div>
   </div>
-<!--  -->
-<h4 class="truncate center-align">need to add Boring Tables(fix the text)</h4>
-    <app-user-sales (currentUser)="getUser($event)"></app-user-sales>
+  <!-- <div class="row">
+    <div class="col s12 m12 l12 ">
+      <div class="card">
+        <div class="card gradient-45deg-black-teal  min-height-100 white-text">
+          <div class="card-content white-text">
+            <span class="card-title">Add Tasdasdasdasdask</span>
 
 
-   <!--Log Sale Modal -->
+            <app-add-task></app-add-task>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+
+  <!-- Log Sale Modal -->
   <div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="logSaleClicked">
     <div class="modal-content">
       <h4>Log Sale</h4>
-      <!--<form class="col s12 ">-->
-        <!--<div class="container">-->
-          <!--<div class="form-group">-->
+      <form class="col s12">
+        <div class="container">
+          <div class="form-group">
             <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control"
               #search [formControl]="searchControl">
-          <!--</div>-->
+          </div>
           <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
             <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
           </agm-map>
-        <!--</div>-->
+        </div>
         <select materialize="material_select" [materializeSelectOptions]="products" (change)="getSKU()" name="chosenProduct" [(ngModel)]="sale.product_id_fk">
           <option [value]="" disabled>Product</option>
           <option value={{product.product_id}} *ngFor="let product of products; let i = index">{{product.product_name}}</option>
@@ -128,7 +154,7 @@
           <input placeholder="Number of units" id="unit_number" type="number" class="validate" name="sales_count" [(ngModel)]="sale.sales_count">
           <label for="number">Units Sold</label>
         </div>
-      <!--</form>-->
+      </form>
     </div>
     <div class="modal-footer">
       <a class="waves-effect waves-green btn-flat" (click)="closeLog()">Dismiss</a>
@@ -136,5 +162,90 @@
     </div>
   </div>
 
+  <!-- Order Inventory Modal -->
+  <div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="orderInventory">
+    <div class="modal-content">
+      <h4>Choose inventory:</h4>
+      <form class="col s12">
+        <div class="row">
+          <select materialize="material_select" [materializeSelectOptions]="selectOptions">
+            <option [value]="">Existing product</option>
+            <option [value]="">New product</option>
+          </select>
+          <div class="input-field col s6">
+            <input placeholder="product" id="product" type="product" class="validate">
+            <!--<label for="first_name">Date</label>-->
+          </div>
+          <select materialize="material_select" [materializeSelectOptions]="selectOptions">
+            <option [value]="" disabled>product</option>
+          </select>
+          <div class="input-field col s6">
+            <input placeholder="units" id="units" type="number" class="validate">
+            <!--<label for="first_name">Date</label>-->
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <a class="waves-effect waves-green btn-flat" (click)="closeOrder()">Dismiss</a>
+      <a class="modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
+    </div>
+  </div>
 
   <!-- Revert Modal -->
+  <div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="revert">
+    <div class="modal-content">
+      <h4>Log Sale</h4>
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s6">
+            <input placeholder="task" id="text" type="text" class="validate">
+            <label for="task">Start dialog about task</label>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <a class="waves-effect waves-green btn-flat" (click)="closeRevert()">Dismiss</a>
+      <a class="modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
+    </div>
+  </div>
+
+
+
+
+  <!--############################ -->
+  <!--Log Sale Modal -->
+  <div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="logSaleClicked">
+    <div class="modal-content">
+      <h4>Log Sale</h4>
+      <!--<form class="col s12 ">-->
+      <!--<div class="container">-->
+      <!--<div class="form-group">-->
+      <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control"
+        #search [formControl]="searchControl">
+      <!--</div>-->
+      <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+        <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+      </agm-map>
+      <!--</div>-->
+      <select materialize="material_select" [materializeSelectOptions]="products" (change)="getSKU()" name="chosenProduct" [(ngModel)]="sale.product_id_fk">
+        <option [value]="" disabled>Product</option>
+        <option value={{product.product_id}} *ngFor="let product of products; let i = index">{{product.product_name}}</option>
+      </select>
+      <select materialize="material_select" [materializeSelectOptions]="items" name="chosenSKU" [(ngModel)]="chosenSKU">
+        <option [value]="" disabled>Item</option>
+        <option value={{item.sku_id}} *ngFor="let item of items; let i = index">{{item.sku_name}}</option>
+      </select>
+      <div class="input-field col s6">
+        <input placeholder="Number of units" id="unit_number" type="number" class="validate" name="sales_count" [(ngModel)]="sale.sales_count">
+        <label for="number">Units Sold</label>
+      </div>
+      <!--</form>-->
+    </div>
+    <div class="modal-footer">
+      <a class="waves-effect waves-green btn-flat" (click)="closeLog()">Dismiss</a>
+      <a class="modal-action modal-close waves-effect waves-green btn-flat" (click)="logSale()">Submit</a>
+    </div>
+  </div>
+</div>

@@ -97,6 +97,34 @@
     opacity: 1;
     }
     } 
+    .zoomIn2 {
+        -webkit-animation-name: zoomIn;
+        animation-name: zoomIn;
+        -webkit-animation-duration: 7s;
+        animation-duration: 6s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        }
+        @-webkit-keyframes zoomIn {
+        0% {
+        opacity: 0;
+        -webkit-transform: scale3d(.3, .3, .3);
+        transform: scale3d(.3, .3, .3);
+        }
+        50% {
+        opacity: 1;
+        }
+        }
+        @keyframes zoomIn {
+        0% {
+        opacity: 0;
+        -webkit-transform: scale3d(.3, .3, .3);
+        transform: scale3d(.3, .3, .3);
+        }
+        50% {
+        opacity: 1;
+        }
+        } 
     .pulse {
         -webkit-animation-name: pulse;
         animation-name: pulse;
