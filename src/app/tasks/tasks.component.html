@@ -1,20 +1,28 @@
 <!-- <app-navbar></app-navbar> -->
-<div class="col s12 addTask">
-  <app-add-task (taskAdded)="getTasks($event)"></app-add-task>
+<div class="col l12">
+  <div class="addTask">
+    <app-add-task (taskAdded)="getTasks($event)"></app-add-task>
+  </div>
+  <div class="row tasks">
+    <table>
+      <thead>
+        <tr>
+          <th>
+            <h4>Task List</h4>
+          </th>
+          <th>Assign to:</th>
+          <th>Task</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of tasks; let i = index">
+          <app-task-item [task]='task'></app-task-item>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
-<div class="row tasks">
-  <table>
-    <thead>
-    <tr>
-      <th><h4>Task List</h4></th>
-      <th>Assign to:</th>
-      <th>Task</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let task of tasks; let i = index">
-      <app-task-item [task]='task'></app-task-item>
-    </tr>
-    </tbody>
-  </table>
-</div>
+
+
+
+
