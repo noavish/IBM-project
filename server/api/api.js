@@ -239,4 +239,15 @@ router.get('/bestSellers', function (req, res, next) {
   });
 });
 
+
+// getTheBestSellerOfTheMonth
+router.get('/monthlyBestSeller', function (req, res, next) {
+  connection.query('select user_id, username, sum(sales_count) as sum, sales_count*item_revenue as revenue from sales inner join users on users.user_id = sales.user_id_fk inner join pricing on sales.product_id_fk = pricing.product_id_fk and sales.item_id_fk = pricing.item_id WHERE MONTH(date) = MONTH(CURRENT_DATE()) group by username order by revenue desc limit 1', function(err, rows, fields) {
+    if (!err)
+      res.send(rows);
+    else
+      res.send(err);
+  });
+});
+
 module.exports = router;

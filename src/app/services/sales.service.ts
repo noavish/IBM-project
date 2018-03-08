@@ -65,5 +65,9 @@ export class SalesService {
   getBestSellersFromDB(): Observable<any> {
     return this.http.get<any>('/api/bestSellers');
   }
+
+  getMonthlyBestSellerFromBD(): Observable<any> {
+    return this.http.get<any>('/api/monthlyBestSeller');
+  }
 }
 

@@ -61,11 +61,11 @@
           <div class="card">
             <div class="card-content purple darken-2 white-text">
               <p class="card-stats-title">
-                <i class="material-icons">content_copy</i> Analytics</p>
-              <h4 class="card-stats-number">numbers</h4>
+                <i class="material-icons">content_copy</i> Best seller this month:</p>
+              <h4 class="card-stats-number">{{monthlyBestSeller?.username}}</h4>
               <p class="card-stats-compare">
-                <i class="material-icons">keyboard_arrow_down</i>
-                <span class="deep-orange-text text-lighten-5">from last year</span>
+                <i class="material-icons"></i>
+                <span class="deep-orange-text text-lighten-5">{{monthlyBestSeller?.sum}} units | ${{monthlyBestSeller?.revenue}}</span>
               </p>
             </div>
             <div class="card-action  purple darken-4">

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SalesService } from '../services/sales.service';
 
 @Component({
   selector: 'app-analytics',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./analytics.component.css']
 })
 export class AnalyticsComponent implements OnInit {
+  monthlyBestSeller: any;
 
-  constructor() { }
+  constructor( private salesService: SalesService) { }
 
   ngOnInit() {
+    this.getMonthlyBestSeller();
   }
 
+  getMonthlyBestSeller() {
+    this.salesService.getMonthlyBestSellerFromBD().subscribe(
+      data => this.monthlyBestSeller = data[0],
+      error => console.log(error)
+    );
+  }
 }
