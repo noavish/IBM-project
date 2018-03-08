@@ -65,5 +65,18 @@ export class SalesService {
   getBestSellersFromDB(): Observable<any> {
     return this.http.get<any>('/api/bestSellers');
   }
+
+  getTopCountryRev(): Observable<any> {
+    return this.http.get('/api/bestcountyrev');
+  }
+
+  getTopProductRev (): Observable<any> {
+    return this.http.get('/api/bestsellerproduct');
+  }
+
+  getGlobalRev (): Observable<any> {
+    return this.http.get('/api/yesglobalrev');
+  }
+
 }
 
