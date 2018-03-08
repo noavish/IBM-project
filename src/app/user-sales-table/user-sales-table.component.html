@@ -1,4 +1,3 @@
-<h4><strong><u>Sales Log history</u></strong></h4>
 <table class="striped">
   <tr>
     <th>Date</th>
@@ -7,15 +6,11 @@
     <th>Product</th>
     <th>Sales</th>
   </tr>
-
   <tr *ngFor="let item of SalesTableData; let idx = index">
     <td>{{item.date}}</td>
     <td>{{item.country}}</td>
     <td>{{item.city}}</td>
     <td>{{item.model_name}}</td>
     <td>{{item.sales_count}}</td>
-
   </tr>
-
- 
 </table>
