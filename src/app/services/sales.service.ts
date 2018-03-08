@@ -66,6 +66,7 @@ export class SalesService {
     return this.http.get<any>('/api/bestSellers');
   }
 
+
   getTopCountryRev(): Observable<any> {
     return this.http.get('/api/bestcountyrev');
   }
@@ -76,6 +77,11 @@ export class SalesService {
 
   getGlobalRev (): Observable<any> {
     return this.http.get('/api/yesglobalrev');
+  }
+
+
+  getMonthlyBestSellerFromBD(): Observable<any> {
+    return this.http.get<any>('/api/monthlyBestSeller');
   }
 
 }
