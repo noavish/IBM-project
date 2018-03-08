@@ -35,8 +35,7 @@ app.post('/login', passport.authenticate('local-login', {session:false}), (req,r
 
 app.post('/register',passport.authenticate('local-signup',{session:false
 }),(req,res)=>{
-  res.send('y')
-  res.status(200).send({});
+  res.status(204).send({});
 });
 
 

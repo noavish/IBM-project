@@ -26,7 +26,7 @@ export class AuthService {
   }
 
   newUser(user){
-   this.http.post<User>('register', user,{responseType:'text'}).subscribe();
+   this.http.post<User>('register', user,).subscribe();
   }
 
   getUserDetail() {
