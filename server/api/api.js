@@ -66,6 +66,8 @@ router.get('/countriessales', function (req, res, next) {
   });
 });
 
+
+
 //getUnitAmountByDate
 router.get('/amount', (req,res)=>{
   connection.query('select date, sum(sales_count) as value from sales group by date',(err,rows)=>{
@@ -117,6 +119,40 @@ router.get('/usersaels/:userID', function (req, res, next) {
       res.send(err);
   });
 });
+
+//get the most selling product as name and rev
+router.get('/bestsellerproduct', function (req, res, next) {
+  connection.query('SELECT products.product_name as Name , sum(sales_count * item_revenue) as rev FROM sales  inner join pricing on pricing.item_id = item_id_fk inner join products on products.product_id=sales.product_id_fk group by sales.product_id_fk order by rev desc limit 1', function (err, rows, fields) {
+    if (!err)
+      res.send(rows);
+    else
+      res.send(err);
+  });
+});
+
+// get the country with the best rev
+router.get('/bestcountyrev', function (req, res, next) {
+  connection.query('SELECT  sales.country as country  , sum(sales_count * item_revenue) as Sums FROM sales  inner join pricing on pricing.item_id = item_id_fk group by sales.country order by Sums desc limit 1', function (err, rows, fields) {
+    if (!err)
+      res.send(rows);
+    else
+      res.send(err);
+  });
+});
+
+
+//yestrday  global rev 
+router.get('/yesglobalrev', function (req, res, next) {
+  connection.query("select sum(sales_count * item_revenue) as value from sales  left join pricing on pricing.item_id = item_id_fk where sales.date=DATE(NOW()-interval 1 DAY)", function(err, rows, fields) {
+    if (!err) {
+      res.send(rows);
+    } else {
+      res.send(err);
+    }
+  });
+});
+
+
 
 //getUserSalesLog
 router.get('/usersaelslog/:userID', function (req, res, next){
@@ -229,20 +265,19 @@ router.put('/changeDetails/:user_id', function (req, res, next) {
   });
 });
 
-//getBestSellers
-router.get('/bestSellers', function (req, res, next) {
-  connection.query('select sales_count, user_id_fk, username, item_revenue, sales_count * item_revenue as \'total_revenue\' from sales join users on users.user_id = sales.user_id_fk join pricing where sales.product_id_fk = pricing.product_id_fk group by username order by sales_count desc', function(err, rows, fields) {
+// getTheBestSellerOfTheMonth
+router.get('/monthlyBestSeller', function (req, res, next) {
+  connection.query('select user_id, username, sum(sales_count) as sum, sales_count*item_revenue as revenue from sales inner join users on users.user_id = sales.user_id_fk inner join pricing on sales.product_id_fk = pricing.product_id_fk and sales.item_id_fk = pricing.item_id WHERE MONTH(date) = MONTH(CURRENT_DATE()) group by username order by revenue desc limit 1', function(err, rows, fields) {
     if (!err)
       res.send(rows);
     else
       res.send(err);
   });
-});
+ });
 
-
-// getTheBestSellerOfTheMonth
-router.get('/monthlyBestSeller', function (req, res, next) {
-  connection.query('select user_id, username, sum(sales_count) as sum, sales_count*item_revenue as revenue from sales inner join users on users.user_id = sales.user_id_fk inner join pricing on sales.product_id_fk = pricing.product_id_fk and sales.item_id_fk = pricing.item_id WHERE MONTH(date) = MONTH(CURRENT_DATE()) group by username order by revenue desc limit 1', function(err, rows, fields) {
+//getBestSellers
+router.get('/bestSellers', function (req, res, next) {
+  connection.query('select sales_count, user_id_fk, username, item_revenue, sales_count * item_revenue as \'total_revenue\' from sales join users on users.user_id = sales.user_id_fk join pricing where sales.product_id_fk = pricing.product_id_fk group by username order by sales_count desc', function(err, rows, fields) {
     if (!err)
       res.send(rows);
     else

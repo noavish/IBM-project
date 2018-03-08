@@ -7,11 +7,11 @@
           <div class="card">
             <div class="card-content  light-blue darken-3 white-text">
               <p class="card-stats-title">
-                <i class="material-icons">trending_up</i> Today Profit</p>
-              <h4 class="card-stats-number">number</h4>
+                <i class="material-icons">trending_up</i> yesterday global revenue</p>
+              <h4 class="card-stats-number">{{yesRev}}</h4>
               <p class="card-stats-compare">
                 <i class="material-icons">keyboard_arrow_up</i>
-                <span class="grey darken-3 text text-lighten-5">Analytics</span>
+
               </p>
             </div>
             <div class="card-action  light-blue darken-4 darken-1">
@@ -25,11 +25,11 @@
           <div class="card">
             <div class="card-content  teal lighten-2 white-text">
               <p class="card-stats-title">
-                <i class="material-icons">trending_up</i> Today Profit</p>
-              <h4 class="card-stats-number">number</h4>
+                <i class="material-icons">trending_up</i> top revenue country</p>
+              <h4 class="card-stats-number">{{topCounRev?.Sums}}</h4>
               <p class="card-stats-compare">
                 <i class="material-icons">keyboard_arrow_up</i>
-                <span class="grey darken-3 text text-lighten-5">Analytics</span>
+                <span class="grey darken-3 text text-lighten-5">{{topCounRev?.country}}</span>
               </p>
             </div>
             <div class="card-action  teal darken-3 darken-1">
@@ -43,11 +43,11 @@
           <div class="card">
             <div class="card-content  yellow darken-3 white-text">
               <p class="card-stats-title">
-                <i class="material-icons">trending_up</i> Today Profit</p>
-              <h4 class="card-stats-number">number</h4>
+                <i class="material-icons">trending_up</i> top sellling product rev</p>
+              <h4 class="card-stats-number">{{topProdRev?.rev}}</h4>
               <p class="card-stats-compare">
-                <i class="material-icons">keyboard_arrow_up</i> 80%
-                <span class="grey darken-3-text text-lighten-5">from yesterday</span>
+                <i class="material-icons">keyboard_arrow_up</i> 
+                <span class="grey darken-3-text ">{{topProdRev?.Name}}</span>
               </p>
             </div>
             <div class="card-action  yellow darken-4">
@@ -61,11 +61,11 @@
           <div class="card">
             <div class="card-content purple darken-2 white-text">
               <p class="card-stats-title">
-                <i class="material-icons">content_copy</i> Best seller this month:</p>
-              <h4 class="card-stats-number">{{monthlyBestSeller?.username}}</h4>
+                <i class="material-icons">content_copy</i> monthly Best Seller</p>
+              <h4 class="card-stats-number">${{monthlyBestSeller?.revenue}}</h4>
               <p class="card-stats-compare">
-                <i class="material-icons"></i>
-                <span class="deep-orange-text text-lighten-5">{{monthlyBestSeller?.sum}} units | ${{monthlyBestSeller?.revenue}}</span>
+                <i class="material-icons">keyboard_arrow_down</i>
+                <span class="deep-orange-text text-lighten-5">{{monthlyBestSeller?.username}}</span>
               </p>
             </div>
             <div class="card-action  purple darken-4">
@@ -107,14 +107,14 @@
       </div>
       <div class="col l6">
         <div class="">
-          <!-- <h5 class="truncate center-align">Pie Chart (fix the text)</h5> -->
+          <h5 class="truncate center-align">Pie Chart (fix the text)</h5>
           <app-piechart></app-piechart>
         </div>
       </div>
     </div>
   </div>
-  <div class="row zoomIn2">
-    <div class="col l12 ">
+  <div class="row">
+    <div class="col l12">
       <div class="">
         <h5 class="truncate center-align">Weather Sales (fix the text)</h5>
         <app-weather-sale-graph></app-weather-sale-graph>
