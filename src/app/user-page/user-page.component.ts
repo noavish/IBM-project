@@ -1,4 +1,7 @@
-import { Component, EventEmitter, OnInit, ElementRef, NgZone, ViewChild } from '@angular/core';
+import {
+  Component, EventEmitter, OnInit, ElementRef, NgZone, ViewChild, AfterViewChecked,
+
+} from '@angular/core';
 import { MaterializeAction } from 'angular2-materialize';
 import { SalesService } from '../services/sales.service';
 import { Product } from '../models/productModel';
@@ -27,6 +30,7 @@ export class UserPageComponent implements OnInit {
   chosenSKU: number;
   items: any[];
   channel = 1;
+  todaySales: any;
   user: any;
   public latitude: number;
   public longitude: number;
@@ -95,8 +99,10 @@ export class UserPageComponent implements OnInit {
     });
   }
 
+
   getUser(currentUser: any) {
     this.user = currentUser;
+    this.salesService.getTodaysSales(this.user.username).subscribe(data =>this.todaySales = (data[0].count));
     this.getMyTasks();
   }
 
@@ -149,7 +155,7 @@ export class UserPageComponent implements OnInit {
     this.sale.time = this.timeStamp.toISOString().split('T')[1].split('.')[0];
     this.sale.item_id_fk = this.items.find(item => item.product_id_fk == this.sale.product_id_fk && item.sku_id_fk == this.chosenSKU).item_id;
     this.sale.user_id_fk = this.user.user_id;
-    console.log(this.sale)
+    console.log(this.sale);
     this.salesService.addSaleToDB(this.sale).subscribe(
       data => console.log(data),
       error => console.log(error)
