@@ -23,9 +23,6 @@
               <i class="large material-icons">account_circle</i>
             </li>
             <li>
-              <i class="large material-icons">notifications</i>
-            </li>
-            <li>
               <i class="large material-icons" (click)="logOut()" style="cursor: pointer">power_settings_new</i>
             </li>
           </ul>
@@ -34,50 +31,37 @@
     </div>
   </header>
   <div id="main">
-    <div class="wrapper">
-      <aside id="left-side-nav" class="nav-expanded nav-lock nav-collapsible">
-        <ul id="slide-out" class="side-nav fixed leftside-navigation ps-container ps-active-y" style="transform: translateX(0px);">
+    <div class="wrapper ">
+      <aside id="left-side-nav" class="nav-expanded nav-lock nav-collapsible ">
+        <ul id="slide-out" class="side-nav fixed leftside-navigation ps-container ps-active-y " style="transform: translateX(0px);">
           <li class="no-padding">
             <ul class="collapsible" data-collapsible="accordion">
               <li class="bold active">
                 <a class="collapsible-header waves-effect waves-cyan active" routerLink="/dashboard">
-                  <i class="material-icons">dashboard</i>
+                  <i class="material-icons cyan-text white-darken-4">dashboard</i>
                   <span class="nav-text">Dashboard</span>
                 </a>
               </li>
               <li class="bold active">
                 <a class="collapsible-header waves-effect waves-cyan active" routerLink="/analytics">
-                  <i class="material-icons">equalizer</i>
-                  <span class="nav-text">analytics</span>
+                  <i class="material-icons cyan-text white-darken-4 ">equalizer</i>
+                  <span class="nav-text">Analytics</span>
                 </a>
               </li>
               <li class="bold active">
                 <a class="collapsible-header waves-effect waves-cyan active" routerLink="/user">
-                  <i class="material-icons">account_circle</i>
+                  <i class="material-icons cyan-text white-darken-4">account_circle</i>
                   <span class="nav-text">User</span>
                 </a>
               </li>
               <li class="bold active">
                 <a class="collapsible-header waves-effect waves-cyan active" routerLink="/tasks">
-                  <i class="material-icons">format_list_numbered</i>
+                  <i class="material-icons cyan-text white-darken-4">format_list_numbered</i>
                   <span class="nav-text">Tasks</span>
                 </a>
-              <!-- </li>
-              <li class="bold active">
-                <a class="collapsible-header waves-effect waves-cyan active" routerLink="/login">
-                  <i class="material-icons">lock_open</i>
-                  <span class="nav-text">Login</span>
-                </a>
-              </li>
-              <li class="bold active">
-                <a class="collapsible-header waves-effect waves-cyan active" routerLink="/signin">
-                  <i class="material-icons">dashboard</i>
-                  <span class="nav-text">Signin</span>
-                </a>
-              </li> -->
               <li class="bold active" *ngIf="user?.level == 'manager'">
                 <a class="waves-effect collapsible-header waves-cyan active" (click)="openManageUsers()">
-                  <i class="material-icons">dashboard</i>
+                  <i class="material-icons cyan-text white-darken-4">dashboard</i>
                   <span class="nav-text">Manage Users</span>
                 </a>
               </li>

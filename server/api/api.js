@@ -20,7 +20,7 @@ router.get('/sales', function (req, res, next) {
     if (!err)
       res.send(rows);
     else
-      res.send('Error while performing Query.');
+      res.send(err);
   });
 });
 
@@ -30,7 +30,7 @@ router.get('/skusales',(req,res)=>{
     if(!err){
       res.send(result)
     } else {
-      console.log(err)
+      res.send(err)
     }
   })
 })
@@ -40,7 +40,7 @@ router.get('/countriessales', function (req, res, next) {
     if (!err) {
       res.send(rows);
     } else {
-      res.send('Error while performing Query.');
+      res.send(err);
     }
   });
 });
@@ -58,8 +58,9 @@ router.get('/amount/:id',(req,res)=>{
   connection.query('SELECT user_id_fk, username, product_id_fk, product_name, date, SUM(sales_count) AS value FROM sales JOIN users ON sales.user_id_fk = ? JOIN products ON products.product_id = sales.product_id_fk GROUP BY date',[req.params.id],(err,result)=>{
     if(!err){
       res.send(result)
+    } else {
+      res.send(err)
     }
-    else {console.log(err)}
   })
 });
 
@@ -68,7 +69,7 @@ router.get('/products', function (req, res, next) {
     if (!err)
       res.send(rows);
     else
-      res.send('Error while performing Query.');
+      res.send(err);
   });
 });
 
@@ -77,7 +78,7 @@ router.get('/sku/:product_id', function (req, res, next) {
     if (!err)
       res.send(rows);
     else
-      res.send('Error while performing Query. ');
+      res.send(err);
   });
 });
 
@@ -86,7 +87,7 @@ router.get('/usersaels/:userID', function (req, res, next) {
     if (!err)
       res.send(rows);
     else
-      res.send('Error while performing Query. ');
+      res.send(err);
   });
 });
 
@@ -94,11 +95,9 @@ router.get('/usersaelslog/:userID', function (req, res, next){
   connection.query('SELECT date,country,city, sales_count, sku.sku_name  as model_name FROM fanco.sales INNER JOIN  fanco.pricing  ON  fanco.pricing.item_id = fanco.sales.item_id_fk INNER JOIN fanco.sku  on fanco.sku.sku_id=fanco.pricing.sku_id_fk WHERE user_id_fk= ? ', req.params.userID, function (err, rows, fields) {
     if (!err){
       res.send(rows);
-      console.log(rows)
+    } else {
+      res.send(err);
     }
-
-    else
-      res.send('Error while performing Query. ');
   });
 });
 
@@ -108,7 +107,7 @@ router.post('/logSale', function (req, res, next) {
     if (!err)
       res.send(rows);
     else
-      res.send('Error while performing Query.');
+      res.send(err);
   });
 });
 
@@ -118,7 +117,7 @@ router.get('/weathersale', function (req, res, next) {
     if (!err)
       res.send(rows);
     else
-      res.send('Error while performing Query.');
+      res.send(err);
   });
 });
 
@@ -128,7 +127,7 @@ router.get('/tasks', function (req, res, next) {
     if (!err)
       res.send(rows);
     else
-      res.send('Error while performing Query.');
+      res.send(err);
   });
 });
 
@@ -138,7 +137,7 @@ router.get('/myTasks/:user_id', function (req, res, next) {
     if (!err)
       res.send(rows);
     else
-      res.send('Error while performing Query.');
+      res.send(err);
   });
 });
 
@@ -148,7 +147,7 @@ router.post('/addTask', function (req, res, next) {
     if (!err)
       res.send(rows);
     else
-      console.log(err)
+      res.send(err);
   });
 });
 
@@ -158,7 +157,7 @@ router.put('/:task_id', function (req, res, next) {
     if (!err)
       res.send(rows);
     else
-      res.send('Error while performing Query.');
+      res.send(err);
   });
 });
 
@@ -168,7 +167,7 @@ router.get('/users', function (req, res, next) {
     if (!err)
       res.send(rows);
     else
-      res.send('Error while performing Query.');
+      res.send(err);
   });
 });
 
@@ -178,7 +177,7 @@ router.get('/levels', function (req, res, next) {
     if (!err)
       res.send(rows);
     else
-      res.send('Error while performing Query.');
+      res.send(err);
   });
 });
 
@@ -188,7 +187,7 @@ router.get('/channels', function (req, res, next) {
     if (!err)
       res.send(rows);
     else
-      res.send('Error while performing Query.');
+      res.send(err);
   });
 });
 
@@ -198,7 +197,7 @@ router.put('/changeDetails/:user_id', function (req, res, next) {
     if (!err)
       res.send(rows);
     else
-      res.send('Error while performing Query.'+ err);
+      res.send(err);
   });
 });
 
@@ -208,7 +207,7 @@ router.get('/bestSellers', function (req, res, next) {
     if (!err)
       res.send(rows);
     else
-      res.send('Error while performing Query.');
+      res.send(err);
   });
 });
 

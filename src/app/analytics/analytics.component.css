@@ -5,8 +5,21 @@
     width: 99%;
     float:right;
     font-family: 'Raleway';
+    background-color: #F2EAEE;
 }
-
+.container2 {
+    padding: 0 0.5rem;
+    margin: 0 auto;
+    max-width: 100% !important;
+    width: 100%;
+    float:right;
+    font-family: 'Raleway';
+    background-color: #F2EAEE;
+  
+}
+.face-down{
+    padding-top:5rem;
+}
 #card-stats {
     padding:1rem;
     -webkit-animation-name: pulse;
@@ -34,6 +47,8 @@
 }
 .page-footer .container {
     padding: 0 15px;
+    
+    
 }
 .task-cat {
     padding: 2px 4px;
