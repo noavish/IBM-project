@@ -8,14 +8,13 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./user-sales-table.component.css']
 })
 export class UserSalesTableComponent implements OnInit {
-  title: string;
+
   SalesTableData: any[];
 
   constructor(private salesService: SalesService, private authService: AuthService) { }
   user: any;
 
   ngOnInit() {
-    this.title = "Your Sales History:";
     this.authService.getCurrentUser().subscribe(
       data => {
         this.user = data;
