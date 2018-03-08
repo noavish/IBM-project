@@ -38,13 +38,18 @@ export class UserPageComponent implements OnInit {
   @ViewChild('search')
   public searchElementRef: ElementRef;
   @ViewChild('pickMap')
-  pickMap: AgmMap
+  pickMap: AgmMap;
 
   constructor( private salesService: SalesService, private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private authService: AuthService, private taskService: TaskService, private weatherService: WeatherService ) { }
 
   ngOnInit() {
-    // this.getUserTasks
-    // this.getMyTasks();
+
+    this.authService.getCurrentUser().subscribe(data => {
+      this.user = data.user;
+    },
+      (err) => console.log(err),
+      () => this.getMyTasks()
+      );
     // set google maps defaults
     this.zoom = 4;
     this.latitude = 39.8282;
@@ -89,19 +94,18 @@ export class UserPageComponent implements OnInit {
     });
   }
 
-  getUser(currentUser: any) {
-    this.user = currentUser;
-    this.getMyTasks();
-  }
+  // getUser(currentUser: any) {
+  //   this.user = currentUser;
+  //   this.getMyTasks();
+  // }
+
 
   getMyTasks() {
-    this.taskService.getMyTasks(this.user.user_id).subscribe(
-      data => {
-        this.myTasks = data;
-      },
-      error => console.log(error)
-    );
+    this.taskService.getMyTasks().subscribe(data => {
+      this.myTasks = data;
+    });
   }
+
 
   // markAsDone() {
   //   console.log('clicked', this.task);
@@ -124,7 +128,7 @@ export class UserPageComponent implements OnInit {
     this.salesService.getProductsFromDB().subscribe(
       data => this.products = data,
       error => console.log(error),
-      ()=>{this.pickMap.triggerResize()}
+      () => {this.pickMap.triggerResize(); }
     );
   }
 
@@ -160,7 +164,7 @@ export class UserPageComponent implements OnInit {
     this.sale.time = this.timeStamp.toISOString().split('T')[1].split('.')[0];
     this.sale.item_id_fk = this.items.find(item => item.product_id_fk == this.sale.product_id_fk && item.sku_id_fk == this.chosenSKU).item_id;
     this.sale.user_id_fk = this.user.user_id;
-    console.log(this.sale)
+    console.log(this.sale);
     this.salesService.addSaleToDB(this.sale).subscribe(
       data => console.log(data),
       error => console.log(error)

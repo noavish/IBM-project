@@ -37,7 +37,7 @@ export class UserSalesComponent implements OnInit {
         }
       },
         (error2 => console.log(error2)),
-        () => {this.createGauge(); }
+        () => {this.createGauge();}
         );
     }
     createGauge() {
@@ -60,6 +60,7 @@ export class UserSalesComponent implements OnInit {
           'endAngle': 90,
           'unit': '',
           'bandOutlineAlpha': 0,
+          'dataProvider':[22,33,11,44,22],
           'bands': [{
             'color': '#0955ff',
             'endValue': 10000,
@@ -80,7 +81,8 @@ export class UserSalesComponent implements OnInit {
           'alpha': 1,
           'innerRadius': '35%',
           'nailRadius': 0,
-          'radius': '170%'
+          'radius': '170%',
+          'value':this.uSales,
         }]
       });
 

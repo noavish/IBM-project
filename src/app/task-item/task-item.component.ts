@@ -9,9 +9,9 @@ import { TaskService } from '../services/task.service';
   styleUrls: ['./task-item.component.css']
 })
 export class TaskItemComponent implements OnChanges, OnInit {
+  @Input() task: Task = new Task();
   ngOnChanges(changes: SimpleChanges): void {
   }
-  @Input() task: Task = new Task();
 
   constructor( private taskService: TaskService ) { }
 
@@ -25,6 +25,7 @@ export class TaskItemComponent implements OnChanges, OnInit {
     } else {
       this.task.done = 0;
     }
+
     this.taskService.markDoneInDB(this.task).subscribe(
       data => {
         console.log('2', data);

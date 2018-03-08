@@ -4,9 +4,11 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Product } from '../models/productModel';
 import { SKU } from '../models/skuModel';
 import {Sale} from '../models/saleModel';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class SalesService {
+  private userSales: any;
 
   constructor( private http: HttpClient ) { }
 
@@ -42,7 +44,7 @@ export class SalesService {
     return this.http.get<Product[]>('/api/products');
   }
   getSalesByUser(userID): Observable<any> {
-    return this.http.get<Product[]>(`/api/usersaels/${userID}`);
+    return this.http.get<Product[]>(`/api/usersaels/${userID}`).map((source) => {this.userSales = source; return source; });
   }
 
   getSalesLogByUser(userID): Observable<any> {
