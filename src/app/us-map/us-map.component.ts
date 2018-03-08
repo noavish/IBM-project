@@ -99,7 +99,7 @@ export class UsMapComponent implements OnInit {
           d.state_sum=s.state_sum;
         }
       })
-      var gcolor="rgba("+(207+Math.floor(Math.random()*50)+Math.floor(Math.random()*20))+","+(75+Math.floor(Math.random()*10))+", 14,"+ Math.random()+")"
+      var gcolor="rgba(46,"+(71+Math.floor(Math.random()*10))+", "+(86+Math.floor(Math.random()*50)+Math.floor(Math.random()*20))+","+( 0.3+Math.random())+")"
         vm.sampleData.push({
           n: d.id,
           state: d.n,

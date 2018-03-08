@@ -3,3 +3,9 @@
   height	: 500px;
 }
 
+.flow-text{
+  margin-top:0px;
+}
+.truncate{
+  padding:1.5rem;
+}

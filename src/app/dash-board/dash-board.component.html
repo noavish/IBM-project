@@ -1,36 +1,33 @@
-<div class="contanier grey lighten-5">
-  <div class="row">
-    <div id="profile-card" class="col s6 offset-s3">
-      <div class="card-content">
-        <div class="col s4 m4 l2 center-align card-img">
-          <img src="https://www.taylorherring.com/blog/wp-content/uploads/2015/03/Archetypal-Male-Face-of-Beauty-embargoed-to-00.01hrs-30.03.15.jpg"
-            class="circle  activator card-profile-image">
-        </div>
-        <div class="col s8 m8 l10 center-align card-user-details">
-          <p class="flow-text">Hey {{user?.username}} ! </p>
-          <p class="flow-text">Welcome to Fan.Co Dashboard </p>
-          <div>
+<div class="contanier">
+  <footer class="page-footer gradient-45deg-nav-nav">
+    <div class="row">
+      <h2 class=" truncate center-align bold">Welcome to Fan.Co Dashboard </h2>
+      <div id="profile-card" class="col s6 offset-s3">
+        <div class="card-content">
+          <div class="col s4 m4 l2 center-align card-img">
+            <!-- <img src="https://www.taylorherring.com/blog/wp-content/uploads/2015/03/Archetypal-Male-Face-of-Beauty-embargoed-to-00.01hrs-30.03.15.jpg" -->
+              <!-- class="circle  activator card-profile-image"> -->
+          </div>
+          <div class="col s8 m8 l10 center-align card-user-details">
+            <!-- <p class="flow-text truncate">Hey {{user?.username}} ! </p> -->
+            <div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col l12 amount-graph">
-      <app-unit-amount-graph></app-unit-amount-graph>
-    </div>
-  </div>
-  <footer class="page-footer gradient-45deg-nav-nav gradient-shadow">
-    <h4 class="truncate center-align ">Global Sales Overview for Every Country</h4>
-    <div class="row gradient-45deg-nav-nav">
+    <div class="row ">
+        <h5 class="center-align global-text ">Global Sales Overview for Every Country</h5>
       <div class="col l12 amount-graph">
         <app-map-with-pie></app-map-with-pie>
       </div>
     </div>
-    <div class="footer-copyright">
-      <p class="copyright"> © 2017 Copyright Fan.Co Team  :)</p>
-    </div>
   </footer>
+  <div class="row graph-color card">
+    <div class="col l12 amount-graph ">
+      <app-unit-amount-graph></app-unit-amount-graph>
+    </div>
+  </div>
 </div>
 <!-- 
   <h4 class="truncate center-align">Weather Sales (fix the text~)</h4>
