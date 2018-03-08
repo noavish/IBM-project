@@ -101,23 +101,6 @@ export class UserPageComponent implements OnInit {
     );
   }
 
-  // markAsDone() {
-  //   console.log('clicked', this.task);
-  //   console.log(this.myTasks)
-    // if (this.task.done == 0) {
-    //   this.task.done = 1;
-    // } else {
-    //   this.task.done = 0;
-    // }
-    // console.log('1', this.task);
-    // this.taskService.markDoneInDB(this.task).subscribe(
-    //   data => {
-    //     console.log('2', data);
-    //   },
-    //   error => console.log(error)
-    // );
-  // }
-
   getProducts() {
     this.salesService.getProductsFromDB().subscribe(
       data => this.products = data,
