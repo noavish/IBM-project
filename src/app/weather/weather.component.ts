@@ -11,37 +11,37 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class WeatherComponent implements OnInit {
 
-  constructor(private WeatherService: WeatherService) { }
+  constructor( private weatherService: WeatherService ) { }
 
   ngOnInit() {
     // this.dailyWeatheData();
-    this.weeklyWeatheData();
+    // this.weeklyWeatherData();
   }
 
 
-  dailyWeatheData() {
-    this.WeatherService.dailyCall().subscribe(data => {
-      console.log(data);
-    }),
-      (err: HttpErrorResponse) => {
-        if (err.error instanceof Error) {
-          console.log("Client-side error occured.");
-        } else {
-          console.log("Server-side error occured.");
-        }
-      }
-  }
-
-  weeklyWeatheData() {
-    this.WeatherService.weeklyCall().subscribe(data => {
-      console.log(data);
-    }),
-      (err: HttpErrorResponse) => {
-        if (err.error instanceof Error) {
-          console.log("Client-side error occured.");
-        } else {
-          console.log("Server-side error occured.");
-        }
-      }
-  }
+  // dailyWeatherData() {
+  //   this.weatherService.dailyCall().subscribe(data => {
+  //     console.log(data);
+  //   }),
+  //     (err: HttpErrorResponse) => {
+  //       if (err.error instanceof Error) {
+  //         console.log("Client-side error occured.");
+  //       } else {
+  //         console.log("Server-side error occured.");
+  //       }
+  //     }
+  // }
+  //
+  // weeklyWeatherData() {
+  //   this.weatherService.weeklyCall().subscribe(data => {
+  //     console.log(data);
+  //   }),
+  //     (err: HttpErrorResponse) => {
+  //       if (err.error instanceof Error) {
+  //         console.log("Client-side error occured.");
+  //       } else {
+  //         console.log("Server-side error occured.");
+  //       }
+  //     }
+  // }
 }
