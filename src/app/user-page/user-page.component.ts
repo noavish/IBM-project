@@ -10,6 +10,7 @@ import { MapsAPILoader } from '@agm/core';
 import { AuthService } from '../services/auth.service';
 import { Task } from '../models/taskModel';
 import { TaskService } from '../services/task.service';
+import { WeatherService } from '../services/weather.service';
 
 
 @Component({
@@ -27,7 +28,6 @@ export class UserPageComponent implements OnInit {
   items: any[];
   channel = 1;
   user: any;
-  weather = 25;
   public latitude: number;
   public longitude: number;
   public searchControl: FormControl;
@@ -38,7 +38,7 @@ export class UserPageComponent implements OnInit {
   @ViewChild('search')
   public searchElementRef: ElementRef;
 
-  constructor( private salesService: SalesService, private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private authservice: AuthService, private taskService: TaskService ) { }
+  constructor( private salesService: SalesService, private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private authService: AuthService, private taskService: TaskService, private weatherService: WeatherService ) { }
 
   ngOnInit() {
     // this.getUserTasks
@@ -67,6 +67,13 @@ export class UserPageComponent implements OnInit {
           this.sale.state = place.address_components.find( item => item.types[0] === 'administrative_area_level_1' ).long_name;
           this.sale.country = place.address_components.find( item => item.types[0] === 'country' ).long_name;
           this.sale.country_code = place.address_components.find( item => item.types[0] === 'country' ).short_name;
+
+          // search weather by city
+          this.weatherService.getCityWeatherFromAPI(this.sale.city).subscribe(
+            data => this.sale.weather = data.main.temp,
+            error => console.log(error)
+          );
+
           // verify result
           if (place.geometry === undefined || place.geometry === null) {
             return;
@@ -149,8 +156,8 @@ export class UserPageComponent implements OnInit {
     this.sale.date = this.timeStamp.toISOString().split('T')[0];
     this.sale.time = this.timeStamp.toISOString().split('T')[1].split('.')[0];
     this.sale.item_id_fk = this.items.find(item => item.product_id_fk == this.sale.product_id_fk && item.sku_id_fk == this.chosenSKU).item_id;
-    this.sale.weather = this.weather;
     this.sale.user_id_fk = this.user.user_id;
+    console.log(this.sale)
     this.salesService.addSaleToDB(this.sale).subscribe(
       data => console.log(data),
       error => console.log(error)

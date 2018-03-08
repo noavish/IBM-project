@@ -1,7 +1,8 @@
 import {Component, EventEmitter, OnInit} from '@angular/core';
 import { AmChartsService, AmChart } from '@amcharts/amcharts3-angular';
 import { SalesService } from '../services/sales.service';
-import {MaterializeAction} from "angular2-materialize";
+import {MaterializeAction} from 'angular2-materialize';
+import {$} from 'protractor';
 
 
 @Component({
@@ -14,6 +15,7 @@ export class MapWithPieComponent implements OnInit {
   private map: AmChart;
   latlong: any = {};
   mapData: any[];
+  pieData: any[];
   constructor(private AmCharts: AmChartsService, private salesService: SalesService) {}
 
   ngOnInit() {
@@ -316,9 +318,10 @@ export class MapWithPieComponent implements OnInit {
         'latitude': this.latlong[id].latitude,
         'title': dataItem.country,
         'value': value,
-        // 'balloonText': '<span style=\'font-size:18px;\'>[[title]] - [[value]]</span>',
-
-        // 'description': '<button class="waves-effect waves-light btn modal-trigger" (click)="openPie()">Modal</button>'
+        'description': `<div class="country-pie-chart" id="${id}"></div>`,
+        'descriptionWindowWidth': 400,
+        'balloonText': '<span style="font-size:18px;">[[title]] - [[value]]</span>',
+        'customData': id
       });
     }
 
@@ -346,15 +349,38 @@ export class MapWithPieComponent implements OnInit {
       },
       'export': {
         'enabled': true
-      }
+      },
+      'listeners': [{
+      'event': 'clickMapObject',
+      'method': (event) => this.createPie(event.mapObject.customData)
+    }]
     });
   }
 
-  // openPie() {
-  //   this.countryClicked.emit({action: 'modal', params: ['open']});
-  // }
-
-  // closePie() {
-  //   this.countryClicked.emit({action: 'modal', params: ['close']});
-  // }
-}
+  createPie(countryCode: string) {
+    this.salesService.getCountrySalesByProducts(countryCode).subscribe(
+      data => this.pieData = data,
+      error => console.log(error),
+      () => {
+        console.log(this.pieData);
+        this.AmCharts.makeChart( countryCode, {
+          'type': 'pie',
+          'theme': 'light',
+          'dataProvider': this.pieData,
+          'valueField': 'sold_units',
+          'titleField': 'product_name',
+          'outlineAlpha': 0.4,
+          'depth3D': 15,
+          'balloonText': '[[title]]<br><span style="font-size:14px;"><b>[[value]]</b> ([[percents]]%)</span>',
+          'angle': 30,
+          'export': {
+            'enabled': false
+          },
+          'marginTop': 0,
+          'marginBottom': 0,
+          'marginLeft': 0,
+          'marginRight': 0
+        } );
+      }
+    );
+}}

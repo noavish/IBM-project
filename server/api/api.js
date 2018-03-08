@@ -14,9 +14,19 @@ router.get('/', function (req, res, next) {
   res.send('Express RESTful API');
 });
 
-//getAllSales
+//getAllSalesByCountries
 router.get('/sales', function (req, res, next) {
   connection.query('select country, country_code, item_revenue, sum(sales_count) as value FROM sales LEFT JOIN pricing ON pricing.item_id = sales.item_id_fk group by country_code', function (err, rows, fields) {
+    if (!err)
+      res.send(rows);
+    else
+      res.send(err);
+  });
+});
+
+//getSalesByCountryGroupedByProduct
+router.get('/sales/:country_code', function (req, res, next) {
+  connection.query(`select country, country_code, sum(sales_count) as sold_units, product_name from sales left join products on product_id = product_id_fk where country_code='${req.params.country_code}' group by product_name`, function (err, rows, fields) {
     if (!err)
       res.send(rows);
     else
@@ -32,8 +42,8 @@ router.get('/skusales',(req,res)=>{
     } else {
       res.send(err)
     }
-  })
-})
+  });
+});
 
 router.get('/countriessales', function (req, res, next) {
   connection.query("SELECT state, sum(sales_count) as state_sum  FROM fanco.sales   WHERE country='United States' GROUP BY state", function(err, rows, fields) {
@@ -44,6 +54,7 @@ router.get('/countriessales', function (req, res, next) {
     }
   });
 });
+
 router.get('/amount', (req,res)=>{
   connection.query('select date, sum(sales_count) as value from sales group by date',(err,rows)=>{
     if(!err) {
