@@ -26,8 +26,12 @@ export class SalesService {
     return this.http.get<any>('/api/amount');
   }
 
-  getSalesBySKU(): Observable<any> {
-    return this.http.get('/api/skusales');
+  getSalesCountBySKU(): Observable<any> {
+    return this.http.get('/api/skuSalesCount');
+  }
+
+  getSalesRevBySKU(): Observable<any> {
+    return this.http.get('/api/skuSalesRev');
   }
 
   getSalesByPerson(id): Observable<any> {
