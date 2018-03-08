@@ -11,18 +11,15 @@ import {Router} from '@angular/router';
 export class SigninComponent implements OnInit {
   user: User = new User();
 
-  constructor(private authService: AuthService, private zone: NgZone) { }
+  constructor(private authService: AuthService, private router:Router) { }
 
   ngOnInit() {
   }
 
   newUser() {
     console.log(this.user);
-    this.authService.newUser(this.user).subscribe(data => {
-      this.zone.runOutsideAngular(() => {
-        window.location.href = '/';
-      });
-    });
-  }
+    this.authService.newUser(this.user);
+    this.router.navigate(['/'])
 
+}
 }

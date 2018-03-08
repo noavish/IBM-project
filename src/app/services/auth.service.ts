@@ -25,8 +25,8 @@ export class AuthService {
     return this.user;
   }
 
-  newUser(user) {
-   return this.http.post<User>('register', user);
+  newUser(user){
+   this.http.post<User>('register', user,).subscribe();
   }
 
   getUserDetail() {
@@ -39,7 +39,7 @@ export class AuthService {
   }
 
   getCurrentUser(): Observable<any> {
-    return this.http.get<any>('userdetails')
+    return this.http.get<any>('userdetails');
   }
 
   getAllUsers(): Observable<any[]> {
