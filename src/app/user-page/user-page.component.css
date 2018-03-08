@@ -93,6 +93,9 @@ a {
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: 'liga';
 }
+.padding-row{
+  padding-top:300px;
+}
 
 .mb-0 {
   margin-bottom: 0% !important;
