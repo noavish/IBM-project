@@ -9,7 +9,7 @@ import { SKU } from '../models/skuModel';
 import { Sale } from '../models/saleModel';
 import { FormControl } from '@angular/forms';
 import { } from 'googlemaps';
-import { MapsAPILoader } from '@agm/core';
+import {AgmMap, MapsAPILoader} from '@agm/core';
 import { AuthService } from '../services/auth.service';
 import { Task } from '../models/taskModel';
 import { TaskService } from '../services/task.service';
@@ -41,12 +41,17 @@ export class UserPageComponent implements OnInit {
 
   @ViewChild('search')
   public searchElementRef: ElementRef;
+  @ViewChild('pickMap')
+  pickMap: AgmMap
+  
 
   constructor( private salesService: SalesService, private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private authService: AuthService, private taskService: TaskService, private weatherService: WeatherService ) { }
 
-  ngOnInit() {
+  ngAfterViewInit(){
+ 
+  }
 
-    // this.salesService.getTodaysSales()
+  ngOnInit() {
 
     // this.getUserTasks
     // this.getMyTasks();
@@ -113,7 +118,8 @@ export class UserPageComponent implements OnInit {
   getProducts() {
     this.salesService.getProductsFromDB().subscribe(
       data => this.products = data,
-      error => console.log(error)
+      error => console.log(error),
+      ()=>{this.pickMap.triggerResize()}
     );
   }
 

@@ -16,6 +16,7 @@ agm-map {
   margin: 0 auto;
   max-width: 100% !important;
   width: 100%;
+  height: 100%;
   float:right;
   font-family: 'Raleway';
   background-color: #F2EAEE;
@@ -94,7 +95,7 @@ a {
   font-feature-settings: 'liga';
 }
 .padding-row{
-  padding-top:300px;
+  padding-top:4rem;
 }
 
 .mb-0 {
