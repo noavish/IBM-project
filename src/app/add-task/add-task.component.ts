@@ -25,7 +25,7 @@ export class AddTaskComponent implements OnInit {
   ngOnInit() {
     this.loading = true;
     this.authService.getCurrentUser().subscribe(
-      data => {this.user = data.user; console.log(this.user); },
+      data => {this.user = data.user; },
       error => console.log(error),
       () => this.getUsers()
     );
@@ -47,7 +47,7 @@ export class AddTaskComponent implements OnInit {
     }
     this.task.done = 0;
     this.taskService.addTaskToDB(this.task).subscribe(
-      data => {console.log(data); this.taskAdded.emit(this.task); },
+      data => {this.taskAdded.emit(this.task); },
       error => console.log(error),
     );
   }
