@@ -49,7 +49,6 @@ export class AddTaskComponent implements OnInit {
     this.taskService.addTaskToDB(this.task).subscribe(
       data => {console.log(data); this.taskAdded.emit(this.task); },
       error => console.log(error),
-      () =>this.zone.run(()=>{this.cdRef.detectChanges()})
     );
   }
 

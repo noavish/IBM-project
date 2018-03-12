@@ -11,7 +11,7 @@ import {User} from '../models/userModel';
 })
 export class UnitAmountGraphComponent implements OnInit {
   private data: any[];
-  private newdata: { date: string; value: number }[];
+  private newData: { date: string; value: number }[];
   private chart: AmChart;
   option: string;
   users: User[];
@@ -36,22 +36,22 @@ export class UnitAmountGraphComponent implements OnInit {
     if (this.option === '999') {
       console.log(this.option);
       this.salesService.getSalesByDate().subscribe(data => {
-        this.newdata = data;
+        this.newData = data;
       },
         (err) => console.log(err),
         () => {
-          this.chart.dataProvider = this.newdata;
+          this.chart.dataProvider = this.newData;
           this.chart.validateData();
 
         })
     } else {
 
     this.salesService.getSalesByPerson(this.option).subscribe(data => {
-      this.newdata = data;
+      this.newData = data;
     },
       (err) => console.log(err),
       () => {
-      this.chart.dataProvider = this.newdata;
+      this.chart.dataProvider = this.newData;
       this.chart.validateData();
       });
 
