@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
 import { AmChartsService, AmChart } from '@amcharts/amcharts3-angular';
 import { SalesService } from '../services/sales.service';
 import { AuthService } from '../services/auth.service';
@@ -10,11 +10,11 @@ import { AuthService } from '../services/auth.service';
 })
 export class UserSalesComponent implements OnInit {
 
-  uSales = 4000;
+  uSales: number;
   constructor(private AmCharts: AmChartsService, private salesService: SalesService, private authService: AuthService) { }
   chart: AmChart;
   // user: any;
-  @Input() user:any;
+  @Input() user: any;
 
   ngOnInit() {
     this.getDataForGrafh();

@@ -37,6 +37,7 @@ import { TaskItemComponent } from './task-item/task-item.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { CommonModule } from '@angular/common';
 import { UserSalesTableComponent } from './user-sales-table/user-sales-table.component';
+import { LogNewSaleComponent } from './log-new-sale/log-new-sale.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { UserSalesTableComponent } from './user-sales-table/user-sales-table.com
     TaskItemComponent,
     WeatherSaleGraphComponent,
     ManageUsersComponent,
-    UserSalesTableComponent
+    UserSalesTableComponent,
+    LogNewSaleComponent
 
   ],
   imports: [
