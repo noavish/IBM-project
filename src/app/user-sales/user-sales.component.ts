@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { AmChartsService, AmChart } from '@amcharts/amcharts3-angular';
 import { SalesService } from '../services/sales.service';
 import { AuthService } from '../services/auth.service';
@@ -12,23 +12,16 @@ export class UserSalesComponent implements OnInit {
 
   uSales = 4000;
   constructor(private AmCharts: AmChartsService, private salesService: SalesService, private authService: AuthService) { }
-  @Output() currentUser: EventEmitter<any> = new EventEmitter();
   chart: AmChart;
-  user: any;
+  // user: any;
+  @Input() user:any;
 
   ngOnInit() {
-    this.authService.getCurrentUser().subscribe(
-      data => {
-        this.user = data;
-        this.currentUser.emit(this.user.user);
-      },
-          error2 => console.log(error2),
-          () => this.getDataForGrafh()
-      );
+    this.getDataForGrafh();
   }
 
     getDataForGrafh() {
-      const id = this.user.user.user_id;
+      const id = this.user.user_id;
       this.salesService.getSalesByUser(id).subscribe(data => {
         if (data.length < 1) {
           this.uSales = 0;
@@ -90,7 +83,6 @@ export class UserSalesComponent implements OnInit {
     }
 
   numSales(value, chart) {
-    console.log(this.chart);
     chart.arrows[0].value = value;
     chart.axes[0].TopText = value + ' units';
     // adjust darker band to new value

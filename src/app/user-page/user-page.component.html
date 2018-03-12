@@ -95,7 +95,7 @@
           <div class="col s12 m8 l8 ">
             <div class=" gradient-shadow min-height-100 white-text">
               <div class="card-content black-text">
-                <app-add-task></app-add-task>
+                <app-add-task [user] = "user"  (taskAdded)="getMyTasks($event)"></app-add-task>
               </div>
             </div>
           </div>
@@ -104,7 +104,7 @@
           <div class="col s12 m12 l12 ">
             <div class=" min-height-100 black-text">
               <div class="card-content black-text">
-                <app-user-sales-table></app-user-sales-table>
+                <app-user-sales-table *ngIf="user" [user] = "user"></app-user-sales-table>
               </div>
             </div>
           </div>
@@ -122,7 +122,7 @@
             </div>
           </div>
         </div>
-        <div id="test3" class="col s12">
+        <div id="test4" class="col s12">
           <div class="col s12 m8 l8 ">
             <div class=" gradient-shadow min-height-100 white-text">
             </div>
@@ -130,7 +130,7 @@
         </div>
       </div>
       <div class="col s12 m4 l4">
-        <app-user-sales (currentUser)="getUser($event)"></app-user-sales>
+        <app-user-sales *ngIf="user" [user] = "user" (currentUser)="getUser($event)"></app-user-sales>
       </div>
     </div>
 

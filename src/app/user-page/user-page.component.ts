@@ -42,17 +42,14 @@ export class UserPageComponent implements OnInit {
   @ViewChild('search')
   public searchElementRef: ElementRef;
   @ViewChild('pickMap')
-  pickMap: AgmMap
-  
+  pickMap: AgmMap;
+
 
   constructor( private salesService: SalesService, private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private authService: AuthService, private taskService: TaskService, private weatherService: WeatherService ) { }
 
-  ngAfterViewInit(){
- 
-  }
 
   ngOnInit() {
-
+    this.getUser()
     // this.getUserTasks
     // this.getMyTasks();
     // set google maps defaults
@@ -100,10 +97,16 @@ export class UserPageComponent implements OnInit {
   }
 
 
-  getUser(currentUser: any) {
-    this.user = currentUser;
-    this.salesService.getTodaysSales(this.user.username).subscribe(data =>this.todaySales = (data[0].count));
-    this.getMyTasks();
+  getUser() {
+    this.authService.getCurrentUser().subscribe(data=>{
+      this.user = data.user
+    },
+      (error)=>{console.log(error)},
+      ()=>{this.getMyTasks();
+        this.salesService.getTodaysSales(this.user.username).subscribe(data => this.todaySales = (data[0].count));
+        }
+      );
+
   }
 
   getMyTasks() {
@@ -119,7 +122,7 @@ export class UserPageComponent implements OnInit {
     this.salesService.getProductsFromDB().subscribe(
       data => this.products = data,
       error => console.log(error),
-      ()=>{this.pickMap.triggerResize()}
+      () => {this.pickMap.triggerResize();  }
     );
   }
 

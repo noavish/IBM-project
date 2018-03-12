@@ -33,9 +33,7 @@ export class AuthService {
     this.http.get<any>('userdetails').subscribe(data => {
       this.user = data.user;
     },
-      (err) => console.log(err),
-      () => console.log(this.user)
-      );
+      (err) => console.log(err)
   }
 
   getCurrentUser(): Observable<any> {

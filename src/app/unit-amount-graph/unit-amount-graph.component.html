@@ -6,7 +6,7 @@
         <p class="flow-text">Choose Seller</p>
       </div>
       <div class=" col l6 ">
-        <select  *ngIf="user?.manager; else user_menu" style="display: block" [(ngModel)]="option" name="option">
+        <select  *ngIf="user?.level=='manager'; else user_menu" style="display: block" [(ngModel)]="option" name="option">
           <option *ngFor="let user of users" [value]="user.user_id">{{user?.username}}</option>
         </select>
       </div>

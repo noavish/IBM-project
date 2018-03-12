@@ -11,25 +11,20 @@ import {AuthService} from '../services/auth.service';
 })
 export class AddTaskComponent implements OnInit {
   users: any[];
-  user: any;
   task: Task = new Task();
   loading: boolean;
+  @Input() user;
   @Output() taskAdded: EventEmitter<Task> = new EventEmitter();
 
   // get user() {
   //   return this.authService.getUser();
   // }
 
-  constructor( private authService: AuthService, private taskService: TaskService, private zone: NgZone, private cdRef: ChangeDetectorRef ) { }
+  constructor( private authService: AuthService, private taskService: TaskService) { }
 
   ngOnInit() {
     this.loading = true;
-    this.authService.getCurrentUser().subscribe(
-      data => {this.user = data.user; },
-      error => console.log(error),
-      () => this.getUsers()
-    );
-    // this.getUsers();
+    this.getUsers();
   }
 
   getUsers() {
