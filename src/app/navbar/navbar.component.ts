@@ -11,6 +11,7 @@ import { User } from '../models/userModel';
 })
 export class NavbarComponent implements OnInit {
   users: User[];
+  user: any;
   levels: any[];
   channels: any[];
   chosenLevel: string;
@@ -19,12 +20,15 @@ export class NavbarComponent implements OnInit {
 
   constructor( private authService: AuthService, private router: Router ) { }
   manageUserClicked = new EventEmitter<string|MaterializeAction>();
-  get user() {
-    return this.authService.getUser();
+
+  getUser() {
+    this.authService.getCurrentUser().subscribe(data => {
+      this.user = data.user;
+    });
   }
 
   ngOnInit() {
-    this.getUsers();
+    this.getUser();
   }
 
   getUsers() {

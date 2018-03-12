@@ -6,12 +6,12 @@
         <p class="flow-text">Choose Seller</p>
       </div>
       <div class=" col l6 ">
-        <select style="display: block" [(ngModel)]="option" name="option">
-          <option *ngFor="let user of users" [value]="user.user_id">{{user.username}}</option>
+        <select  *ngIf="user?.manager; else user_menu" style="display: block" [(ngModel)]="option" name="option">
+          <option *ngFor="let user of users" [value]="user.user_id">{{user?.username}}</option>
         </select>
       </div>
       <div class=" col l2 ">
-        <a class="btn waves-effect waves-light light-blue darken-4" (click)="getSalesbyUser()">Change</a>
+        <a class="btn waves-effect waves-light light-blue darken-4" (click)="getDataForGraph()">Change</a>
       </div>
     </form>
   </div>
@@ -21,3 +21,10 @@
     <div id="chartdiv"></div>
   </div>
 </div>
+
+<ng-template #user_menu>
+  <select style="display: block" [(ngModel)]="option">
+  <option [value]="999">All Sales</option>
+  <option [value]="user?.user_id">{{user?.username}}</option>
+  </select>
+</ng-template>

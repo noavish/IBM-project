@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, Input, NgZone, OnInit, Output} from '@angular/core';
 import { Task } from '../models/taskModel';
 import { TaskService } from '../services/task.service';
 import { User } from '../models/userModel';
@@ -13,17 +13,17 @@ export class AddTaskComponent implements OnInit {
   users: any[];
   user: any;
   task: Task = new Task();
-  loading:boolean
+  loading: boolean;
   @Output() taskAdded: EventEmitter<Task> = new EventEmitter();
 
   // get user() {
   //   return this.authService.getUser();
   // }
 
-  constructor( private authService: AuthService, private taskService: TaskService ) { }
+  constructor( private authService: AuthService, private taskService: TaskService, private zone: NgZone, private cdRef: ChangeDetectorRef ) { }
 
   ngOnInit() {
-    this.loading=true
+    this.loading = true;
     this.authService.getCurrentUser().subscribe(
       data => {this.user = data.user; console.log(this.user); },
       error => console.log(error),
@@ -36,7 +36,7 @@ export class AddTaskComponent implements OnInit {
     this.authService.getAllUsers().subscribe(
       data => this.users = data,
       error => console.log(error),
-      ()=>this.loading=false
+      () => this.loading = false
     );
   }
 
@@ -48,7 +48,8 @@ export class AddTaskComponent implements OnInit {
     this.task.done = 0;
     this.taskService.addTaskToDB(this.task).subscribe(
       data => {console.log(data); this.taskAdded.emit(this.task); },
-      error => console.log(error)
+      error => console.log(error),
+      () =>this.zone.run(()=>{this.cdRef.detectChanges()})
     );
   }
 
