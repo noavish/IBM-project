@@ -30,7 +30,7 @@
       </nav>
     </div>
   </header>
-  <div id="main">
+  <div *ngIf="user?.username" id="main">
     <div class="wrapper ">
       <aside id="left-side-nav" class="nav-expanded nav-lock nav-collapsible ">
         <ul id="slide-out" class="side-nav fixed leftside-navigation ps-container ps-active-y " style="transform: translateX(0px);">

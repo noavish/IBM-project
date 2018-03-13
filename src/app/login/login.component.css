@@ -1,12 +1,12 @@
 .container-fluid {
     margin:0;
     padding: 17rem;
-    background: url("/assets/image/background.png") no-repeat center center fixed; 
+    background: url("/assets/image/background.png") no-repeat center center fixed;
     background-repeat:no-repeat;
     background-size: 100%;
     background-position:center;
     font-family: 'Raleway';
-    -webkit-animation-name: fadeIn;
+  -webkit-animation-name: fadeIn;
     animation-name: fadeIn;
     -webkit-animation-duration: 1s;
     animation-duration: 1s;
@@ -63,4 +63,4 @@ top:0;
     @keyframes fadeIn {
     0% {opacity: 0;}
     100% {opacity: 1;}
-    } 
+    }

@@ -21,20 +21,15 @@ import { FacechartComponent } from './Graphs/facechart/facechart.component';
 import { UserSalesTableComponent } from './Graphs/user-sales-table/user-sales-table.component';
 
 const routes: Routes = [
-  //need change root route
+  // need change root route
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'amount', component: UnitAmountGraphComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'weather', component: WeatherComponent },
   { path: 'analytics', canActivate : [AuthGuard], component: AnalyticsComponent },
   { path: 'user', canActivate : [AuthGuard], component: UserPageComponent },
   { path: 'dashboard', canActivate: [AuthGuard], component: DashBoardComponent },
   { path: 'tasks', canActivate : [AuthGuard], component: TasksComponent },
-  { path: 'pie',component:PiechartComponent },
-  { path: 'face', component: FacechartComponent },
-  { path: 'weathersale', component: WeatherSaleGraphComponent },
-  { path: 'sh', component: FacechartComponent },
 ];
 
 @NgModule({
