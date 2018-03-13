@@ -13,7 +13,7 @@
               <th></th>
             </tr>
           </thead>
-          <tbody>
+          <tbody *ngIf="user?.level=='manager' ; else user_tasks">
             <tr *ngFor="let task of tasks; let i = index">
               <app-task-item [task]='task'></app-task-item>
             </tr>
@@ -23,8 +23,16 @@
     </div>
     <div class="col l4">
       <div class="addTask">
-        <app-add-task (taskAdded)="getTasks($event)"></app-add-task>
+        <app-add-task [user] = "user" (taskAdded)="getTasks($event)"></app-add-task>
       </div>
     </div>
   </div>
 </div>
+
+<ng-template #user_tasks>
+  <tbody>
+  <tr *ngFor="let task of myTasks; let i = index">
+    <app-task-item [task]='task'></app-task-item>
+  </tr>
+  </tbody>
+</ng-template>

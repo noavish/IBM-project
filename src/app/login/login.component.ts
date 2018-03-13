@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   username: string;
   returnUrl: string;
 
-  constructor(private authService: AuthService, private zone: NgZone,private route:ActivatedRoute,private router:Router) { }
+  constructor(private authService: AuthService, private zone: NgZone, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
