@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Product } from '../models/productModel';
@@ -7,6 +7,9 @@ import {Sale} from '../models/saleModel';
 
 @Injectable()
 export class SalesService {
+
+  mapResize = new EventEmitter();
+  newSaleLogged = new EventEmitter();
 
   constructor( private http: HttpClient ) { }
 
@@ -47,6 +50,10 @@ export class SalesService {
 
   getSalesLogByUser(userID): Observable<any> {
     return this.http.get<Product[]>(`/api/usersaelslog/${userID}`);
+  }
+
+  getTodaysSales(user): Observable<any> {
+    return this.http.get<any>(`/api/todaysSales/${user}`);
   }
 
 

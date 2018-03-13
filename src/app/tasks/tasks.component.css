@@ -5,3 +5,22 @@
 .tasks {
   margin-left: 250px;
 }
+
+.container {
+  padding:6rem;
+  margin: 0 auto;
+  max-width: 100% !important;
+  width: 100%;
+  font-family: 'Raleway';
+  background-color: #F2EAEE;
+}
+.container2 {
+  padding: 0 0.5rem;
+  margin: 0 auto;
+  max-width: 100% !important;
+  width: 100%;
+  float:right;
+  font-family: 'Raleway';
+  background-color: #F2EAEE;
+
+}

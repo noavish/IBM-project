@@ -11,7 +11,7 @@
               </div>
               <div class="col s5 m5 right-align">
                 <h5 class="mb-0">New</h5>
-                <p>+2</p>
+                <p>{{myTasks?.length}}</p>
                 <p class="no-margin">Growth</p>
               </div>
             </div>
@@ -40,9 +40,9 @@
                 <p>Total Sales Today</p>
               </div>
               <div class="col s5 m5 right-align">
-                <h5 class="mb-0">80%</h5>
-                <p class="no-margin">Growth</p>
-                <p>20</p>
+                <h5 class="mb-0">{{todaySales}}</h5>
+                <!--<p class="no-margin">Growth</p>-->
+                <!--<p>{{todaySales}}</p>-->
               </div>
             </div>
           </div>
@@ -79,14 +79,14 @@
                 <a href="#test1">Add Task</a>
               </li>
               <li class="tab">
-                <a class="active" href="#test2">User Log Sales</a>
+                <a class="active" href="#test2">User Sales Log</a>
               </li>
               <li class="tab">
                 <a class="active" href="#test3">Tasks</a>
               </li>
               <li class="tab">
                 <!-- <a class="active" href="#test4">Add Sales</a> -->
-                <a class="active waves-effect waves-light btn blue-grey lighten-5 black-text" (click)="openLogSale()">Log Sale</a>
+                <a class="active waves-effect waves-light lighten-5 black-text" (click)="openLogSale()">Log Sale</a>
               </li>
             </ul>
           </div>
@@ -95,7 +95,7 @@
           <div class="col s12 m8 l8 ">
             <div class=" gradient-shadow min-height-100 white-text">
               <div class="card-content black-text">
-                <app-add-task></app-add-task>
+                <app-add-task [user] = "user"  (taskAdded)="getMyTasks($event)"></app-add-task>
               </div>
             </div>
           </div>
@@ -104,7 +104,7 @@
           <div class="col s12 m12 l12 ">
             <div class=" min-height-100 black-text">
               <div class="card-content black-text">
-                <app-user-sales-table></app-user-sales-table>
+                <app-user-sales-table *ngIf="user" [user] = "user"></app-user-sales-table>
               </div>
             </div>
           </div>
@@ -122,103 +122,19 @@
             </div>
           </div>
         </div>
+        <div id="test4" class="col s12">
+          <div class="col s12 m8 l8 ">
+            <div class=" gradient-shadow min-height-100 white-text">
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col s12 m4 l4">
-        <app-user-sales (currentUser)="getUser($event)"></app-user-sales>
+        <app-user-sales *ngIf="user" [user] = "user" (currentUser)="getUser($event)"></app-user-sales>
       </div>
     </div>
 
-    <!-- log sale -->
-
-    <!-- add task -->
-
-
-
-    <!-- <div class="row">
-    <div class="col s12 m12 l12 ">
-      <div class="card">
-        <div class="card gradient-45deg-black-teal  min-height-100 white-text">
-          <div class="card-content white-text">
-            <span class="card-title">Add Tasdasdasdasdask</span>
-
-
-            <app-add-task></app-add-task>
-
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-
-
-    <!-- Log Sale Modal -->
-    <!-- <div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="logSaleClicked">
-    <div class="modal-content">
-      <h4>Log Sale</h4>
-      <form class="col s12">
-        <div class="container">
-          <div class="form-group">
-            <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control"
-              #search [formControl]="searchControl">
-          </div>
-          <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
-            <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
-          </agm-map>
-        </div>
-        <select materialize="material_select" [materializeSelectOptions]="products" (change)="getSKU()" name="chosenProduct" [(ngModel)]="sale.product_id_fk">
-          <option [value]="" disabled>Product</option>
-          <option value={{product.product_id}} *ngFor="let product of products; let i = index">{{product.product_name}}</option>
-        </select>
-        <select materialize="material_select" [materializeSelectOptions]="items" name="chosenSKU" [(ngModel)]="chosenSKU">
-          <option [value]="" disabled>Item</option>
-          <option value={{item.sku_id}} *ngFor="let item of items; let i = index">{{item.sku_name}}</option>
-        </select>
-        <div class="input-field col s6">
-          <input placeholder="Number of units" id="unit_number" type="number" class="validate" name="sales_count" [(ngModel)]="sale.sales_count">
-          <label for="number">Units Sold</label>
-        </div>
-      </form>
-      <div class="modal-footer">
-      <a class="waves-effect waves-green btn-flat" (click)="closeLog()">Dismiss</a>
-      <a class="modal-action modal-close waves-effect waves-green btn-flat" (click)="logSale()">Submit</a>
-    </div>
-  </div> -->
-  </div>
-
-  <!--############################ -->
-  <!--Log Sale Modal -->
   <!--Log Sale Modal -->
   <div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="logSaleClicked">
-    <div class="modal-content">
-      <h4>Log Sale</h4>
-      <!--<form class="col s12 ">-->
-      <!--<div class="container">-->
-      <!--<div class="form-group">-->
-      <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control"
-             #search [formControl]="searchControl">
-      <!--</div>-->
-      <agm-map #pickMap [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
-        <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
-      </agm-map>
-      <!--</div>-->
-      <select materialize="material_select" [materializeSelectOptions]="products" (change)="getSKU()" name="chosenProduct" [(ngModel)]="sale.product_id_fk">
-        <option [value]="" disabled>Product</option>
-        <option value={{product.product_id}} *ngFor="let product of products; let i = index">{{product.product_name}}</option>
-      </select>
-      <select materialize="material_select" [materializeSelectOptions]="items" name="chosenSKU" [(ngModel)]="chosenSKU">
-        <option [value]="" disabled>Item</option>
-        <option value={{item.sku_id}} *ngFor="let item of items; let i = index">{{item.sku_name}}</option>
-      </select>
-      <div class="input-field col s6">
-        <input placeholder="Number of units" id="unit_number" type="number" class="validate" name="sales_count" [(ngModel)]="sale.sales_count">
-        <label for="number">Units Sold</label>
-      </div>
-      <!--</form>-->
-    </div>
-    <div class="modal-footer">
-      <a class="waves-effect waves-green btn-flat" (click)="closeLog()">Dismiss</a>
-      <a class="modal-action modal-close waves-effect waves-green btn-flat" (click)="logSale()">Submit</a>
-    </div>
+   <app-log-new-sale [user] = "user" (closeLogClicked)="closeLog($event)" ></app-log-new-sale>
   </div>

@@ -11,16 +11,16 @@ import {User} from '../models/userModel';
 })
 export class UnitAmountGraphComponent implements OnInit {
   private data: any[];
-  private newdata: { date: string; value: number }[];
-
-  constructor(private AmCharts: AmChartsService, private salesService: SalesService, private authService: AuthService) { }
-
+  private newData: { date: string; value: number }[];
   private chart: AmChart;
-  option: number;
+  option: string;
   users: User[];
+  user: any;
+  constructor(private AmCharts: AmChartsService, private salesService: SalesService, private authService: AuthService) { }
 
 
   ngOnInit() {
+    this.getUser();
     this.salesService.getSalesByDate().subscribe(data => {
       this.data = data;
     },
@@ -32,15 +32,36 @@ export class UnitAmountGraphComponent implements OnInit {
     });
   }
 
-  getSalesbyUser() {
+  getDataForGraph() {
+    if (this.option === '999') {
+      console.log(this.option);
+      this.salesService.getSalesByDate().subscribe(data => {
+        this.newData = data;
+      },
+        (err) => console.log(err),
+        () => {
+          this.chart.dataProvider = this.newData;
+          this.chart.validateData();
+
+        })
+    } else {
+
     this.salesService.getSalesByPerson(this.option).subscribe(data => {
-      this.newdata = data;
+      this.newData = data;
     },
       (err) => console.log(err),
       () => {
-      this.chart.dataProvider = this.newdata;
+      this.chart.dataProvider = this.newData;
       this.chart.validateData();
       });
+
+    }
+  }
+
+  getUser() {
+    this.authService.getCurrentUser().subscribe(data => {
+      this.user = data.user;
+    });
   }
 
    createGraph() {
@@ -65,7 +86,7 @@ export class UnitAmountGraphComponent implements OnInit {
       }],
       'graphs': [{
         'id': 'g1',
-        'type': 'smoothedLine',
+        'type': 'line',
         'balloon': {
           'drop': true,
           'adjustBorderColor': false,
