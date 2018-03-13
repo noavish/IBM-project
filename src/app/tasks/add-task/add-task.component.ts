@@ -1,8 +1,8 @@
 import {ChangeDetectorRef, Component, EventEmitter, Input, NgZone, OnInit, Output} from '@angular/core';
-import { Task } from '../models/taskModel';
-import { TaskService } from '../services/task.service';
-import { User } from '../models/userModel';
-import {AuthService} from '../services/auth.service';
+import { Task } from '../../models/taskModel';
+import { TaskService } from '../../services/task.service';
+import { User } from '../../models/userModel';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-add-task',

@@ -7,18 +7,18 @@ import { UserPageComponent } from './user-page/user-page.component';
 import { SigninComponent } from './signin/signin.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { WeatherComponent } from './weather/weather.component';
-import { WeatherSaleGraphComponent } from './weather-sale-graph/weather-sale-graph.component';
-import { UnitAmountGraphComponent } from './unit-amount-graph/unit-amount-graph.component';
-import { UsMapComponent } from './us-map/us-map.component';
+import { WeatherSaleGraphComponent } from './Graphs/weather-sale-graph/weather-sale-graph.component';
+import { UnitAmountGraphComponent } from './Graphs/unit-amount-graph/unit-amount-graph.component';
+import { UsMapComponent } from './Graphs/us-map/us-map.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './AuthGuard';
 import { DashBoardComponent } from './dash-board/dash-board.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { UserSalesComponent } from './user-sales/user-sales.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
-import { PiechartComponent } from './piechart/piechart.component';
-import { FacechartComponent } from './facechart/facechart.component';
-import { UserSalesTableComponent } from './user-sales-table/user-sales-table.component';
+import { PiechartComponent } from './Graphs/piechart/piechart.component';
+import { FacechartComponent } from './Graphs/facechart/facechart.component';
+import { UserSalesTableComponent } from './Graphs/user-sales-table/user-sales-table.component';
 
 const routes: Routes = [
   //need change root route
