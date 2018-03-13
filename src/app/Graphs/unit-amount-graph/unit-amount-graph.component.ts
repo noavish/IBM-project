@@ -1,8 +1,8 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import {AmChartsService, AmChart} from '@amcharts/amcharts3-angular';
-import {SalesService} from '../services/sales.service';
-import {AuthService} from '../services/auth.service';
-import {User} from '../models/userModel';
+import {SalesService} from '../../services/sales.service';
+import {AuthService} from '../../services/auth.service';
+import {User} from '../../models/userModel';
 
 @Component({
   selector: 'app-unit-amount-graph',

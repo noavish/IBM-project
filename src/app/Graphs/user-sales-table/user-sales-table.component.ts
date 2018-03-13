@@ -1,6 +1,6 @@
 import {AfterContentInit, AfterViewInit, Component, DoCheck, Input, OnChanges, OnInit} from '@angular/core';
-import { SalesService } from '../services/sales.service';
-import { AuthService } from '../services/auth.service';
+import { SalesService } from '../../services/sales.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-user-sales-table',

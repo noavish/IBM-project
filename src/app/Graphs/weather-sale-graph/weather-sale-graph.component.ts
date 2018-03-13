@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { AmChartsService, AmChart } from '@amcharts/amcharts3-angular';
-import { WeatherSaleService } from '../services/weather-sale.service'
+import { WeatherSaleService } from '../../services/weather-sale.service'
 
 // template
 // var xchartData = [{
@@ -178,4 +178,3 @@ export class WeatherSaleGraphComponent implements OnInit {
 // this.AmCharts.addListener(this.chart, 'dataUpdated', () => {
 //     console.log(this.chart);
 // });
- 

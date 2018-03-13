@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { AmChartsService, AmChart } from '@amcharts/amcharts3-angular';
-import { SalesService } from '../services/sales.service';
+import { SalesService } from '../../services/sales.service';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
