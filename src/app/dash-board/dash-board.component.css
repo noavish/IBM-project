@@ -1,5 +1,7 @@
+
 .contanier{
-    background-color: #F2EAEE;
+  overflow:hidden;
+  background-color: #F2EAEE;
 }
 .gradient-shadow {
     box-shadow: 0 6px 20px 0 rgba(46, 41, 37, 0.3);
@@ -51,9 +53,9 @@ border-radius: 2px;
 .global-text{
     padding:1rem;
 }
-.amount-graph{
-    float: right;
-}
+/*.amount-graph{*/
+    /*float: right;*/
+/*}*/
 
 .truncate{
     -webkit-animation-name: fadeInDown;
@@ -61,7 +63,7 @@ border-radius: 2px;
   -webkit-animation-duration: 2s;
   animation-duration: 2s;
   -webkit-animation-fill-mode: both;
-  animation-fill-mode: both; 
+  animation-fill-mode: both;
 }
 .card-img{
     -webkit-animation-name: slideInLeft;
@@ -69,7 +71,7 @@ border-radius: 2px;
     -webkit-animation-duration: 1s;
     animation-duration: 1s;
     -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;  
+    animation-fill-mode: both;
 }
 .slideInLeft {
     -webkit-animation-name: slideInLeft;
@@ -100,8 +102,8 @@ border-radius: 2px;
     -webkit-transform: translateX(0);
     transform: translateX(0);
     }
-    } 
-  
+    }
+
 
 .fadeIn {
     -webkit-animation-name: fadeIn;
@@ -118,7 +120,7 @@ border-radius: 2px;
     @keyframes fadeIn {
     0% {opacity: 0;}
     100% {opacity: 1;}
-    } 
+    }
 
 .fadeInDown {
   -webkit-animation-name: fadeInDown;
@@ -151,4 +153,4 @@ border-radius: 2px;
   -webkit-transform: none;
   transform: none;
   }
-  } 
+  }

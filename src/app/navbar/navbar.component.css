@@ -14,6 +14,7 @@
     z-index: 1000;
 
 }
+
 .right {
     float: right !important;
 }
@@ -62,7 +63,7 @@ nav ul.left {
 }
 
 #left-sidebar-nav {
-    position: fixed;
+    position: relative;
     width: 100px;
     left: 180px;
     z-index: 999;
@@ -81,9 +82,9 @@ ul.side-nav.leftside-navigation li:not(.no-padding) {
 }
 .side-nav {
     background-color: #2E4756;
-    width: 240px;
-
+    width: 16vw;
 }
+
 .navbar-name{
   margin:25px;
   font-weight:bold;
