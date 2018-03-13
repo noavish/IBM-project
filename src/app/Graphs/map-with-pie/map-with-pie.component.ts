@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnInit} from '@angular/core';
 import { AmChartsService, AmChart } from '@amcharts/amcharts3-angular';
-import { SalesService } from '../services/sales.service';
+import { SalesService } from '../../services/sales.service';
 import {MaterializeAction} from 'angular2-materialize';
 import {$} from 'protractor';
 

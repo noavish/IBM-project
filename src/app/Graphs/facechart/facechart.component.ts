@@ -1,6 +1,6 @@
 import { Component, AfterViewInit, OnDestroy, OnInit } from '@angular/core';
 import { AmChartsService, AmChart } from '@amcharts/amcharts3-angular';
-import { SalesService } from '../services/sales.service';
+import { SalesService } from '../../services/sales.service';
 
 @Component({
   selector: 'app-facechart',

@@ -1,6 +1,6 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import { Task } from '../models/taskModel';
-import { TaskService } from '../services/task.service';
+import { Task } from '../../models/taskModel';
+import { TaskService } from '../../services/task.service';
 
 
 @Component({

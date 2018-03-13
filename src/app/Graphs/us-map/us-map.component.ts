@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SalesService } from '../services/sales.service';
+import { SalesService } from '../../services/sales.service';
 
 declare var d3: any;//for d3 to work
 //declare var randomColor: any;
@@ -93,7 +93,7 @@ export class UsMapComponent implements OnInit {
   generateMap() {
     const vm = this;
     this.uStatePaths.forEach(function (d) {
-      vm.map_data.forEach(function (s) { 
+      vm.map_data.forEach(function (s) {
         if (d.n == s.state) {
           d.n = s.state;
           d.state_sum=s.state_sum;
@@ -109,7 +109,7 @@ export class UsMapComponent implements OnInit {
           color: gcolor
           // '#' + (726951+Math.floor(Math.random()*990+9)),
           //color2:'#' + (726951+Math.floor(Math.random()*990+9))
-          
+
         });
       });
       /* draw states on id #statesvg */
