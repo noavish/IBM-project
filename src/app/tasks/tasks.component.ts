@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import { TaskService } from '../services/task.service';
 import { Task } from '../models/taskModel';
 import {AuthService} from '../services/auth.service';
+import {User} from '../models/userModel';
 
 @Component({
   selector: 'app-tasks',
@@ -12,10 +13,15 @@ export class TasksComponent implements OnInit {
   tasks: Task[];
   myTasks: Task[];
   public user: any;
+  users: User[];
   constructor( private taskService: TaskService, private authService: AuthService ) { }
 
   ngOnInit() {
     this.getUser();
+    this.authService.getAllUsers().subscribe(data => {
+      this.users = data;
+      }
+    );
   }
 
   getUser() {
@@ -33,7 +39,6 @@ export class TasksComponent implements OnInit {
     this.taskService.getTasks().subscribe(
       data => {
         this.tasks = data;
-        console.log(this.tasks);
       },
       error => console.log(error)
     );

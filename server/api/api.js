@@ -141,7 +141,7 @@ router.get('/bestcountyrev', function (req, res, next) {
 });
 
 
-//yestrday  global rev 
+//yestrday  global rev
 router.get('/yesglobalrev', function (req, res, next) {
   connection.query("select sum(sales_count * item_revenue) as value from sales  left join pricing on pricing.item_id = item_id_fk where sales.date=DATE(NOW()-interval 1 DAY)", function(err, rows, fields) {
     if (!err) {
@@ -288,12 +288,43 @@ router.get('/bestSellers', function (req, res, next) {
 // GetTotalSalesToday
 router.get('/todaysSales/:user', (req,res)=>{
   connection.query('select sum(sales_count) as count from sales join users where DATE(date)=curdate() and username= ?', req.params.user, (err,result)=>{
-    if(!err){
+    if(!err) {
       res.send(result)
     } else {
       res.send(err)
     }
   })
+});
+
+router.get('/dummyroute',(req,res)=>{
+ connection.query('select user_id,username,assign_to_id,task_text,task_id from users right join tasks on tasks.assign_to_id = users.user_id ', (err,result)=>{
+   if(!err){
+     let tasksByUser =[]
+    for(item in result){
+      if(tasksByUser.includes(item.assign_to_id)){
+        tasksByUser.tasks.push({
+          task:item[i].task_id,
+          text:item[i].task_text
+        })
+      } else {
+        let object ={
+          username:item[i].username,
+          assignToId:item[i].assign_to_id,
+          tasks:[{
+            task:item[i].task_id,
+            text:item[i].task_text
+          }]
+        };
+        tasksByUser.push(object);
+      }
+    }
+
+
+     // res.send(result)
+   } else {
+     res.send(err)
+   }
+ })
 })
 
 module.exports = router;

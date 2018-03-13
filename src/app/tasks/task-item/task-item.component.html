@@ -1,8 +1,9 @@
-<td>
-  <p>
+  <!--<p>-->
     <input type="checkbox" class="filled-in" id={{task.task_id}} (click)="markAsDone()" name="checkbox" [(ngModel)]="task.done" />
-    <label for={{task.task_id}}></label>
-  </p>
-</td>
-<td>{{task.username}} |</td>
-<td> {{task.task_text}}</td>
+      <label for={{task.task_id}}>
+        {{task.username}}  |  {{task.task_text}}
+      </label>
+    <!--<span>{ |</span>-->
+    <!--<span> {{task.task_text}}</span>-->
+  <!--</p>-->
+
