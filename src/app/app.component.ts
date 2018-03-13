@@ -9,14 +9,15 @@ import {AuthService} from './services/auth.service';
 export class AppComponent implements   OnInit {
   title = 'IBM-Project';
 
-  get user(){
-    return this.authService.getUser();
-  }
+
+  user: any;
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    if(localStorage.token){
-      this.authService.getUserDetail();
+    if (localStorage.token) {
+    this.authService.getCurrentUser().subscribe(data => {
+      this.user = data.user;
+    });
     }
   }
 }

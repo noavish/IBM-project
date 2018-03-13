@@ -151,7 +151,6 @@ export class UnitAmountGraphComponent implements OnInit {
       this.chart.zoomToIndexes(this.chart.dataProvider.length - 2, this.chart.dataProvider.length - 1);
     });
     this.AmCharts.addListener(this.chart, 'dataUpdated', () => {
-      console.log(this.chart);
     });
   }
 

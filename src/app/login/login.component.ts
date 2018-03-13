@@ -28,7 +28,10 @@ export class LoginComponent implements OnInit {
       (err) => console.log(err),
       () => {
         this.authService.getUserDetail();
-        this.router.navigateByUrl(this.returnUrl);
+        this.zone.runOutsideAngular(() => {
+          location.replace('/');
+        });
+        // this.router.navigateByUrl(this.returnUrl);
       }
       );
 
