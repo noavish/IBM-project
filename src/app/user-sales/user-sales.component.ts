@@ -17,6 +17,9 @@ export class UserSalesComponent implements OnInit {
   @Input() user: any;
 
   ngOnInit() {
+    this.salesService.newSaleLogged.subscribe(data => {
+      this.getDataForGrafh();
+    });
     this.getDataForGrafh();
   }
 

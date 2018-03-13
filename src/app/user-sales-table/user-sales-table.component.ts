@@ -16,11 +16,13 @@ export class UserSalesTableComponent implements OnInit, OnChanges {
   @Input() user: any;
 
   ngOnInit() {
-
+    this.salesService.newSaleLogged.subscribe(data => {
+      this.getSalesLog();
+    });
   }
 
-  ngOnChanges(){
-    this.getSalesLog()
+  ngOnChanges() {
+    this.getSalesLog();
   }
 
 

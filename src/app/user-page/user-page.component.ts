@@ -1,5 +1,5 @@
 import {
-  Component, EventEmitter, OnInit, ElementRef, NgZone, ViewChild, AfterViewChecked,
+  Component, EventEmitter, OnInit, ElementRef, NgZone, ViewChild, AfterViewChecked, Output, Input,
 
 } from '@angular/core';
 import { MaterializeAction } from 'angular2-materialize';
@@ -8,7 +8,6 @@ import { Product } from '../models/productModel';
 import { SKU } from '../models/skuModel';
 import { Sale } from '../models/saleModel';
 import { FormControl } from '@angular/forms';
-import { } from 'googlemaps';
 import {AgmMap, MapsAPILoader} from '@agm/core';
 import { AuthService } from '../services/auth.service';
 import { Task } from '../models/taskModel';
@@ -23,31 +22,26 @@ import { WeatherService } from '../services/weather.service';
 })
 export class UserPageComponent implements OnInit {
   logSaleClicked = new EventEmitter<string|MaterializeAction>();
-  revert = new EventEmitter<string|MaterializeAction>();
-  sale: Sale = new Sale();
-  timeStamp = new Date();
-  products: Product[];
-  chosenSKU: number;
-  items: any[];
-  channel = 1;
+  // sale: Sale = new Sale();
+  // timeStamp = new Date();
+  // products: Product[];
+  // chosenSKU: number;
+  // items: any[];
+  // channel = 1;
   todaySales: any;
   user: any;
-
   myTasks: Task[];
   task: Task = new Task();
-
-
-
-
   constructor( private salesService: SalesService, private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private authService: AuthService, private taskService: TaskService, private weatherService: WeatherService ) { }
 
 
   ngOnInit() {
-
+    this.getUser();
   }
 
   openLogSale() {
     this.logSaleClicked.emit({action: 'modal', params: ['open']});
+    this.salesService.mapResize.emit()
   }
 
   closeLog() {
