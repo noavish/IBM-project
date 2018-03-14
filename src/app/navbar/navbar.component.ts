@@ -54,11 +54,11 @@ export class NavbarComponent implements OnInit {
 
   logOut() {
     this.authService.logOut();
-
   }
 
   openManageUsers() {
     this.manageUserClicked.emit({action: 'modal', params: ['open']});
+    this.getUsers();
     this.getLevels();
     this.getChannels();
   }

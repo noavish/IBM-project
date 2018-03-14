@@ -1,6 +1,8 @@
 .container-fluid {
     margin:0;
     padding: 17rem;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
     background: url("/assets/image/background.png") no-repeat center center fixed;
     background-repeat:no-repeat;
     background-size: 100%;
@@ -16,10 +18,10 @@
 
 .card-header {
     color: #f5f7fa;
-    padding:2rem;
+    padding: 2rem;
 }
 .card-body{
-    padding:2rem;
+    padding: 2rem;
 }
 
 .custom-control {
@@ -63,4 +65,4 @@ top:0;
     @keyframes fadeIn {
     0% {opacity: 0;}
     100% {opacity: 1;}
-    }
+}

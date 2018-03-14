@@ -71,10 +71,10 @@ nav ul.left {
 }
 
 ul.side-nav.leftside-navigation {
-    top: 64px;
     overflow: hidden;
     height: 100%;
 }
+
 ul.side-nav.leftside-navigation li:not(.no-padding) {
 
     line-height: 70px;
@@ -83,8 +83,8 @@ ul.side-nav.leftside-navigation li:not(.no-padding) {
 .side-nav {
     background-color: #2E4756;
     width: 16vw;
-
 }
+
 .navbar-name{
   margin:25px;
   font-weight:bold;
