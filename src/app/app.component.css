@@ -8,13 +8,8 @@ body {
     /*padding: 0 0.5rem;*/
     margin: 0 auto;
     max-width: 100% !important;
-<<<<<<< HEAD
-    width: 88%;
-    float: right;
-=======
     width: 84vw;
     float:right;
->>>>>>> 0d265bdd785273c7f5dc489d9440238b48f0dcaa
     font-family: 'Raleway';
     background-color: #F2EAEE;
 }
