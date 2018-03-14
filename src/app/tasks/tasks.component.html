@@ -1,7 +1,7 @@
 <!-- <app-navbar></app-navbar> -->
 <div class="container2">
   <div class="container row">
-    <div class="col l8">
+    <div class="col s8">
       <div class="tasks">
         <table>
           <thead>
@@ -21,8 +21,9 @@
         </table>
       </div>
     </div>
-    <div class="col l4">
+    <div class="col s4">
       <div class="addTask">
+        <h5>Add Task:</h5>
         <app-add-task [user] = "user" (taskAdded)="getTasks($event)"></app-add-task>
       </div>
     </div>
