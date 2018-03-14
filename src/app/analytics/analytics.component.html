@@ -7,11 +7,10 @@
           <div class="card">
             <div class="card-content  light-blue darken-3 white-text">
               <p class="card-stats-title">
-                <i class="material-icons">trending_up</i> yesterday global revenue</p>
-              <h4 class="card-stats-number">{{yesRev}}</h4>
+                <i class="material-icons">trending_up</i>yesterday's WW sales</p>
+              <h4 class="card-stats-number">${{yesRev}}</h4>
               <p class="card-stats-compare">
                 <i class="material-icons">keyboard_arrow_up</i>
-c
               </p>
             </div>
             <div class="card-action  light-blue darken-4 darken-1">
@@ -25,8 +24,8 @@ c
           <div class="card">
             <div class="card-content  teal lighten-2 white-text">
               <p class="card-stats-title">
-                <i class="material-icons">trending_up</i> top revenue country</p>
-              <h4 class="card-stats-number">{{topCounRev?.Sums}}</h4>
+                <i class="material-icons">trending_up</i>top country - revenue</p>
+              <h4 class="card-stats-number">${{topCounRev?.Sums}}</h4>
               <p class="card-stats-compare">
                 <i class="material-icons">keyboard_arrow_up</i>
                 <span class="grey darken-3 text text-lighten-5">{{topCounRev?.country}}</span>
@@ -43,8 +42,8 @@ c
           <div class="card">
             <div class="card-content  yellow darken-3 white-text">
               <p class="card-stats-title">
-                <i class="material-icons">trending_up</i> top sellling product rev</p>
-              <h4 class="card-stats-number">{{topProdRev?.rev}}</h4>
+                <i class="material-icons">trending_up</i>top product - revenue</p>
+              <h4 class="card-stats-number">${{topProdRev?.rev}}</h4>
               <p class="card-stats-compare">
                 <i class="material-icons">keyboard_arrow_up</i>
                 <span class="grey darken-3-text ">{{topProdRev?.Name}}</span>
@@ -113,7 +112,7 @@ c
       </div>
     </div>
   </div>
- 
+
   <div class="row">
     <div class="col l12">
 
